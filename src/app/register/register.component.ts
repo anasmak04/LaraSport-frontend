@@ -17,7 +17,8 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private data: SharedService,
     private authService: AuthServiceService,
-    private router : Router
+    private router : Router,
+    
   ) {}
 
   ngOnInit() {
@@ -38,7 +39,9 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe({
         next: (response) => {
-          console.log('Registration successful', response)
+          console.log('Registration successful', response);
+          this.authService.storeToken(response.access_token);
+          console.log(response);
           this.router.navigate(['/login']);
 
         },
