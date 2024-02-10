@@ -1,30 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Document</title>
 </head>
-<body>
+<body class="bg-gray-100">
 
-      
-     <nav>
-      <ul>
-        <li><a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">register</a></li>
-        <li><a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">login</a></li>
-      </ul>
+    <nav class="bg-white shadow-lg">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between">
+          <div class="flex space-x-4">
+            <div>
+              <a href="#" class="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
+                <svg class="h-6 w-6 mr-1 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="font-bold">MyApp</span>
+              </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-1">
+              <a routerLink="/register" routerLinkActive="active" aria-current="page" class="py-5 px-3 text-gray-700 hover:text-gray-900">Register</a>
+              <a routerLink="/login" routerLinkActive="active" aria-current="page" class="py-5 px-3 text-gray-700 hover:text-gray-900">Login</a>
+            </div>
+          </div>
+          
+          <div class="hidden md:flex items-center space-x-1">
+            
+          </div>
+          <div class="md:hidden flex items-center">
+            <button class="mobile-menu-button">
+              <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
     </nav>
+    
     <router-outlet></router-outlet>
     
-
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+  
 
 </body>
 </html>
-
-
-
-
