@@ -7,6 +7,7 @@ import { CategoryComponent } from './category/category.component';
 import { PostComponent } from './post/post.component';
 import { TagsComponent } from './tags/tags.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'post', component: PostComponent},
   { path: 'tags', component: TagsComponent},
   { path: 'add-post', component: AddPostComponent},
+  { path: 'edit-post', component: EditPostComponent},
 ];
 
 @NgModule({

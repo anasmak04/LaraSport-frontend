@@ -12,6 +12,11 @@ import { CategoryComponent } from './category/category.component';
 import { TagsComponent } from './tags/tags.component';
 import { PostComponent } from './post/post.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { AddTagsComponent } from './components/add-tags/add-tags.component';
+import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+import { EditTagsComponent } from './components/edit-tags/edit-tags.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { AddPostComponent } from './components/add-post/add-post.component';
     CategoryComponent,
     TagsComponent,
     PostComponent,
-    AddPostComponent
+    AddPostComponent,
+    EditPostComponent,
+    AddTagsComponent,
+    AddCategoryComponent,
+    EditCategoryComponent,
+    EditTagsComponent
   ],
   imports: [
     BrowserModule,
