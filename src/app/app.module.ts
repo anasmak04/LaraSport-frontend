@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { CategoryComponent } from './category/category.component';
+import { TagsComponent } from './tags/tags.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { CategoryComponent } from './category/category.component';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    CategoryComponent
+    CategoryComponent,
+    TagsComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
