@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PostServiceService } from '../services/post/post-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -9,7 +10,7 @@ import { PostServiceService } from '../services/post/post-service.service';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private postservice : PostServiceService){}
+  constructor(private postservice : PostServiceService, private router : Router){}
 
   ngOnInit(): void {
     this.findAll();
@@ -27,6 +28,11 @@ export class PostComponent implements OnInit {
 
       error : (err) => console.log(err) 
     })
+  }
+
+
+  addPost(){
+    this.router.navigate(["add-post"]);
   }
 
 

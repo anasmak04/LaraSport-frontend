@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { CategoryComponent } from './category/category.component';
 import { TagsComponent } from './tags/tags.component';
 import { PostComponent } from './post/post.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PostComponent } from './post/post.component';
     HomeComponent,
     CategoryComponent,
     TagsComponent,
-    PostComponent
+    PostComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,

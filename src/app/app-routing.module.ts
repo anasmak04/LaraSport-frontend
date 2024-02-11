@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { CategoryComponent } from './category/category.component';
 import { PostComponent } from './post/post.component';
 import { TagsComponent } from './tags/tags.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'category', component: CategoryComponent},
   { path: 'post', component: PostComponent},
   { path: 'tags', component: TagsComponent},
+  { path: 'add-post', component: AddPostComponent},
 ];
 
 @NgModule({
