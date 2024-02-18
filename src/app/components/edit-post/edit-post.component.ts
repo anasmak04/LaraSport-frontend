@@ -1,31 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CategoryServiceService } from 'src/app/services/category/category-service.service';
-import { PostServiceService } from 'src/app/services/post/post-service.service';
-import { TagsServiceService } from 'src/app/services/tags/tags-service.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { CategoryServiceService } from "src/app/services/category/category-service.service";
+import { PostServiceService } from "src/app/services/post/post-service.service";
+import { TagsServiceService } from "src/app/services/tags/tags-service.service";
 
 @Component({
-  selector: 'app-edit-post',
-  templateUrl: './edit-post.component.html',
-  styleUrls: ['./edit-post.component.css']
+  selector: "app-edit-post",
+  templateUrl: "./edit-post.component.html",
+  styleUrls: ["./edit-post.component.css"],
 })
 export class EditPostComponent implements OnInit {
+  PostForm: FormGroup;
 
-  PostForm : FormGroup
-
-  constructor(private categoryservice : CategoryServiceService , 
-    private tagsservice : TagsServiceService , 
-    private postservice : PostServiceService,
-    private fb : FormBuilder) {
-
+  constructor(
+    private categoryservice: CategoryServiceService,
+    private tagsservice: TagsServiceService,
+    private postservice: PostServiceService,
+    private fb: FormBuilder
+  ) {
     this.PostForm = this.fb.group({
       title: ["", Validators.required],
       content: ["", Validators.required],
       publish_date: ["", Validators.required],
       category_id: ["", Validators.required],
-      tags: [[], Validators.required] 
+      tags: [[], Validators.required],
     });
-
   }
 
   ngOnInit(): void {
@@ -33,13 +32,11 @@ export class EditPostComponent implements OnInit {
     this.findAllTags();
   }
 
+  tags: any[] = [];
+  categories: any[] = [];
+  posts: any = [];
 
-  tags : any [] = [];
-  categories : any [] = [];
-  posts : any = [];
-
-
-  findById(id: number){
+  findById(id: number) {
     this.postservice.findById(id).subscribe({
       next: (data) => {
         this.posts = data.post;
@@ -51,44 +48,34 @@ export class EditPostComponent implements OnInit {
           category_id: this.posts.category_id,
         });
       },
-      error: (err) => console.log(err)
-    })
+      error: (err) => console.log(err),
+    });
   }
-  
 
-
-  findAllCategories(){
+  findAllCategories() {
     this.categoryservice.findAll().subscribe({
-      next : (response) => {
-          this.categories = response.categories
-      }, 
-
-      error :  (err) => console.log(err)
-    })
+      next: (response) => {
+        this.categories = response.categories;
+      },
+      error: (err) => console.log(err),
+    });
   }
 
-
-  findAllTags(){
+  findAllTags() {
     this.tagsservice.findAll().subscribe({
-      next : (response) => {
-          this.tags = response.tags
-      }, 
-      error :  (err) => console.log(err)
-    })
+      next: (response) => {
+        this.tags = response.tags;
+      },
+      error: (err) => console.log(err),
+    });
   }
 
-
-
-
-
-  update(id : number){
-    this.postservice.update(id , this.PostForm.value).subscribe({
-      next : (post) => {
+  update(id: number) {
+    this.postservice.update(id, this.PostForm.value).subscribe({
+      next: (post) => {
         console.log("post updated", post);
       },
-      error : (err) => console.log(err)
-    })
+      error: (err) => console.log(err),
+    });
   }
-
-
 }

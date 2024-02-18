@@ -1,1 +1,0 @@
-{"ast":null,"code":"export {};","map":{"version":3,"names":[],"sources":["C:\\Users\\Youcode\\Desktop\\laraSport-front\\src\\app\\shared\\model\\Tags.ts"],"sourcesContent":["export interface Tags {\n    name : String\n}\n"],"mappings":""},"metadata":{},"sourceType":"module","externalDependencies":[]}

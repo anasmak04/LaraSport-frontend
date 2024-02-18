@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym and Fitness Club</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">Gym<span class="text-red-500">Club</span></a>
+            <div class="hidden md:flex space-x-4">
+                <a href="#" class="hover:text-red-500">Home</a>
+                <a href="#" class="hover:text-red-500">About</a>
+                <a href="#" class="hover:text-red-500">Classes</a>
+                <a href="#" class="hover:text-red-500">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-red-500 text-white text-center p-12">
+        <h1 class="text-4xl font-bold mb-4">Welcome to GymClub</h1>
+        <p class="mb-6">Your ultimate destination for fitness and wellness.</p>
+        <a href="#contact" class="bg-gray-800 py-2 px-4 rounded hover:bg-gray-700">Join Us Today</a>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container mx-auto my-12 p-6">
+        <h2 class="text-3xl font-bold text-center mb-6">About Us</h2>
+        <p class="text-gray-700 text-lg text-center">GymClub is a state-of-the-art fitness facility offering the best in class equipment, classes, and personal training to help you achieve your fitness goals.</p>
+    </section>
+
+    <!-- Classes Section -->
+    <section id="classes" class="bg-gray-200 py-12">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-6">Our Classes</h2>
+            <!-- Add class cards here -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container mx-auto my-12 p-6">
+        <h2 class="text-3xl font-bold text-center mb-6">Contact Us</h2>
+        <form class="max-w-xl mx-auto">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700">Name</label>
+                <input type="text" id="name" class="w-full p-2 border rounded">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700">Email</label>
+                <input type="email" id="email" class="w-full p-2 border rounded">
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700">Message</label>
+                <textarea id="message" rows="4" class="w-full p-2 border rounded"></textarea>
+            </div>
+            <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-4">
+        © 2024 GymClub. All rights reserved.
+    </footer>
+
+</body>
+</html>
