@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlertComponent } from './alert/alert.component';
 import {MessagesModule} from 'primeng/messages';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -10,10 +11,11 @@ import {MessagesModule} from 'primeng/messages';
   ],
   imports: [
     CommonModule,
-    MessagesModule
+    MessagesModule,
+    BrowserAnimationsModule
   ],
 
 
-  exports : [AlertComponent,MessagesModule]
+  exports : [AlertComponent,MessagesModule,BrowserAnimationsModule]
 })
 export class SharedModule { }
