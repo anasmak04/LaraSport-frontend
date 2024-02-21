@@ -20,6 +20,7 @@ import { GoogleMapsModule } from '@angular/google-maps'
 import { LoginComponent } from './admin/_auth/login/login.component';
 import { SharedModule } from './shared/shared.module';
 import { MessagesModule } from 'primeng/messages';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MessagesModule } from 'primeng/messages';
     AddTagsComponent,
     AddCategoryComponent,
     EditCategoryComponent,
-    EditTagsComponent
+    EditTagsComponent,
+    PostDetailsComponent
   ],
   imports: [
     BrowserModule,
