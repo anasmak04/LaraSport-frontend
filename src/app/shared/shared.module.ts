@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlertComponent } from './alert/alert.component';
+import { AlertComponent } from './components/alert/alert.component';
 import {MessagesModule} from 'primeng/messages';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TruncatePipe } from './truncate.pipe';
-import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { TruncatePipe } from './pipe/truncate.pipe';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
