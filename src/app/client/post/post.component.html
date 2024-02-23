@@ -56,10 +56,10 @@
               <div class="px-4 w-full lg:w-3/4">
                   <div class="flex flex-wrap -mx-2">
                  
-                    <div class="px-2 w-full md:w-1/2 lg:w-1/2 mb-4" *ngFor="let post of posts">
-                        <div class="card border border-gray-200 h-full flex flex-col rounded-lg overflow-hidden transition-shadow duration-300 ease-in-out">
+                    <div class="px-2 w-full space-y-8 md:w-1/2 lg:w-1/2 mb-4" *ngFor="let post of posts">
+                        <div class="card border  border-gray-200 h-full flex flex-col rounded-lg overflow-hidden transition-shadow duration-300 ease-in-out">
                             <img src="../../../assets/image2.jpg"   alt="{{post.title}}" class="w-full h-60 object-cover"/>
-                            <div class="p-4 flex flex-col flex-grow">
+                            <div class="p-4  flex-col flex-grow">
                                 <h1 class="text-gray-800 font-semibold text-xl mb-2">
                                     {{post.title}}
                                 </h1>
@@ -79,9 +79,10 @@
 
                               
                                 
-                                <button [routerLink]="['/post-details', post.id]" class="mt-4 bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition-colors duration-200 ease-in-out">
-                                    Read More...
-                                  </button>
+                                <button [routerLink]="['/post-details', post.id]" class="hover:font-bold bg-black px-2 py-2 text-white hover:bg-transparent hover:text-black hover:border hover:border-2 hover:border-black border border-transparent">
+                                    Lire la suite ...
+                                </button>
+                                
                                 
                             </div>
                         </div>
