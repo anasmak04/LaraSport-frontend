@@ -4,12 +4,14 @@ import { AlertComponent } from './alert/alert.component';
 import {MessagesModule} from 'primeng/messages';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TruncatePipe } from './truncate.pipe';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AlertComponent,
-    TruncatePipe
+    TruncatePipe,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -18,6 +20,6 @@ import { TruncatePipe } from './truncate.pipe';
   ],
 
 
-  exports : [AlertComponent,MessagesModule,BrowserAnimationsModule,TruncatePipe]
+  exports : [AlertComponent,MessagesModule,BrowserAnimationsModule,TruncatePipe,FooterComponent]
 })
 export class SharedModule { }
