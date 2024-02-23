@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RegsiterResponse } from '../../shared/model/regsiter-response';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class AuthServiceService {
 
 
-  private apiUrl = environment.Auth_api;
+  private apiUrl = "http://127.0.0.1:8000/api";
 
   constructor(private http : HttpClient) { }
 

@@ -4,14 +4,13 @@ import { Observable } from "rxjs";
 import { categoryResponse } from "src/app/shared/model/category-response";
 import { Tags } from "src/app/shared/model/Tags";
 import { TagsResponse } from "src/app/shared/model/TagsResponse";
-import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class TagsServiceService {
   constructor(private http: HttpClient) {}
-  UrlApi: string = environment.Tags_api;
+  UrlApi: string = "http://127.0.0.1:8000/api/tags";
 
   save(tags: Tags): Observable<Tags> {
     return this.http.post<Tags>(this.UrlApi, tags);
