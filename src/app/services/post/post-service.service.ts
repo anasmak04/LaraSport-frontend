@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PostResponse } from 'src/app/shared/model/PostResponse';
 import { PostResponseId } from 'src/app/shared/model/post-reponseId';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class PostServiceService {
 
   constructor(private http : HttpClient) { }
 
-  UrlApi: string = "http://127.0.0.1:8000/api/post";
+  UrlApi: string = environment.Post_api;
 
   save(category: PostResponse): Observable<PostResponse> {
     return this.http.post<PostResponse>(this.UrlApi, category);

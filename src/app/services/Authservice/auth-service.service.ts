@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RegsiterResponse } from '../../shared/model/regsiter-response';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +11,21 @@ import { RegsiterResponse } from '../../shared/model/regsiter-response';
 export class AuthServiceService {
 
 
-  private apiUrl = 'http://127.0.0.1:8000';
+  private apiUrl = environment.Auth_api;
 
   constructor(private http : HttpClient) { }
 
 
   register(user: any) : Observable<RegsiterResponse> {
-    return this.http.post<RegsiterResponse>(`${this.apiUrl}/api/register`, user);
+    return this.http.post<RegsiterResponse>(`${this.apiUrl}/register`, user);
 
   }
 
   login(credentials: any) {
-    return this.http.post(`${this.apiUrl}/api/login`, credentials);
+    return this.http.post(`${this.apiUrl}/login`, credentials);
   }
+
+
 
    storeToken(token: string): void {
     localStorage.setItem('access_token', token);
@@ -43,7 +46,7 @@ export class AuthServiceService {
 
   getProtectedData() {
     const headers = this.getAuthHeaders();
-    return this.http.get(`${this.apiUrl}/api/protected`, { headers });
+    return this.http.get(`${this.apiUrl}/protected`, { headers });
   }
 
 
