@@ -36,21 +36,21 @@ export class EditPostComponent implements OnInit {
   categories: any[] = [];
   posts: any = [];
 
-  findById(id: number) {
-    this.postservice.findById(id).subscribe({
-      next: (data) => {
-        this.posts = data.post;
-        console.log(this.posts);
-        this.PostForm.patchValue({
-          title: this.posts.title,
-          content: this.posts.content,
-          publish_date: this.posts.publish_date,
-          category_id: this.posts.category_id,
-        });
-      },
-      error: (err) => console.log(err),
-    });
-  }
+  // findById(id: number) {
+  //   this.postservice.findById(id).subscribe({
+  //     next: (data) => {
+  //       this.posts = data.post;
+  //       console.log(this.posts);
+  //       this.PostForm.patchValue({
+  //         title: this.posts.title,
+  //         content: this.posts.content,
+  //         publish_date: this.posts.publish_date,
+  //         category_id: this.posts.category_id,
+  //       });
+  //     },
+  //     error: (err) => console.log(err),
+  //   });
+  // }
 
   findAllCategories() {
     this.categoryservice.findAll().subscribe({

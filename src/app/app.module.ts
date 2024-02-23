@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { TagsComponent } from './admin/tags/tags.component';
-import { PostComponent } from './admin/post/post.component';
+import { PostComponent } from './client/post/post.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { AddTagsComponent } from './components/add-tags/add-tags.component';
@@ -21,6 +21,7 @@ import { LoginComponent } from './admin/_auth/login/login.component';
 import { SharedModule } from './shared/shared.module';
 import { MessagesModule } from 'primeng/messages';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
+
 
 @NgModule({
   declarations: [

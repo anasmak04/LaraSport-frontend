@@ -51,85 +51,44 @@
               </h1>
           </div>
   
+
           <div class="flex flex-wrap -mx-4">
               <div class="px-4 w-full lg:w-3/4">
                   <div class="flex flex-wrap -mx-2">
-                      <div class="px-2 w-full md:w-1/2 lg:w-1/2 mb-4">
-                          <div class="card border border-gray-200 h-full flex flex-col">
-                              <img src="../../assets/image1.jpeg" alt="" class="w-full h-60 object-cover"/>
-                              <div class="p-4 flex flex-col flex-grow">
-                                  <h1 class="text-gray-800 font-bold mb-2">
-                                      Objectifs réalistes en remise en forme : Guide pratique
-                                  </h1>
-                                  <p class="flex-grow">
-                                      La remise en forme est une quête personnelle qui peut être passionnante...
-                                  </p>
-                                  <button class="px-4 py-2 mt-3 bg-black text-white font-bold hover:bg-gray-800
-                                   hover:text-gray-100 border
-                                    border-gray-800 rounded-md
-                                     self-start hover:bg-transparent hover:text-black">
-                                      Lire La suite...
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="px-2 w-full md:w-1/2 lg:w-1/2 mb-4">
-                        <div class="card border border-gray-200 h-full flex flex-col">
-                            <img src="../../assets/image1.jpeg" alt="" class="w-full h-60 object-cover"/>
+                 
+                    <div class="px-2 w-full md:w-1/2 lg:w-1/2 mb-4" *ngFor="let post of posts">
+                        <div class="card border border-gray-200 h-full flex flex-col rounded-lg overflow-hidden transition-shadow duration-300 ease-in-out">
+                            <img src="../../../assets/image2.jpg"   alt="{{post.title}}" class="w-full h-60 object-cover"/>
                             <div class="p-4 flex flex-col flex-grow">
-                                <h1 class="text-gray-800 font-bold mb-2">
-                                    Objectifs réalistes en remise en forme : Guide pratique
+                                <h1 class="text-gray-800 font-semibold text-xl mb-2">
+                                    {{post.title}}
                                 </h1>
-                                <p class="flex-grow">
-                                    La remise en forme est une quête personnelle qui peut être passionnante...
+                                <p class="flex-grow text-gray-600 text-sm">
+                                    {{post.content | truncate:300:true:'...'}}
                                 </p>
-                                <button class="px-4 py-2 mt-3 bg-black text-white 
-                                font-bold hover:bg-gray-800 hover:text-gray-100
-                                 border border-gray-800 rounded-md self-start
-                                 hover:bg-transparent hover:text-black">
-                                    Lire La suite...
-                                </button>
+                        
+                                <p class="text-gray-500 text-xs mt-2">
+                                    Published: {{post.publish_date | date:'mediumDate'}}
+                                </p>
+
+                                <div class="flex flex-wrap mt-2">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded dark:bg-blue-800 dark:text-blue-100" *ngFor="let tag of post.tags">
+                                        {{ tag.name }}
+                                    </span>
+                                </div>
+
+                              
+                                
+                                <button [routerLink]="['/post-details', post.id]" class="mt-4 bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition-colors duration-200 ease-in-out">
+                                    Read More...
+                                  </button>
+                                
                             </div>
                         </div>
                     </div>
-                    <div class="px-2 w-full md:w-1/2 lg:w-1/2 mb-4">
-                      <div class="card border border-gray-200 h-full flex flex-col">
-                          <img src="../../assets/image1.jpeg" alt="" class="w-full h-60 object-cover"/>
-                          <div class="p-4 flex flex-col flex-grow">
-                              <h1 class="text-gray-800 font-bold mb-2">
-                                  Objectifs réalistes en remise en forme : Guide pratique
-                              </h1>
-                              <p class="flex-grow">
-                                  La remise en forme est une quête personnelle qui peut être passionnante...
-                              </p>
-                              <button class="px-4 py-2 mt-3 bg-black text-white 
-                              font-bold hover:bg-gray-800 hover:text-gray-100
-                               border border-gray-800 rounded-md self-start
-                               hover:bg-transparent hover:text-black">
-                                  Lire La suite...
-                              </button>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="px-2 w-full md:w-1/2 lg:w-1/2 mb-4">
-                    <div class="card border border-gray-200 h-full flex flex-col">
-                        <img src="../../assets/image1.jpeg" alt="" class="w-full h-60 object-cover"/>
-                        <div class="p-4 flex flex-col flex-grow">
-                            <h1 class="text-gray-800 font-bold mb-2">
-                                Objectifs réalistes en remise en forme : Guide pratique
-                            </h1>
-                            <p class="flex-grow">
-                                La remise en forme est une quête personnelle qui peut être passionnante...
-                            </p>
-                            <button class="px-4 py-2 mt-3 bg-black text-white 
-                            font-bold hover:bg-gray-800 hover:text-gray-100
-                             border border-gray-800 rounded-md self-start
-                             hover:bg-transparent hover:text-black">
-                                Lire La suite...
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    
+                    
+                    
                       <!-- Repeat for other cards, adjusting the src attribute of img tags and content as necessary -->
                   </div>
               </div>

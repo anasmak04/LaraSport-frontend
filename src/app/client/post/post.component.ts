@@ -18,12 +18,18 @@ export class PostComponent implements OnInit {
     this.findAll();
   }
 
+  readMore(postId: number) {
+    this.router.navigate(['/posts', postId]);
+  }
+
+  
   posts: any[] = [];
 
   findAll() {
     this.postservice.findAll().subscribe({
       next: (response) => {
         this.posts = response.post;
+        console.log(this.posts);
       },
 
       error: (err) => console.log(err),
