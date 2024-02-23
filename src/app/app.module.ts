@@ -21,6 +21,7 @@ import { LoginComponent } from './admin/_auth/login/login.component';
 import { SharedModule } from './shared/shared.module';
 import { MessagesModule } from 'primeng/messages';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
     AddCategoryComponent,
     EditCategoryComponent,
     EditTagsComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
