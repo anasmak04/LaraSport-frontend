@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./post.component.css"],
 })
 export class PostComponent implements OnInit {
+  
   constructor(
     private postservice: PostServiceService,
     private router: Router

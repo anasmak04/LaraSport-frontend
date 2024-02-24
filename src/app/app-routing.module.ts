@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'post', component: PostComponent },
   { path: 'post-details/:id', component: PostDetailsComponent },
   { path: 'city', component: ClubComponent },
-  { path: '**', component: NotFoundComponent },
+  // { path: '**', component: NotFoundComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
 ];
 

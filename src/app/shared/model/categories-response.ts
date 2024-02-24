@@ -1,7 +1,7 @@
 import { categoryResponse } from "./category-response";
 
 export interface CategoriesResponse {
-    message: string;
+    message: String;
     categories: categoryResponse[];
   }
   
