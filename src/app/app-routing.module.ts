@@ -10,6 +10,7 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { LoginComponent } from './admin/_auth/login/login.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ClubComponent } from './client/club/club.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'edit-post', component: EditPostComponent},
   { path: 'post', component: PostComponent },
   { path: 'post-details/:id', component: PostDetailsComponent },
+  { path: 'city', component: ClubComponent },
   { path: '**', component: NotFoundComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
 ];

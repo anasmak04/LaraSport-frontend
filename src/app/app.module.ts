@@ -22,6 +22,7 @@ import { SharedModule } from './shared/shared.module';
 import { MessagesModule } from 'primeng/messages';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ClubComponent } from './client/club/club.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     EditCategoryComponent,
     EditTagsComponent,
     PostDetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ClubComponent
   ],
   imports: [
     BrowserModule,
