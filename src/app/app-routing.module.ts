@@ -12,6 +12,7 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ClubComponent } from './client/club/club.component';
 import { CityComponent } from './client/city/city.component';
+import { EventComponent } from './client/event/event.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -24,8 +25,9 @@ const routes: Routes = [
   { path: 'post', component: PostComponent },
   { path: 'post-details/:id', component: PostDetailsComponent },
   { path: 'city', component: CityComponent },
+  { path: 'event', component: EventComponent },
   { path: 'city/club/:id', component: ClubComponent },
-  // { path: '**', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
 ];
 

@@ -26,6 +26,7 @@ import { ClubComponent } from './client/club/club.component';
 import { CityComponent } from './client/city/city.component';
 import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
+import { EventComponent } from './client/event/event.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { TagModule } from 'primeng/tag';
     PostDetailsComponent,
     NotFoundComponent,
     ClubComponent,
-    CityComponent
+    CityComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,
