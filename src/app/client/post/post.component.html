@@ -60,7 +60,7 @@
                  
                     <div class="px-2 w-full space-y-8 md:w-1/2 lg:w-1/2 mb-4" *ngFor="let post of posts">
                         <div class="card border  border-gray-200 h-full flex flex-col rounded-lg overflow-hidden transition-shadow duration-300 ease-in-out">
-                            <img src="../../../assets/image2.jpg"   alt="{{post.title}}" class="w-full h-60 object-cover"/>
+                            <img src={{post.image}}   alt="{{post.title}}" class="w-full h-60 object-cover"/>
                             <div class="p-4  flex-col flex-grow">
                                 <h1 class="text-gray-800 font-semibold text-xl mb-2">
                                     {{post.title}}
