@@ -23,7 +23,9 @@ import { MessagesModule } from 'primeng/messages';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ClubComponent } from './client/club/club.component';
-
+import { CityComponent } from './client/city/city.component';
+import { RatingModule } from 'primeng/rating';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { ClubComponent } from './client/club/club.component';
     EditTagsComponent,
     PostDetailsComponent,
     NotFoundComponent,
-    ClubComponent
+    ClubComponent,
+    CityComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,9 @@ import { ClubComponent } from './client/club/club.component';
     ReactiveFormsModule,
     GoogleMapsModule,
     SharedModule,
-    MessagesModule
+    MessagesModule,
+    RatingModule,
+    TagModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

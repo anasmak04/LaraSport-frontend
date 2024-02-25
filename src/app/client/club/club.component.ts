@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 import { CityServiceService } from "src/app/services/city/city-service.service";
+import { ClubServiceService } from "src/app/services/club/club-service.service";
 import { CityResponse } from "src/app/shared/model/city-response";
 
 @Component({
@@ -8,20 +10,31 @@ import { CityResponse } from "src/app/shared/model/city-response";
   styleUrls: ["./club.component.css"],
 })
 export class ClubComponent implements OnInit {
-  cities: any[] = [];
-  constructor(private cityService: CityServiceService) {}
+  constructor(
+    private clubservice: ClubServiceService,
+    private route: ActivatedRoute
+  ) {}
+  
+  clubs: any[] = [];
 
+  value = 5
   ngOnInit(): void {
-    this.findAllCities();
-  }
-
-  findAllCities() {
-    this.cityService.findAll().subscribe({
-      next: (response) => {
-        this.cities = response.city;
-        console.log(this.cities);
-      },
-      error: (err) => console.error("Failed to load cities:", err),
+    this.route.params.subscribe(params => {
+      const cityid = +params['id']; 
+      if (cityid) {
+        this.FindCityByClub(cityid);
+      }
     });
+  }
+  
+  FindCityByClub(cityid: number) {
+    this.clubservice.getClubsByCity(cityid).subscribe({
+      next: (response) => {
+        this.clubs = response.club;
+        console.log(this.clubs)
+      },
+      error: (err) => console.log(err),
+    });
+
   }
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <app-navbar></app-navbar>
+    <section>
+      <div
+        class="bg-custom-gradient bg-cover w-full h-52 flex justify-center items-center"
+      >
+        <h1 class="text-white text-center font-bold text-xl px-4">
+          TOUS NOS ARTICLES ET CONSEILS SPORTIFS
+        </h1>
+      </div>
+      <div class="container mx-auto w-full mb-4 border">
+        <h1 class="capitalize text-[#2e294d] mb-2 text-2xl font-bold">
+          La liste des villes du Maroc
+        </h1>
+
+        <p class="mb-2">
+          Vous trouverez ci-dessous les 50 villes qui contiennent des clubs et
+          des salles de sport.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div
+            *ngFor="let city of cities"
+            class="relative border w-full h-[200px] overflow-hidden"
+            [routerLink]="['/city/club', city.id]"
+          >
+            <img
+              src="../../../assets/cover-default2.jpg"
+              alt=""
+              class="absolute w-full h-full object-cover"
+            />
+            <div class="absolute bottom-0 w-full p-4">
+              <h1 class="text-white capitalize text-lg">{{ city.name }}</h1>
+              <p class="text-white capitalize">
+                Découvrez les clubs et les salles de sport à {{ city.name }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <app-footer></app-footer>
+  </body>
+</html>

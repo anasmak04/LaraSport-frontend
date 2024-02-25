@@ -7,42 +7,56 @@
   </head>
   <body>
     <app-navbar></app-navbar>
-    <section>
-        <div class="bg-custom-gradient bg-cover  w-full h-52 flex justify-center items-center">
-            <h1 class="text-white text-center font-bold text-xl px-4">
-                TOUS NOS ARTICLES ET CONSEILS SPORTIFS
-            </h1>
-        </div>
-      <div class="container mx-auto w-full h-[500px] border">
-        <h1 class="capitalize text-[#2e294d] mb-2 text-2xl font-bold">
-          La liste des villes du Maroc
+    <section *ngFor="let club of clubs">
+      <div
+        class="bg-custom-gradient bg-cover w-full h-52 flex justify-center items-center"
+      >
+        <h1 class="text-white text-center font-bold text-xl px-4">
+          LES CLUBS ET SALLES DE SPORT À {{ club.city }}
         </h1>
+      </div>
 
-        <p class="mb-2">
-          Vous trouverez ci-dessous les 50 villes qui contiennent des clubs et
-          des salles de sport.
-        </p>
+      <div
+        class="container mx-auto border border-red-700 p-4 w-full h-[500px] grid grid-cols-1 md:grid-cols-3 gap-4"
+      >
+        <div class="border md:col-span-2 p-4">
+          <img src="../../../assets/club-moov-up-fitness.jpg" alt="" class="" />
+          <div class="py-4 px-2">
+            <h1 class="text-xl font-bold mb-2">CLUB MOOV'UP FITNESS</h1>
+            <p class="text-gray-700 text-base mb-4">
+              Club Moov’up Agadir est devenu une icône en matière de fitness,
+              remise en forme et bien-être pour femmes, hommes et enfants à la
+              ville d’Agadir. Un endroit propre et convivial où vous pouvez vous
+              dépenser pour votre santé et votre bien-être; Spacieux,
+              chaleure...
+            </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div
-            *ngFor="let city of cities"
-            class="relative border w-full h-[200px] overflow-hidden"
-          >
-            <img
-              src="../../../assets/cover-default2.jpg"
-              alt=""
-              class="absolute w-full h-full object-cover"
-            />
-            <div class="absolute bottom-0 w-full p-4">
-              <h1 class="text-white capitalize text-lg">{{ city.name }}</h1>
-              <p class="text-white capitalize">
-                Découvrez les clubs et les salles de sport à {{ city.name }}
-              </p>
+            <div class="flex justify-around mt-4">
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button"
+              >
+                Contacter
+              </button>
+              <button
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button"
+              >
+                Essai Gratuit
+              </button>
             </div>
+
+            <p-rating
+              [(ngModel)]="value"
+              [readonly]="true"
+              [cancel]="false"
+            ></p-rating>
+            <p-tag>Fitness</p-tag>
           </div>
         </div>
+
+        <div class="border"></div>
       </div>
     </section>
-    <app-footer></app-footer>
   </body>
 </html>
