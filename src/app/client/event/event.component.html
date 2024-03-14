@@ -1,17 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <app-navbar></app-navbar>
-    <section>
-        <ul *ngFor="let event of events">
-            <li>{{event.content}}</li>
-        </ul>   
-    </section>
-    <app-footer></app-footer>
-</body>
-</html>
+<header>
+  <app-navbar></app-navbar>
+
+  <div
+    class="bg-custom-gradient bg-cover w-full h-52 flex justify-center items-center"
+  >
+    <h1 class="text-white font-bold text-2xl">
+      TOUS LES ÉVÈNEMENTS SPORTIFS AU MAROC
+    </h1>
+  </div>
+</header>
+
+<section>
+  <div class="container mx-auto w-full grid grid-cols-1 md:grid-cols-3">
+    <!-- <h1 class="text-[#2e2951] font-bold">Tous les évènements sportifs au Maroc</h1>
+    <p class="">Vous trouverez tous les évènements sportifs au Maroc.</p> -->
+
+    <div class="w-full col-span-2 gap-4 p-2 md:flex md:justify-center">
+      <div class="flex flex-col w-full md:w-1/2 space-y-8">
+        <img
+          src="https://www.clubs.ma/assets/images/marathon-international-de-casablanca-2024/evenement/photo/xt0nkKc89JYFrYfdmFUgz8JAj1Ht381UJ8XA206K.jpeg"
+          alt=""
+        />
+        <h1 class="text-[#45294d] font-bold text-2xl">
+          Marathon International de Casablanca 2024
+        </h1>
+        <p>
+          Le Marathon International de Casablanca, un événement incontournable
+          dans le monde du sport au Maroc, revient cette année le 27 octobre
+          2024. Avec une participation attendue entre 1000 et 4999 coureurs, cet
+          événement propose une gamme de courses pour tous les niveaux.
+        </p>
+        <button
+          class="bg-[#252525] text-white hover:text-black hover:bg-transparent w-[150px] h-[60px] hover:border"
+        >
+          Lire la suite..
+        </button>
+      </div>
+      <div class="flex flex-col w-full h-auto md:w-1/2 space-y-8">
+        <img
+          src="https://www.clubs.ma/assets/images/marathon-international-de-casablanca-2024/evenement/photo/xt0nkKc89JYFrYfdmFUgz8JAj1Ht381UJ8XA206K.jpeg"
+          alt=""
+        />
+        <h1 class="text-[#45294d] font-bold text-2xl">
+          Marathon International de Casablanca 2024
+        </h1>
+        <p>
+          Le Marathon International de Casablanca, un événement incontournable
+          dans le monde du sport au Maroc, revient cette année le 27 octobre
+          2024. Avec une participation attendue entre 1000 et 4999 coureurs, cet
+          événement propose une gamme de courses pour tous les niveaux.
+        </p>
+        <button
+          class="bg-[#252525] text-white hover:text-black hover:bg-transparent w-[150px] h-[60px] hover:border"
+        >
+          Lire la suite..
+        </button>
+      </div>
+    </div>
+
+    <div class="w-full p-4 space-y-3">
+      
+      <h1 class="text-[#45294d] font-bold text-2xl">Évènements sportifs au Maroc</h1>
+      <p>Découvrez tous les évènements sportifs partout au Maroc.</p>
+      <hr>
+
+    
+      <h1 class="">Évènements sportifs à Agadir</h1>
+      <p class="te">11 Évènements sportifs à sur Agadir</p>
+      <hr>
+
+
+      <h1 class="">Évènements sportifs à Agadir</h1>
+      <p class="te">11 Évènements sportifs à sur Agadir</p>
+      <hr>
+
+
+      <h1 class="">Évènements sportifs à Agadir</h1>
+      <p class="te">11 Évènements sportifs à sur Agadir</p>
+      <hr>
+
+      <h1 class="">Évènements sportifs à Agadir</h1>
+      <p class="te">11 Évènements sportifs à sur Agadir</p>
+      <hr>
+      
+
+      <h1 class="">Évènements sportifs à Agadir</h1>
+      <p class="te">11 Évènements sportifs à sur Agadir</p>
+      <hr>
+
+
+      <h1 class="">Évènements sportifs à Agadir</h1>
+      <p class="te">11 Évènements sportifs à sur Agadir</p>
+      <hr>
+
+      
+
+
+      
+
+
+
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
