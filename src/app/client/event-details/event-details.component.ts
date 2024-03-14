@@ -14,13 +14,13 @@ export class EventDetailsComponent implements OnInit {
   ) {}
 
 
-  events : any[] = [];
+  event : any = {};
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const eventId = +params["id"];
       if (eventId) {
-        console.log(eventId);
+        this.findeventbyid(eventId);
       }
     });
   }
@@ -28,8 +28,8 @@ export class EventDetailsComponent implements OnInit {
   findeventbyid(id: number) {
     this.eventservice.FindEventById(id).subscribe({
       next: (response) => {
-        this.events= response.event;
-        console.log(this.events);
+        this.event= response.event;
+        console.log(this.event);
       },
       error: (error) => console.log(error),
     });
