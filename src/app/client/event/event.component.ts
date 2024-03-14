@@ -18,6 +18,7 @@ export class EventComponent implements OnInit {
     this.eventservice.FindAllEvents().subscribe({
       next : (response) => {
           this.events = response.event
+          console.log(this.events)
       },
 
       error : (err) => console.log(err)

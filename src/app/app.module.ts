@@ -29,6 +29,7 @@ import { TagModule } from 'primeng/tag';
 import { EventComponent } from './client/event/event.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContactComponent } from './client/contact/contact.component';
+import { EventDetailsComponent } from './client/event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ContactComponent } from './client/contact/contact.component';
     CityComponent,
     EventComponent,
     DashboardComponent,
-    ContactComponent
+    ContactComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -11,44 +11,28 @@
 </header>
 
 <section>
-  <div class="container mx-auto w-full grid grid-cols-1 md:grid-cols-3">
-    <!-- <h1 class="text-[#2e2951] font-bold">Tous les évènements sportifs au Maroc</h1>
-    <p class="">Vous trouverez tous les évènements sportifs au Maroc.</p> -->
+  <div class="container mx-auto p-4 space-y-4">
+    <h1 class="text-[#45294d] font-bold text-2xl">
+      Tous les évènements sportifs au Maroc
+    </h1>
+    <p>Vous trouverez tous les évènements sportifs au Maroc.</p>
+  </div>
 
-    <div class="w-full col-span-2 gap-4 p-2 md:flex md:justify-center">
-      <div class="flex flex-col w-full md:w-1/2 space-y-8">
+  <div class="container mx-auto w-full flex">
+    <div class="w-full md:w-2/3 xl:grid grid-cols-2 p-2">
+      <div
+        class="flex flex-col w-full mb-4 gap-4 p-4"
+        *ngFor="let event of events"
+      >
         <img
-          src="https://www.clubs.ma/assets/images/marathon-international-de-casablanca-2024/evenement/photo/xt0nkKc89JYFrYfdmFUgz8JAj1Ht381UJ8XA206K.jpeg"
+          src="{{event.image}}"
           alt=""
         />
         <h1 class="text-[#45294d] font-bold text-2xl">
-          Marathon International de Casablanca 2024
+          {{event.title}}
         </h1>
         <p>
-          Le Marathon International de Casablanca, un événement incontournable
-          dans le monde du sport au Maroc, revient cette année le 27 octobre
-          2024. Avec une participation attendue entre 1000 et 4999 coureurs, cet
-          événement propose une gamme de courses pour tous les niveaux.
-        </p>
-        <button
-          class="bg-[#252525] text-white hover:text-black hover:bg-transparent w-[150px] h-[60px] hover:border"
-        >
-          Lire la suite..
-        </button>
-      </div>
-      <div class="flex flex-col w-full h-auto md:w-1/2 space-y-8">
-        <img
-          src="https://www.clubs.ma/assets/images/marathon-international-de-casablanca-2024/evenement/photo/xt0nkKc89JYFrYfdmFUgz8JAj1Ht381UJ8XA206K.jpeg"
-          alt=""
-        />
-        <h1 class="text-[#45294d] font-bold text-2xl">
-          Marathon International de Casablanca 2024
-        </h1>
-        <p>
-          Le Marathon International de Casablanca, un événement incontournable
-          dans le monde du sport au Maroc, revient cette année le 27 octobre
-          2024. Avec une participation attendue entre 1000 et 4999 coureurs, cet
-          événement propose une gamme de courses pour tous les niveaux.
+          {{event.description}}
         </p>
         <button
           class="bg-[#252525] text-white hover:text-black hover:bg-transparent w-[150px] h-[60px] hover:border"
@@ -58,48 +42,38 @@
       </div>
     </div>
 
-    <div class="w-full p-4 space-y-3">
-      
-      <h1 class="text-[#45294d] font-bold text-2xl">Évènements sportifs au Maroc</h1>
-      <p>Découvrez tous les évènements sportifs partout au Maroc.</p>
-      <hr>
+    <div class="w-1/3  p-4 hidden md:block">
+      <div class="sticky top-5">
+        <h1 class="text-[#45294d] font-bold text-2xl">
+          Évènements sportifs au Maroc
+        </h1>
+        <p>Découvrez tous les évènements sportifs partout au Maroc.</p>
+        <hr />
 
-    
-      <h1 class="">Évènements sportifs à Agadir</h1>
-      <p class="te">11 Évènements sportifs à sur Agadir</p>
-      <hr>
+        <h1 class="">Évènements sportifs à Agadir</h1>
+        <p class="te">11 Évènements sportifs à sur Agadir</p>
+        <hr />
 
+        <h1 class="">Évènements sportifs à Agadir</h1>
+        <p class="te">11 Évènements sportifs à sur Agadir</p>
+        <hr />
 
-      <h1 class="">Évènements sportifs à Agadir</h1>
-      <p class="te">11 Évènements sportifs à sur Agadir</p>
-      <hr>
+        <h1 class="">Évènements sportifs à Agadir</h1>
+        <p class="te">11 Évènements sportifs à sur Agadir</p>
+        <hr />
 
+        <h1 class="">Évènements sportifs à Agadir</h1>
+        <p class="te">11 Évènements sportifs à sur Agadir</p>
+        <hr />
 
-      <h1 class="">Évènements sportifs à Agadir</h1>
-      <p class="te">11 Évènements sportifs à sur Agadir</p>
-      <hr>
+        <h1 class="">Évènements sportifs à Agadir</h1>
+        <p class="te">11 Évènements sportifs à sur Agadir</p>
+        <hr />
 
-      <h1 class="">Évènements sportifs à Agadir</h1>
-      <p class="te">11 Évènements sportifs à sur Agadir</p>
-      <hr>
-      
-
-      <h1 class="">Évènements sportifs à Agadir</h1>
-      <p class="te">11 Évènements sportifs à sur Agadir</p>
-      <hr>
-
-
-      <h1 class="">Évènements sportifs à Agadir</h1>
-      <p class="te">11 Évènements sportifs à sur Agadir</p>
-      <hr>
-
-      
-
-
-      
-
-
-
+        <h1 class="">Évènements sportifs à Agadir</h1>
+        <p class="te">11 Évènements sportifs à sur Agadir</p>
+        <hr />
+      </div>
     </div>
   </div>
 </section>

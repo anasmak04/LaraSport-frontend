@@ -14,6 +14,7 @@ import { ClubComponent } from "./client/club/club.component";
 import { CityComponent } from "./client/city/city.component";
 import { EventComponent } from "./client/event/event.component";
 import { ContactComponent } from "./client/contact/contact.component";
+import { EventDetailsComponent } from "./client/event-details/event-details.component";
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: "city", component: CityComponent },
   { path: "event", component: EventComponent },
   { path: "contact", component: ContactComponent },
+  { path: "event/:id", component: EventDetailsComponent },
   { path: "city/club/:id", component: ClubComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "**", component: NotFoundComponent },

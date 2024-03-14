@@ -19,6 +19,11 @@ export class EventServiceService {
     return this.http.get<EventResponse>(this.urlApi);
   }
 
+
+  FindEventById(id: number): Observable<EventResponse>{
+    return this.http.get<EventResponse>(this.urlApi + '/' + id);
+  }
+
   
 
 }
