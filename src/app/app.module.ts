@@ -27,6 +27,8 @@ import { CityComponent } from './client/city/city.component';
 import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
 import { EventComponent } from './client/event/event.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ContactComponent } from './client/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { EventComponent } from './client/event/event.component';
     NotFoundComponent,
     ClubComponent,
     CityComponent,
-    EventComponent
+    EventComponent,
+    DashboardComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

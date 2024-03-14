@@ -1,7 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Club } from "src/app/shared/model/club";
 import { ClubResponse } from "src/app/shared/model/club-response";
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: "root",
@@ -11,7 +13,13 @@ export class ClubServiceService {
 
   constructor(private http: HttpClient) {}
 
+
   getClubsByCity(cityid: number): Observable<ClubResponse> {
     return this.http.get<ClubResponse>(`${this.ApiUrl}/city/${cityid}/clubs`);
   }
+  
+  
+  
+  
+  
 }

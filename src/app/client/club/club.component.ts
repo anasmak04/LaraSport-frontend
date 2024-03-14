@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { CityServiceService } from "src/app/services/city/city-service.service";
 import { ClubServiceService } from "src/app/services/club/club-service.service";
 import { CityResponse } from "src/app/shared/model/city-response";
+import { ClubResponse } from "src/app/shared/model/club-response";
 
 @Component({
   selector: "app-club",
@@ -30,11 +31,15 @@ export class ClubComponent implements OnInit {
   FindCityByClub(cityid: number) {
     this.clubservice.getClubsByCity(cityid).subscribe({
       next: (response) => {
-        this.clubs = response.club;
-        console.log(this.clubs)
+        this.clubs = response.clubs; 
+        console.log(this.clubs);
       },
       error: (err) => console.log(err),
     });
-
   }
+  
+  
+  
+  
+  
 }

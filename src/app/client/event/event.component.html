@@ -8,7 +8,9 @@
 <body>
     <app-navbar></app-navbar>
     <section>
-        d
+        <ul *ngFor="let event of events">
+            <li>{{event.content}}</li>
+        </ul>   
     </section>
     <app-footer></app-footer>
 </body>

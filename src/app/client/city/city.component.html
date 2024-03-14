@@ -32,13 +32,13 @@
             [routerLink]="['/city/club', city.id]"
           >
             <img
-              src="../../../assets/cover-default2.jpg"
+              src="{{ city.image }}"
               alt=""
-              class="absolute w-full h-full object-cover"
-            />
+              class="w-full h-full object-cover " style="filter: brightness(40%);"/>
+
             <div class="absolute bottom-0 w-full p-4">
-              <h1 class="text-white capitalize text-lg">{{ city.name }}</h1>
-              <p class="text-white capitalize">
+              <h1 class="text-white font-bold capitalize text-lg">{{ city.name }}</h1>
+              <p class="text-white font-bold capitalize">
                 Découvrez les clubs et les salles de sport à {{ city.name }}
               </p>
             </div>

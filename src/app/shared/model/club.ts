@@ -1,5 +1,7 @@
 export interface Club {
-    name : String,
-    description : String,
-    city_id : String
+    name: string;
+    description: string;
+    city: string;
+    image: string;
+    tags: string[];
 }
