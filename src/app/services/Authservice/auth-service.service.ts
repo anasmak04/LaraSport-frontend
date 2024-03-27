@@ -40,9 +40,14 @@
       localStorage.setItem('user', JSON.stringify(user));
     }
 
-    getUser(){
-      localStorage.getItem("user");
+    getUser(): any {
+      const userString = localStorage.getItem('user');
+      if (userString) {
+        return JSON.parse(userString);
+      }
+      return null;
     }
+    
 
     storeRoles(roles: string[]): void {
       localStorage.setItem('roles', JSON.stringify(roles));
@@ -74,7 +79,6 @@
 
 
     logout() {
-      // this.isLoggedIn = false;
       localStorage.removeItem('access_token');
     }
 

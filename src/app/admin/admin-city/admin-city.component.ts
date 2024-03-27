@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AlertService } from "src/app/services/alert/alert.service";
 import { CityServiceService } from "src/app/services/city/city-service.service";
+import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
   selector: "app-admin-city",
@@ -22,6 +23,10 @@ export class AdminCityComponent implements OnInit {
       image: ["", Validators.required],
     });
   }
+
+
+  loader = inject(LoaderServiceService);
+
 
   showModal: boolean = false;
   showModalUpdate: boolean = false;
@@ -49,6 +54,7 @@ export class AdminCityComponent implements OnInit {
           this.finAllCities();
           this.sweet.showSuccess("City added", "City added successfully");
           this.cityForm.reset();
+          this.showModal = !this.showModal;
         },
         error: () => this.sweet.showError("Error", "Error adding city"),
       });

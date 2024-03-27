@@ -12,6 +12,7 @@ import { AccessDeniedComponent } from './components/permission/access-denied/acc
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error/error.interceptor';
+import { AvatarModule } from 'primeng/avatar';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ErrorInterceptor } from './interceptors/error/error.interceptor';
   imports: [
     CommonModule,
     MessagesModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AvatarModule
   ],
 
   providers : [

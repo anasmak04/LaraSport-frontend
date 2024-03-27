@@ -1,149 +1,333 @@
-<div>
-  <app-header></app-header>
-  <div class="flex overflow-hidden bg-white pt-16">
-    <app-sidebar></app-sidebar>
-    <div
-      class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
-      id="sidebarBackdrop"
-    ></div>
-    <div
-      id="main-content"
-      class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
-    >
-      <main>
-        <div class="container mx-auto w-full p-8">
-          <button
-            class="mb-4 middle none center mr-4 rounded-lg bg-[#0891b2] py-3 px-6 font-sans text-xs font-bold uppercase text-white"
-            (click)="toggleModal()"
-            data-ripple-light="true"
-          >
-            Add
-          </button>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div>
+      <app-header></app-header>
+      <div class="flex overflow-hidden bg-white pt-16 min-h-screen">
+        <app-sidebar></app-sidebar>
+        <div
+          class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
+          id="sidebarBackdrop"
+        ></div>
+        <div
+          id="main-content"
+          class="w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
+        >
+          <main>
+            <div class="container mx-auto w-full p-8">
+              <button
+                (click)="toggleModal()"
+                class="block mb-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                type="button"
+              >
+                Add city
+              </button>
 
-          <!-- Modal -->
-          <div
-            *ngIf="showModal"
-            class="fixed inset-0 bg-opacity-50 overflow-y-auto h-full w-full"
-            id="my-modal"
-          >
-            <div
-              class="relative top-20 mx-auto p-5 border w-[600px] shadow-lg rounded-md bg-white"
-            >
-              <div class="mt-3 text-center">
-                <h2 class="text-2xl font-semibold mb-6">Add New city</h2>
-                <form
-                  [formGroup]="cityForm"
-                  (ngSubmit)="add()"
-                  enctype="multipart/form-data"
-                >
-                  <div class="mb-6">
-                    <label
-                      for="name"
-                      class="block text-gray-600 text-lg font-medium mb-2"
-                      >Name</label
-                    >
-                    <input
-                      formControlName="name"
-                      type="text"
-                      id="name"
-                      placeholder="Enter category name"
-                      class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                    />
-
-                    <input
-                      formControlName="image"
-                      type="file"
-                      id="image"
-                      name="image"
-                      accept="image/*"
-                      class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    [disabled]="!cityForm.valid"
-                    class="inline-flex items-center justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              <div
+                id="static-modal"
+                aria-hidden="true"
+                [class.hidden]="!showModal"
+                class="overflow-y-auto bg-black bg-opacity-85 overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+              >
+                <div class="relative p-4 w-full max-w-2xl max-h-full">
+                  <div
+                    class="relative bg-white rounded-lg shadow dark:bg-gray-700"
                   >
-                    Submit
-                  </button>
-                </form>
-                <button (click)="toggleModal()" class="mt-2">Close</button>
+                    <form
+                      [formGroup]="cityForm"
+                      (ngSubmit)="add()"
+                      enctype="multipart/form-data"
+                    >
+                      <div class="mb-6 space-y-4 p-8">
+                        <h1 class="capitalize text-xl font-bold">
+                          add new city
+                        </h1>
+                        <label
+                          for="first_name"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                          >First name</label
+                        >
+                        <input
+                          formControlName="name"
+                          type="text"
+                          id="name"
+                          id="first_name"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="New York"
+                          required
+                        />
+
+                        <label
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                          for="file_input"
+                          >Upload file</label
+                        >
+                        <input
+                          formControlName="image"
+                          type="file"
+                          id="image"
+                          name="image"
+                          accept="image/*"
+                          class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                          id="file_input"
+                          type="file"
+                        />
+                      </div>
+                    </form>
+                    <!-- Modal footer -->
+                    <div
+                      class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
+                    >
+                      <button
+                        type="submit"
+                        (click)="add()"
+                        [disabled]="!cityForm.valid"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      >
+                        save
+                      </button>
+                      <button
+                        (click)="toggleModal()"
+                        data-modal-hide="static-modal"
+                        type="button"
+                        class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                *ngIf="loader.isLoading | async"
+                class="relative z-0 overflow-x-auto shadow-md sm:rounded-lg"
+              >
+                <table
+                  class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                >
+                  <caption
+                    class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white"
+                  >
+                    City Management
+                    <p
+                      class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"
+                    >
+                      Browse, add, or modify cities within the system. This
+                      table provides an overview of all cities currently
+                      managed, including options to edit or delete each entry as
+                      needed.
+                    </p>
+                  </caption>
+                  <thead
+                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+                  >
+                    <tr>
+                      <th scope="col" class="px-6 py-3">Id</th>
+                      <th scope="col" class="px-6 py-3">Image</th>
+                      <th scope="col" class="px-6 py-3">Name</th>
+                      <th scope="col" class="px-6 py-3 text-center">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="bg-white border-b animate-pulse">
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-10 bg-gray-200 rounded dark:bg-gray-700 w-10 mx-auto"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-1/2 mx-auto"
+                        ></div>
+                      </td>
+                    </tr>
+                    <tr class="bg-white border-b animate-pulse">
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-10 bg-gray-200 rounded dark:bg-gray-700 w-10 mx-auto"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-1/2 mx-auto"
+                        ></div>
+                      </td>
+                    </tr>
+                    <tr class="bg-white border-b animate-pulse">
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-10 bg-gray-200 rounded dark:bg-gray-700 w-10 mx-auto"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-1/2 mx-auto"
+                        ></div>
+                      </td>
+                    </tr>
+                    <tr class="bg-white border-b animate-pulse">
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-10 bg-gray-200 rounded dark:bg-gray-700 w-10 mx-auto"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-1/2 mx-auto"
+                        ></div>
+                      </td>
+                    </tr>
+                    <tr class="bg-white border-b animate-pulse">
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-10 bg-gray-200 rounded dark:bg-gray-700 w-10 mx-auto"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                        ></div>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <div
+                          class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-1/2 mx-auto"
+                        ></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div
+                *ngIf="!(loader.isLoading | async)"
+                class="relative z-0 overflow-x-auto shadow-md sm:rounded-lg"
+              >
+                <table
+                  class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                >
+                  <caption
+                    class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white"
+                  >
+                    City Management
+                    <p
+                      class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"
+                    >
+                      Browse, add, or modify cities within the system. This
+                      table provides an overview of all cities currently
+                      managed, including options to edit or delete each entry as
+                      needed.
+                    </p>
+                  </caption>
+
+                  <thead
+                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+                  >
+                    <tr>
+                      <th scope="col" class="px-6 py-3">Id</th>
+                      <th scope="col" class="px-6 py-3">Image</th>
+                      <th scope="col" class="px-6 py-3">Name</th>
+                      <th scope="col" class="px-6 py-3 text-center">Actions</th>
+                    </tr>
+                  </thead>
+
+                  <tbody *ngFor="let city of cities">
+                    <tr class="bg-white border-b">
+                      <th
+                        scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      >
+                        {{ city.id }}
+                      </th>
+                      <td class="px-6 py-4">
+                        <img
+                          class="w-10 h-10 rounded"
+                          src="{{ city.image }}"
+                          alt="Default avatar"
+                        />
+                      </td>
+                      <td class="px-6 py-4">
+                        {{ city.name }}
+                      </td>
+
+                      <td class="px-6 py-4 text-center">
+                        <button
+                          type="button"
+                          class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                        >
+                          Delete
+                        </button>
+
+                        <button
+                          type="button"
+                          class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
+                        >
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-          </div>
-          <table class="border-collapse w-full">
-            <thead>
-              <tr>
-                <th
-                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
-                >
-                  id
-                </th>
-                <th
-                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
-                >
-                  name
-                </th>
-
-                <th
-                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
-                >
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let city of cities">
-              <tr
-                class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
-              >
-                <td
-                  class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
-                >
-                  <span
-                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
-                    >id</span
-                  >
-                  {{ city.id }}
-                </td>
-                <td
-                  class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static"
-                >
-                  <span
-                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
-                    >name</span
-                  >
-                  {{ city.name }}
-                </td>
-
-                <td
-                  class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
-                >
-                  <span
-                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
-                    >Actions</span
-                  >
-
-                  <button
-                    class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                    data-ripple-light="true"
-                  >
-                    Remove
-                  </button>
-
-                  <button
-                    class="middle none center rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                    data-ripple-light="true"
-                  >
-                    Edit
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          </main>
         </div>
-      </main>
+      </div>
     </div>
-  </div>
-</div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </body>
+</html>
