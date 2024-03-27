@@ -1,0 +1,147 @@
+<!-- This is an example component -->
+<div>
+  <app-header></app-header>
+  <div class="flex overflow-hidden bg-white pt-16">
+    <app-sidebar></app-sidebar>
+    <div
+      class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
+      id="sidebarBackdrop"
+    ></div>
+    <div
+      id="main-content"
+      class="h-[440px] w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
+    >
+    
+      <main>
+        <div class="container mx-auto w-full p-8">
+          <table class="border-collapse w-full">
+            <thead>
+              <tr>
+                <th
+                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+                >
+                  firstname
+                </th>
+                <th
+                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+                >
+                  lastname
+                </th>
+
+                <th
+                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+                >
+                  email
+                </th>
+
+                <th
+                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+                >
+                  status
+                </th>
+                <th
+                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+                >
+                  city
+                </th>
+                <th
+                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let user of users">
+              <tr
+                class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
+              >
+                <td
+                  class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+                >
+                  <span
+                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+                    >firstname</span
+                  >
+                  {{ user.firstname }}
+                </td>
+                <td
+                  class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static"
+                >
+                  <span
+                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+                    >lastname</span
+                  >
+                  {{ user.lastname }}
+                </td>
+
+                <td
+                  class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static"
+                >
+                  <span
+                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+                    >email</span
+                  >
+                  {{ user.email }}
+                </td>
+
+                <td
+                  class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static"
+                >
+                  <span
+                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+                    >Status</span
+                  >
+                  <span
+                    class="rounded {{
+                      user.roles.includes('Admin')
+                        ? 'bg-green-400'
+                        : 'bg-red-400'
+                    }}
+                  py-1 px-3 text-xs font-bold"
+                  >
+                    {{ user.roles.join(", ") }}
+                  </span>
+                </td>
+
+                <td
+                  class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static"
+                >
+                  <span
+                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+                    >city</span
+                  >
+                  {{ user.city }}
+                </td>
+
+                <td
+                  class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+                >
+                  <span
+                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+                    >Actions</span
+                  >
+
+                  <button
+                    class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    data-ripple-light="true"
+                  >
+                    Remove
+                  </button>
+
+                  <button
+                    class="middle none center rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    data-ripple-light="true"
+                  >
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</div>
+

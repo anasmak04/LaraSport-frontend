@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <form [formGroup]="PostForm" (ngSubmit)="update">
+
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700 text-sm font-bold mb-2"
+          >title</label
+        >
+        <input
+          formControlName="title"
+          type="text"
+          id="name"
+          placeholder="Enter post title"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="content" class="block text-gray-700 text-sm font-bold mb-2"
+          >content</label
+        >
+        <input
+          formControlName="content"
+          type="text"
+          id="name"
+          placeholder="Enter post content"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label
+          for="publish_date"
+          class="block text-gray-700 text-sm font-bold mb-2"
+          >publish_date</label
+        >
+        <input
+          formControlName="publish_date"
+          type="text"
+          id="publish_date"
+          placeholder="Enter post publish_date"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label
+          for="category_id"
+          class="block text-gray-700 text-sm font-bold mb-2"
+          >category_id</label
+        >
+
+        <select formControlName="category_id">
+          <option value="">Select a category...</option>
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+
+      <select formControlName="tags" multiple="multiple">
+        <option *ngFor="let tag of tags" [value]="tag.id">
+          {{ tag.name }}
+        </option>
+      </select>
+
+      <button
+        type="submit"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Submit
+      </button>
+
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    </form>
+
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <app-navbar></app-navbar>
+
+    <!-- <ul>
+      <li *ngFor="let club of clubs">
+        <h3>{{ club.name }}</h3>
+        <p>{{ club.description }}</p>
+        <img [src]="club.image" alt="Club image">
+        <p>City: {{ club.city }}</p>
+        <ul>
+          <li *ngFor="let tag of club.tags">{{ tag }}</li>
+        </ul>
+      </li>
+    </ul>
+     -->
+
+    <section>
+      <div
+        class="bg-custom-gradient bg-cover w-full h-52 flex justify-center items-center"
+      >
+        <h1 class="text-white text-center font-bold text-xl px-4">
+          LES CLUBS ET SALLES DE SPORT À
+        </h1>
+      </div>
+
+
+      <p-progressSpinner *ngIf="loader.isLoading | async" ariaLabel="loading" class="flex justify-center items-center"></p-progressSpinner>
+
+
+      <div
+        class="container mx-auto border  p-4 w-full h-[500px] grid grid-cols-1 md:grid-cols-3 gap-4"
+        *ngFor="let club of clubs"
+      >
+        <div>mm</div>
+
+        <p-rating
+          [(ngModel)]="value"
+          [readonly]="true"
+          [cancel]="false"
+        ></p-rating>
+
+        <div class="border"></div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<div>
+  <app-header></app-header>
+  <div class="flex overflow-hidden bg-white pt-16">
+    <app-sidebar></app-sidebar>
+    <div
+      class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
+      id="sidebarBackdrop"
+    ></div>
+    <div
+      id="main-content"
+      class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
+    >
+      <main>
+        <div class="container mx-auto w-full p-8">
+          <button
+            class="mb-4 middle none center mr-4 rounded-lg bg-[#0891b2] py-3 px-6 font-sans text-xs font-bold uppercase text-white"
+            (click)="toggleModal()"
+            data-ripple-light="true"
+          >
+            Add
+          </button>
+
+          <!-- Modal -->
+          <div
+            *ngIf="showModal"
+            class="fixed inset-0 bg-opacity-50 overflow-y-auto h-full w-full"
+            id="my-modal"
+          >
+            <div
+              class="relative top-20 mx-auto p-5 border w-[600px] shadow-lg rounded-md bg-white"
+            >
+              <div class="mt-3 text-center">
+                <h2 class="text-2xl font-semibold mb-6">Add New city</h2>
+                <form
+                  [formGroup]="cityForm"
+                  (ngSubmit)="add()"
+                  enctype="multipart/form-data"
+                >
+                  <div class="mb-6">
+                    <label
+                      for="name"
+                      class="block text-gray-600 text-lg font-medium mb-2"
+                      >Name</label
+                    >
+                    <input
+                      formControlName="name"
+                      type="text"
+                      id="name"
+                      placeholder="Enter category name"
+                      class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                    />
+
+                    <input
+                      formControlName="image"
+                      type="file"
+                      id="image"
+                      name="image"
+                      accept="image/*"
+                      class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    [disabled]="!cityForm.valid"
+                    class="inline-flex items-center justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Submit
+                  </button>
+                </form>
+                <button (click)="toggleModal()" class="mt-2">Close</button>
+              </div>
+            </div>
+          </div>
+          <table class="border-collapse w-full">
+            <thead>
+              <tr>
+                <th
+                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+                >
+                  id
+                </th>
+                <th
+                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+                >
+                  name
+                </th>
+
+                <th
+                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let city of cities">
+              <tr
+                class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
+              >
+                <td
+                  class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+                >
+                  <span
+                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+                    >id</span
+                  >
+                  {{ city.id }}
+                </td>
+                <td
+                  class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static"
+                >
+                  <span
+                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+                    >name</span
+                  >
+                  {{ city.name }}
+                </td>
+
+                <td
+                  class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+                >
+                  <span
+                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+                    >Actions</span
+                  >
+
+                  <button
+                    class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    data-ripple-light="true"
+                  >
+                    Remove
+                  </button>
+
+                  <button
+                    class="middle none center rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    data-ripple-light="true"
+                  >
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+

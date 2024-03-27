@@ -1,0 +1,181 @@
+<header>
+  <app-navbar></app-navbar>
+  <div
+    class="bg-custom-gradient bg-cover w-full h-52 flex justify-center items-center"
+  >
+    <h1 class="text-white font-bold text-xl">INSCRIPTION À CLUBS.MA</h1>
+  </div>
+</header>
+
+<section class="mb-8 pt-10">
+  <div class="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2">
+    <div class="space-y-6">
+      <h1 class="text-[#45294d] font-bold text-2xl">
+        Inscription via formulaire
+      </h1>
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="register()"
+        class="space-y-4"
+      >
+        <div>
+          <label for="firstName" class="block text-sm font-medium text-gray-700"
+            >Prénom :</label
+          >   
+
+          <input
+            placeholder="Prénom"
+            type="text"
+            id="firstName"
+            formControlName="firstName"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+
+        <div>
+          <label for="lastName" class="block text-sm font-medium text-gray-700"
+            >Nom :</label
+          >
+
+          <input
+            placeholder="Nom"
+            type="text"
+            id="lastName"
+            formControlName="lastName"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Votre adresse éléctronique :</label
+          >
+          <input
+            placeholder="Email"
+            type="email"
+            id="email"
+            formControlName="email"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+
+        <div>
+          <label
+            for="dateOfBirth"
+            class="block text-sm font-medium text-gray-700"
+            >Date de naissance :</label
+          >
+          <input
+            type="date"
+            id="dateOfBirth"
+            formControlName="dateOfBirth"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+
+        <div>
+          <label for="city" class="block text-sm font-medium text-gray-700"
+            >Habite à :</label
+          >
+          <select
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            id="city"
+            formControlName="city"
+          >
+            <option disabled selected>Select a city</option>
+            <option *ngFor="let city of cities" [value]="city.id">
+              {{ city.name }}
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700"
+            >Password:</label
+          >
+          <input
+            placeholder="Mot de passe"
+            type="password"
+            id="password"
+            formControlName="password"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+        <div>
+          <label
+            for="password_confirmation"
+            class="block text-sm font-medium text-gray-700"
+            >Confirmation de Mot de passe:</label
+          >
+          <input
+            placeholder="Confirmer le Mot de passe"
+            type="password"
+            id="password_confirmation"
+            formControlName="password_confirmation"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+        <button
+          type="submit"
+          [disabled]="!registerForm.valid"
+          class="bg-yellow-500 cursor-pointer w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white"
+        >
+          Register
+        </button>
+      </form>
+      <p>
+        Conformément à la loi 09-08, vous disposez d'un droit d'accès, de
+        rectification et d'opposition au traitement de vos données personnelles.
+        En vous inscrivant, vous acceptez Les conditions générales
+        d'utilisation, notamment la mention relative à la protection des données
+        personnelles.
+      </p>
+    </div>
+    <div class="">
+      <div class="m-4 bg-[#f8f8f8] border p-8 space-y-4">
+        <h1 class="text-[#45294d] font-bold text-2xl">
+          Se connecter via vos réseaux sociaux
+        </h1>
+        <p class="text-1xl">
+          Vous pouvez se connecter facilement et très rapidement via vos comptes
+          réseaux sociaux.
+        </p>
+        <div class="flex flex-col w-full gap-2">
+          <button class="text-white bg-[#4267b2] py-3 font-bold">
+            se connectet via facebook
+          </button>
+          <button class="text-white bg-[#262727] py-3 font-bold">
+            se connectet via google
+          </button>
+        </div>
+      </div>
+
+      <div class="m-4 bg-[#f8f8f8] p-8 space-y-4">
+        <h1 class="text-[#45294d] font-bold text-2xl">Mentions Légales</h1>
+        <p>
+          Conformément à la loi 09-08, vous disposez d'un droit d'accès, de
+          rectification et d'opposition au traitement de vos données
+          personnelles.
+        </p>
+
+        <p>
+          En vous inscrivant, vous acceptez Les conditions générales
+          d'utilisation, notamment la mention relative à la protection des
+          données personnelles.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
+
+<!-- <div class="mt-4">
+  <input type="text" pInputText placeholder="Email" class="ng-dirty ng-invalid mr-2">
+  <p-message severity="error"></p-message>
+</div> -->

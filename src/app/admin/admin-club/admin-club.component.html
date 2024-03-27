@@ -1,0 +1,58 @@
+<div>
+  <app-header></app-header>
+  <div class="flex overflow-hidden bg-white pt-16">
+    <app-sidebar></app-sidebar>
+    <div
+      class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
+      id="sidebarBackdrop"
+    ></div>
+    <div
+      id="main-content"
+      class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
+    >
+      <main class="container mx-auto px-4">
+        <button
+          (click)="addroute()"
+          class="mb-4 mt-4 inline-block rounded-lg bg-cyan-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md transition-all hover:bg-cyan-700"
+        >
+          Add
+        </button>
+        <div class="w-full p-5 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            *ngFor="let club of clubs"
+            class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
+          >
+            <img
+              src="{{ club.image }}"
+              alt="{{ club.name }}"
+              class="w-full h-60 object-cover"
+            />
+            <div class="p-4">
+              <h1
+                class="capitalize text-gray-800 mb-2 text-2xl font-bold text-center"
+              >
+                {{ club.name }}
+              </h1>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                {{ club.description }}
+              </p>
+            </div>
+            <div class="flex justify-around items-center px-4 pb-4">
+              <button
+                class="rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white shadow-md transition-all hover:bg-red-600"
+              >
+                Remove
+              </button>
+              <button
+                class="rounded-lg bg-orange-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white shadow-md transition-all hover:bg-orange-600"
+              >
+                Edit
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
