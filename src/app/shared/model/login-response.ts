@@ -1,5 +1,5 @@
 export interface LoginResponse {
-    access_token: string;
+    token: string;
     roles : string[];
     user : string[];
 }

@@ -35,12 +35,24 @@ export class ClubComponent implements OnInit {
     });
   }
 
+  saveComment() {
+    const comment = {
+      content: "comment",
+      club_id: 1,
+    };
+    this.commentservice.save(comment).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (err) => console.log(err),
+    });
+  }
+
   FindAllComments() {
     this.commentservice.FindAll().subscribe({
       next: (response) => {
-        this.comments = response.comment;
+        this.comments = response.comments;
       },
-
       error: (err) => console.log(err),
     });
   }

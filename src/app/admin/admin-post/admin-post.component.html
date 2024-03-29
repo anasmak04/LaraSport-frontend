@@ -1,7 +1,6 @@
-<!-- This is an example component -->
 <div>
   <app-header></app-header>
-  <div class="flex overflow-hidden bg-white pt-16">
+  <div class="flex overflow-hidden bg-white pt-16 min-h-screen">
     <app-sidebar></app-sidebar>
     <div
       class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
@@ -11,130 +10,89 @@
       id="main-content"
       class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
     >
-      <main>
-        <div class="container mx-auto w-full p-8">
-          <form
-            [formGroup]="PostForm"
-            (ngSubmit)="save()"
-            enctype="multipart/form-data"
+      <div class="relative m-4 z-0 overflow-x-auto shadow-md sm:rounded-lg">
+        <button
+          (click)="handleadd()"
+          class="block mb-10 m-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          type="button"
+        >
+          Add New post
+        </button>
+        <table
+          class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+        >
+          <caption
+            class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white"
           >
-            <div class="mb-4">
-              <label
-                for="title"
-                class="block text-gray-700 text-sm font-bold mb-2"
-                >Title:</label
-              >
-              <input
-                placeholder="title"
-                formControlName="title"
-                type="text"
-                id="title"
-                name="title"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
-            </div>
-
-            <div class="mb-4">
-              <label
-                for="content"
-                class="block text-gray-700 text-sm font-bold mb-2"
-                >Content:</label
-              >
-              <editor
-                formControlName="content"
-                apiKey="zxedxrwviridmt97l70a11bc583vnvc2v2842mbtrzc5jhv5"
-                initialValue="<p>This is the initial content of the editor</p>"
-                [init]="{
-                  height: 500,
-                  menubar: false,
-                  plugins: [
-                    'advlist autolink lists link image charmap print preview anchor',
-                    'code fullscreen',
-                    ' media table paste code help wordcount'
-                  ],
-                  toolbar:
-                    'undo redo | formatselect | bold italic backcolor | \
-                  alignleft aligncenter alignright alignjustify | \
-                  bullist numlist outdent indent | removeformat | help'
-                }"
-              >
-              </editor>
-
-              <!-- 
-              <textarea
-                formControlName="content"
-                id="content"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              ></textarea> -->
-            </div>
-
-            <div class="mb-4">
-              <label
-                for="category"
-                class="block text-gray-700 text-sm font-bold mb-2"
-                >Category:</label
-              >
-
-              <select
-                formControlName="category_id"
-                name="category_id"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              >
-                <option
-                  *ngFor="let category of categories"
-                  [value]="category.id"
-                >
-                  {{ category.name }}
-                </option>
-              </select>
-            </div>
-
-            <div class="mb-4">
-              <label
-                for="tags"
-                class="block text-gray-700 text-sm font-bold mb-2"
-                >Tags:</label
-              >
-              <p-multiSelect
-                formControlName="tags"
-                [options]="tags"
-                optionLabel="name"
-                optionValue="id"
-                placeholder="Select tags"
-              ></p-multiSelect>
-            </div>
-
-            <div class="mb-4">
-              <label
-                for="image"
-                class="block text-gray-700 text-sm font-bold mb-2"
-                >Image:</label
-              >
-
-              <input
-              formControlName="image"
-              type="file"
-              id="image"
-              name="image"
-              accept="image/*"
-              class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-
-            </div>
-
-            <button
-              type="submit"
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            Post Management
+            <p
+              class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"
             >
-              Submit
-            </button>
-          </form>
-          <p *ngIf="message" class="mt-4 text-center text-lg text-green-600">
-            {{ message }}
-          </p>
-        </div>
-      </main>
+              Browse, add, or modify posts within the system. This table
+              provides an overview of all cities currently managed, including
+              options to edit or delete each entry as needed.
+            </p>
+          </caption>
+
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-3">Id</th>
+              <th scope="col" class="px-6 py-3">Title</th>
+              <th scope="col" class="px-6 py-3">Content</th>
+              <th scope="col" class="px-6 py-3 capitalize">Publish date</th>
+              <th scope="col" class="px-6 py-3 capitalize">Image</th>
+              <th scope="col" class="px-6 py-3 capitalize">Category</th>
+              <th scope="col" class="px-6 py-3 capitalize">Author</th>
+              <th scope="col" class="px-6 py-3 capitalize">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody *ngFor="let post of posts">
+            <tr class="bg-white border-b">
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {{ post.id }}
+              </th>
+
+              <td class="px-6 py-4">
+                {{ post.title }}
+              </td>
+
+              <td class="px-6 py-4">
+                {{ post.content }}
+              </td>
+
+              <td class="px-6 py-4">
+                {{ post.publish_date }}
+              </td>
+
+              <td class="px-6 py-4">
+                {{ post.category_id }}
+              </td>
+
+              <td class="px-6 py-4">
+                <img
+                  class="w-10 h-10 rounded"
+                  src="{{ post.image }}"
+                  alt="Default avatar"
+                />
+              </td>
+
+              <!-- <td class="px-6 py-4">
+              {{ event.sport_type }}
+            </td>
+
+            <td class="px-6 py-4">
+              {{ event.tags_clubs }}
+            </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
-

@@ -21,6 +21,7 @@ import { ContactComponent } from "./client/contact/contact.component";
 import { EventDetailsComponent } from "./client/event-details/event-details.component";
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { LoaderInterceptor } from "./shared/interceptors/loader/loader.interceptor";
+import { ClubDetailsComponent } from './client/club-details/club-details.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,8 @@ import { LoaderInterceptor } from "./shared/interceptors/loader/loader.intercept
     EventComponent,
     ContactComponent,
     EventDetailsComponent,
+    ClubDetailsComponent,
+    
   ],
   imports: [
     BrowserModule,

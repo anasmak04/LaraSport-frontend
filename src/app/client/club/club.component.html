@@ -30,12 +30,14 @@
         </h1>
       </div>
 
-
-      <p-progressSpinner *ngIf="loader.isLoading | async" ariaLabel="loading" class="flex justify-center items-center"></p-progressSpinner>
-
+      <p-progressSpinner
+        *ngIf="loader.isLoading | async"
+        ariaLabel="loading"
+        class="flex justify-center items-center"
+      ></p-progressSpinner>
 
       <div
-        class="container mx-auto border  p-4 w-full h-[500px] grid grid-cols-1 md:grid-cols-3 gap-4"
+        class="container mx-auto border p-4 w-full h-[500px] grid grid-cols-1 md:grid-cols-3 gap-4"
         *ngFor="let club of clubs"
       >
         <div>mm</div>
@@ -46,8 +48,15 @@
           [cancel]="false"
         ></p-rating>
 
+        <button class="bg-red-500 w-[120px] h-10" [routerLink]="['/club', club.id]">See details</button>
+
+
         <div class="border"></div>
       </div>
+
     </section>
   </body>
 </html>
+
+
+

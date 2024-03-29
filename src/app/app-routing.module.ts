@@ -4,7 +4,7 @@ import { RegisterComponent } from "./admin/_auth/register/register.component";
 import { CategoryComponent } from "./admin/category/category.component";
 import { PostComponent } from "./client/post/post.component";
 import { TagsComponent } from "./admin/tags/tags.component";
-import { AddPostComponent } from "./components/add-post/add-post.component";
+import { AddPostComponent } from "./admin/add-post/add-post.component";
 import { EditPostComponent } from "./components/edit-post/edit-post.component";
 import { LoginComponent } from "./admin/_auth/login/login.component";
 import { PostDetailsComponent } from "./components/post-details/post-details.component";
@@ -23,6 +23,8 @@ import { AddClubComponent } from "./admin/add-club/add-club.component";
 import { AdminEventComponent } from "./admin/admin-event/admin-event.component";
 import { guardRoleGuard } from "./shared/guard/guard-role.guard";
 import { AccessDeniedComponent } from "./shared/components/permission/access-denied/access-denied.component";
+import { AddEventComponent } from "./admin/add-event/add-event.component";
+import { ClubDetailsComponent } from "./client/club-details/club-details.component";
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
@@ -34,10 +36,16 @@ const routes: Routes = [
   { path: "city", component: CityComponent },
   { path: "event", component: EventComponent },
   { path: "contact", component: ContactComponent },
+
   {
     path: "admin/post",
     canActivate: [guardRoleGuard],
     component: AdminPostComponent,
+  },
+
+  {
+    path: "admin/add/post",
+    component: AddPostComponent,
   },
   {
     path: "admin/dashboard",
@@ -70,6 +78,12 @@ const routes: Routes = [
     canActivate: [guardRoleGuard],
     component: AdminEventComponent,
   },
+
+  {
+    path: "admin/add/event",
+    canActivate: [guardRoleGuard],
+    component: AddEventComponent,
+  },
   {
     path: "admin/add/club",
     canActivate: [guardRoleGuard],
@@ -77,6 +91,7 @@ const routes: Routes = [
   },
   { path: "event/:id", component: EventDetailsComponent },
   { path: "city/club/:id", component: ClubComponent },
+  { path: "club/:id", component: ClubDetailsComponent },
   { path: "access-denied", component: AccessDeniedComponent },
   { path: "**", component: NotFoundComponent },
 ];

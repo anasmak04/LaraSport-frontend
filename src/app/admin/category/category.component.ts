@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CategoryServiceService } from "../../services/category/category-service.service";
 import Swal from "sweetalert2";
 import { AlertService } from "src/app/services/alert/alert.service";
+import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
   selector: "app-category",
@@ -23,6 +24,10 @@ export class CategoryComponent implements OnInit {
       description: ["", Validators.required],
     });
   }
+
+
+  loader = inject(LoaderServiceService);
+
 
   categories: any[] = [];
 

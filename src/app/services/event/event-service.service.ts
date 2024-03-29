@@ -7,26 +7,24 @@ import { EventResponse } from "src/app/shared/model/event-response";
   providedIn: "root",
 })
 export class EventServiceService {
-  private urlApi = "http://127.0.0.1:8000/api/event";
+  private apiUrl = 'http://127.0.0.1:8000/api/event';
 
   constructor(private http: HttpClient) {}
 
-  
-  save(formdata: FormData): Observable<any> {
-    const token = localStorage.getItem("access_token");
+  save(formData: FormData): Observable<any> {
+    const token = localStorage.getItem('access_token'); 
     const headers = new HttpHeaders({
-      Authorization: "Bearer " + token,
-      "Content-Type": "application/json",
-      Accept: "application/json",
+      'Authorization': `Bearer ${token}`
     });
-    return this.http.post(this.urlApi, formdata, { headers: headers });
+
+    return this.http.post<any>(this.apiUrl, formData, { headers });
   }
 
   FindAllEvents(): Observable<EventResponse> {
-    return this.http.get<EventResponse>(this.urlApi);
+    return this.http.get<EventResponse>(this.apiUrl);
   }
 
   FindEventById(id: number): Observable<EventResponse> {
-    return this.http.get<EventResponse>(this.urlApi + "/" + id);
+    return this.http.get<EventResponse>(this.apiUrl + "/" + id);
   }
 }

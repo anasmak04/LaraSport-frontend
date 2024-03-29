@@ -34,15 +34,17 @@ export class LoginComponent implements OnInit {
       this.authservice.login(this.loginForm.value).subscribe({
         next: (response) => {
           console.log("login successful", response);
+          this.authservice.storeToken(response.token);
 
-          this.authservice.storeToken(response.access_token);
+          
+          console.log("login", this.authservice.getToken())
           this.authservice.storeRoles(response.roles);
           this.authservice.storeUser(response.user);
 
           if (response.roles.includes("Admin")) {
             this.router.navigate(["/admin/dashboard"]);
           } else {
-            this.router.navigate(["/user/home"]);
+            this.router.navigate(["/city"]);
           }
           
         },

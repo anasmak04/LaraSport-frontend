@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, inject } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { ChartDataService } from 'src/app/services/chart/chart-data.service';
+import { LoaderServiceService } from 'src/app/services/loader/loader-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(private chartservice : ChartDataService){
   }
+
+
+  loader = inject(LoaderServiceService);
 
 
   ngOnInit(): void {

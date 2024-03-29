@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { StatisticsService } from "../../services/statistics/statistics.service";
+import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
   selector: "app-cards",
@@ -16,6 +17,9 @@ export class CardsComponent implements OnInit {
     this.countcities();
     this.countclubs();
   }
+
+  loader = inject(LoaderServiceService);
+
 
   countUsers: any;
   countBlogs: any;

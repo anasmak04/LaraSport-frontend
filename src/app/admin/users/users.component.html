@@ -1,7 +1,7 @@
 <!-- This is an example component -->
 <div>
   <app-header></app-header>
-  <div class="flex overflow-hidden bg-white pt-16">
+  <div class="flex overflow-hidden bg-white pt-16 h-screen">
     <app-sidebar></app-sidebar>
     <div
       class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
@@ -9,139 +9,256 @@
     ></div>
     <div
       id="main-content"
-      class="h-[440px] w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
+      class="w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
     >
-    
-      <main>
-        <div class="container mx-auto w-full p-8">
-          <table class="border-collapse w-full">
-            <thead>
+      <div
+          *ngIf="loader.isLoading | async"
+          class="relative z-0 overflow-x-auto shadow-md sm:rounded-lg"
+        >
+          <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
+            <caption
+              class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white"
+            >
+              Category Management
+              <p
+                class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"
+              >
+                Browse, add, or modify categories within the system. This
+                table provides an overview of all cities currently managed,
+                including options to edit or delete each entry as needed.
+              </p>
+            </caption>
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
               <tr>
-                <th
-                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
-                >
-                  firstname
-                </th>
-                <th
-                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
-                >
-                  lastname
-                </th>
-
-                <th
-                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
-                >
-                  email
-                </th>
-
-                <th
-                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
-                >
-                  status
-                </th>
-                <th
-                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
-                >
-                  city
-                </th>
-                <th
-                  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
-                >
-                  Actions
-                </th>
+                <th scope="col" class="px-6 py-3">Id</th>
+                <th scope="col" class="px-6 py-3">First Name</th>
+                <th scope="col" class="px-6 py-3">Last Name</th>
+                <th scope="col" class="px-6 py-3">City</th>
+                <th scope="col" class="px-6 py-3">Status</th>
+                <th scope="col" class="px-6 py-3">Email</th>
+                <th scope="col" class="px-6 py-3 text-center">Actions</th>
               </tr>
             </thead>
-            <tbody *ngFor="let user of users">
-              <tr
-                class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
-              >
-                <td
-                  class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
-                >
-                  <span
-                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
-                    >firstname</span
-                  >
-                  {{ user.firstname }}
-                </td>
-                <td
-                  class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static"
-                >
-                  <span
-                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
-                    >lastname</span
-                  >
-                  {{ user.lastname }}
+            <tbody>
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
                 </td>
 
-                <td
-                  class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static"
-                >
-                  <span
-                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
-                    >email</span
-                  >
-                  {{ user.email }}
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
                 </td>
 
-                <td
-                  class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static"
-                >
-                  <span
-                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
-                    >Status</span
-                  >
-                  <span
-                    class="rounded {{
-                      user.roles.includes('Admin')
-                        ? 'bg-green-400'
-                        : 'bg-red-400'
-                    }}
-                  py-1 px-3 text-xs font-bold"
-                  >
-                    {{ user.roles.join(", ") }}
-                  </span>
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
                 </td>
 
-                <td
-                  class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static"
-                >
-                  <span
-                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
-                    >city</span
-                  >
-                  {{ user.city }}
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
                 </td>
 
-                <td
-                  class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
-                >
-                  <span
-                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
-                    >Actions</span
-                  >
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
 
-                  <button
-                    class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                    data-ripple-light="true"
-                  >
-                    Remove
-                  </button>
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
 
-                  <button
-                    class="middle none center rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                    data-ripple-light="true"
-                  >
-                    Edit
-                  </button>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
                 </td>
               </tr>
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+              </tr>
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+              </tr>
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+              </tr>
+            
             </tbody>
           </table>
         </div>
-      </main>
 
+      <div           *ngIf="!(loader.isLoading | async)"
+      class="relative z-0 m-4 overflow-x-auto shadow-md sm:rounded-lg">
+        <table
+          class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+        >
+          <caption
+            class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white"
+          >
+            Users Management
+            <p
+              class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"
+            >
+              Browse, add, or modify users within the system. This table
+              provides an overview of all cities currently managed, including
+              options to edit or delete each entry as needed.
+            </p>
+          </caption>
+
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-3">Id</th>
+              <th scope="col" class="px-6 py-3">First Name</th>
+              <th scope="col" class="px-6 py-3">Last Name</th>
+              <th scope="col" class="px-6 py-3">City</th>
+              <th scope="col" class="px-6 py-3">Status</th>
+              <th scope="col" class="px-6 py-3">Email</th>
+              <th scope="col" class="px-6 py-3 text-center">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody *ngFor="let user of users">
+            <tr class="bg-white border-b">
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {{ user.id }}
+              </th>
+
+              <td class="px-6 py-4">
+                {{ user.firstname }}
+              </td>
+
+              <td class="px-6 py-4">
+                {{ user.lastname }}
+              </td>
+              
+
+              <td class="px-6 py-4">
+                {{ user.city }}
+              </td>
+
+              <td class="px-6 py-4">
+           
+
+                <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{user.roles}}</span>
+
+
+              </td>
+
+              <td class="px-6 py-4">
+                {{ user.email }}
+              </td>
+              
+
+              <td class="px-6 py-4 text-center">
+                <button
+                  type="button"
+                  class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 "
+                >
+                  Delete
+                </button>
+
+                <button
+                  type="button"
+                  class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+                >
+                  Edit
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
-

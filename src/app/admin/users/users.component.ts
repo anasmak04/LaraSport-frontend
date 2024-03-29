@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { LoaderServiceService } from 'src/app/services/loader/loader-service.service';
 import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
@@ -12,6 +13,8 @@ export class UsersComponent implements OnInit{
   constructor(private userservice : UsersService){
 
   }
+
+  loader = inject(LoaderServiceService);
 
   ngOnInit(): void {  
     this.findAll();

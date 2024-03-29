@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert/alert.service";
 import { CategoryServiceService } from "src/app/services/category/category-service.service";
 import { PostServiceService } from "src/app/services/post/post-service.service";
@@ -12,86 +13,31 @@ import Swal from "sweetalert2";
   styleUrls: ["./admin-post.component.css"],
 })
 export class AdminPostComponent implements OnInit {
-  PostForm: FormGroup;
-  categories: any[] = [];
-  tags: any[] = [];
+  posts: any[] = [];
   message: string | undefined;
 
   constructor(
-    private categoryservice: CategoryServiceService,
-    private tagsservice: TagsServiceService,
     private postservice: PostServiceService,
-    private fb: FormBuilder,
-    private sweet : AlertService
-  ) {
-    this.PostForm = this.fb.group({
-      title: ["", Validators.required],
-      content: ["", Validators.required],
-      category_id: ["", Validators.required],
-      tags: ["", Validators.required],
-      image: ["", Validators.required],
-    });
+    private sweet: AlertService,
+    private router : Router
+  ) {}
+
+
+  handleadd(){
+    this.router.navigate(['/admin/add/post']);
   }
 
   ngOnInit(): void {
-    this.findAllCategories();
-    this.findAllTags();
+    this.findallposts();
   }
 
-  save() {
-    if (this.PostForm.valid) {
-      const formData = new FormData();
-      formData.append("title", this.PostForm.get("title")?.value);
-      formData.append("content", this.PostForm.get("content")?.value);
-      formData.append("category_id", this.PostForm.get("category_id")?.value);
-
-      const tags = this.PostForm.get("tags")?.value;
-      if (Array.isArray(tags)) {
-        tags.forEach((tag) => {
-          formData.append("tags[]", tag);
-        });
-      } else {
-        console.warn("Tags are not in an array format.");
-      }
-
-      const fileInput: HTMLInputElement =
-        document.querySelector('input[type="file"]')!;
-      if (fileInput && fileInput.files && fileInput.files[0]) {
-        formData.append("image", fileInput.files[0]);
-      }
-
-      this.postservice.save(formData).subscribe({
-        next: () => {
-          this.sweet.showSuccess("Post", "Post created successfully");
-          
-          this.PostForm.reset();
-        },
-        error: (error) => {
-          this.sweet.showError("Post", "Post not created");
-          console.log(error);
-        },
-      });
-    }
-  }
-
-  findAllCategories() {
-    this.categoryservice.findAll().subscribe({
-      next: (result) => {
-        this.categories = result.categories;
+  findallposts() {
+    this.postservice.findAll().subscribe({
+      next: (response) => {
+        this.posts = response.post;
       },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
-
-  findAllTags() {
-    this.tagsservice.findAll().subscribe({
-      next: (result) => {
-        this.tags = result.tags;
-      },
-      error: (error) => {
-        console.log(error);
+      error: (err) => {
+        console.log(err);
       },
     });
   }

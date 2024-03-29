@@ -1,6 +1,6 @@
-import { Comment } from "./comment";
+import { Comments } from "./comments";
 
 export interface CommentResponse {
     message : string,
-    comment : Comment[]
+    comments : Comments[]
 }
