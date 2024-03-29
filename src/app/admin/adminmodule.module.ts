@@ -22,6 +22,7 @@ import { MultiSelectModule } from "primeng/multiselect";
 import { AddEventComponent } from './add-event/add-event.component';
 import { AdminPostComponent } from './admin-post/admin-post.component';
 import { AddPostComponent } from './add-post/add-post.component';
+import { AdminRoutingRoutingModule } from './admin-routing-routing.module';
 @NgModule({
   declarations: [
     AddClubComponent,
@@ -48,7 +49,8 @@ import { AddPostComponent } from './add-post/add-post.component';
     ReactiveFormsModule,
     EditorModule,
     TagModule,
-    MultiSelectModule
+    MultiSelectModule,
+    AdminRoutingRoutingModule
   ],
 
   exports : [
@@ -72,7 +74,8 @@ import { AddPostComponent } from './add-post/add-post.component';
     EditTagsComponent,
     MultiSelectModule,
     ReactiveFormsModule,
-    AddPostComponent
+    AddPostComponent,
+    AdminRoutingRoutingModule
   ]
 })
 export class AdminmoduleModule { }
