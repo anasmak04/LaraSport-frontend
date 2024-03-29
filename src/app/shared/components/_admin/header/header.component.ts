@@ -15,10 +15,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.authservice.getUser();
   }
+
+
+
   
   logout() {
     this.authservice.logout().subscribe({
       next: () => {
+        console.log("login");
         this.router.navigate(['/login']);
       },
 

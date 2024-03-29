@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
 import { RegsiterResponse } from "../../shared/model/regsiter-response";
@@ -53,26 +53,33 @@ export class AuthServiceService {
     return localStorage.getItem("roles");
   }
 
-  getAuthHeaders(): { Authorization: string } | {} {
+  // getAuthHeaders(): { Authorization: string } | {} {
+  //   const token = this.getToken();
+  //   if (token) {
+  //     return { Authorization: `Bearer ${token}` };
+  //   }
+  //   return {};
+  // }
+
+  private getHeaders(): HttpHeaders {
     const token = this.getToken();
-    if (token) {
-      return { Authorization: `Bearer ${token}` };
-    }
-    return {};
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
   }
 
-
-
-  logout() {
-    return this.http.delete(`${this.apiUrl}/logout`).pipe(
-      tap(() => {
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("roles");
-        localStorage.removeItem("user");
-      })
-    );
+  logout(): Observable<any> {
+    const headers = this.getHeaders();
+    return this.http.post(`${this.apiUrl}/logout`, {}, { headers: headers })
+      .pipe(
+        tap(() => {
+          localStorage.removeItem("access_token");
+          localStorage.removeItem("roles");
+          localStorage.removeItem("user");
+        })
+      );
   }
+  
 
-
-
+  
 }

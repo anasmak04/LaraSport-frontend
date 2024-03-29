@@ -1,6 +1,6 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
-import { AuthServiceService } from 'src/app/services/Authservice/auth-service.service';
+import { inject } from "@angular/core";
+import { CanActivateFn, Router } from "@angular/router";
+import { AuthServiceService } from "src/app/services/Authservice/auth-service.service";
 
 export const guardRoleGuard = () => {
   const authService = inject(AuthServiceService);
@@ -11,6 +11,6 @@ export const guardRoleGuard = () => {
     return true;
   }
 
-  router.navigate(['/access-denied']);
+  router.navigate(["/access-denied"]);
   return false;
 };
