@@ -11,13 +11,12 @@ import { LoginComponent } from "./admin/_auth/login/login.component";
 import { MessagesModule } from "primeng/messages";
 import { PostDetailsComponent } from "./components/post-details/post-details.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { LoaderInterceptor } from "./shared/interceptors/loader/loader.interceptor";
 import { ClientModuleModule } from "./client/client-module.module";
 import { FormsModule } from "@angular/forms";
 import { RatingModule } from "primeng/rating";
-
-
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -25,11 +24,11 @@ import { RatingModule } from "primeng/rating";
     RegisterComponent,
     LoginComponent,
     NotFoundComponent,
-    PostDetailsComponent
-    
+    PostDetailsComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -39,9 +38,9 @@ import { RatingModule } from "primeng/rating";
     RatingModule,
     AdminmoduleModule,
     ProgressSpinnerModule,
-    ClientModuleModule
+    ClientModuleModule,
   ],
- 
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

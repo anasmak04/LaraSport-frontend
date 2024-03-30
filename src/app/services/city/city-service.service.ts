@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { CityResponse } from "src/app/shared/model/city-response";
+import { CityResponse } from "src/app/shared/model/city/city-response";
 
 @Injectable({
   providedIn: "root",

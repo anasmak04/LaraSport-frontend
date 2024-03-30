@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AlertService } from "src/app/services/alert/alert.service";
 import { CityServiceService } from "src/app/services/city/city-service.service";
 import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
+import { ClubFacadeService } from "src/app/services/club/club-facade.service";
 import { ClubServiceService } from "src/app/services/club/club-service.service";
 @Component({
   selector: "app-add-club",
@@ -16,10 +17,8 @@ export class AddClubComponent implements OnInit {
 
   FormClub: FormGroup;
   constructor(
-    private clubservice: ClubServiceService,
-    private cityservice: CityServiceService,
+    private Facadeservcice: ClubFacadeService,
     private fb: FormBuilder,
-    private clubtagsservice: ClubTagsService,
     private sweet: AlertService
   ) {
     this.FormClub = this.fb.group({
@@ -38,7 +37,7 @@ export class AddClubComponent implements OnInit {
   }
 
   findAllClubTags() {
-    return this.clubtagsservice.getTags().subscribe({
+    return this.Facadeservcice.findAllClubTags().subscribe({
       next: (response) => {
         this.tags = response.clubtag;
         console.log(this.tags);
@@ -48,7 +47,7 @@ export class AddClubComponent implements OnInit {
   }
 
   findAllClubs() {
-    return this.clubservice.FindAllClubs().subscribe({
+    return this.Facadeservcice.findAllClubs().subscribe({
       next: (response) => {
         this.clubs = response.clubs;
       },
@@ -57,7 +56,7 @@ export class AddClubComponent implements OnInit {
   }
 
   FindAllCities() {
-    return this.cityservice.findAll().subscribe({
+    return this.Facadeservcice.FindAllCities().subscribe({
       next: (response) => {
         this.cities = response.city;
       },
@@ -89,7 +88,7 @@ export class AddClubComponent implements OnInit {
         formData.append("image", fileInput.files[0]);
       }
 
-      this.clubservice.save(formData).subscribe({
+      this.Facadeservcice.saveClub(formData).subscribe({
         next: (response) => {
           console.log("Upload successful", response);
           this.sweet.showSuccess("Club", "Club created successfully");

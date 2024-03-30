@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Clubtag } from 'src/app/shared/model/clubtag';
-import { ClubtagRESPONSE } from 'src/app/shared/model/clubtag-response';
+import { Clubtag } from 'src/app/shared/model/clubtag/clubtag';
+import { ClubtagRESPONSE } from 'src/app/shared/model/clubtag/clubtag-response';
 
 @Injectable({
   providedIn: 'root'

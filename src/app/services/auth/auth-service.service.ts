@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
-import { RegsiterResponse } from "../../shared/model/regsiter-response";
-import { LoginResponse } from "src/app/shared/model/login-response";
+import { RegsiterResponse } from "../../shared/model/register/regsiter-response";
+import { LoginResponse } from "src/app/shared/model/login/login-response";
 
 @Injectable({
   providedIn: "root",
@@ -70,7 +70,8 @@ export class AuthServiceService {
 
   logout(): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.post(`${this.apiUrl}/logout`, {}, { headers: headers })
+    return this.http
+      .post(`${this.apiUrl}/logout`, {}, { headers: headers })
       .pipe(
         tap(() => {
           localStorage.removeItem("access_token");
@@ -79,7 +80,4 @@ export class AuthServiceService {
         })
       );
   }
-  
-
-  
 }

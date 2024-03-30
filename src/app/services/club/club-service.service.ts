@@ -1,11 +1,11 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { Club } from "src/app/shared/model/club";
-import { ClubResponse } from "src/app/shared/model/club-response";
+import { Club } from "src/app/shared/model/club/club";
+import { ClubResponse } from "src/app/shared/model/club/club-response";
 import { tap } from "rxjs/operators";
 import { CommentServiceService } from "../comment/comment-service.service";
-import { ClubdetailsResponse } from "src/app/shared/model/clubdetails-response";
+import { ClubdetailsResponse } from "src/app/shared/model/clubdetails/clubdetails-response";
 
 @Injectable({
   providedIn: "root",

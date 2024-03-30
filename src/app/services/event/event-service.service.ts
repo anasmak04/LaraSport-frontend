@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { EventResponse } from "src/app/shared/model/event-response";
+import { EventResponse } from "src/app/shared/model/event/event-response";
 
 @Injectable({
   providedIn: "root",

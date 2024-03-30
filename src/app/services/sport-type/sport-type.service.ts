@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { SporttypeResponse } from "src/app/shared/model/sporttype-response";
+import { SporttypeResponse } from "src/app/shared/model/sporttype/sporttype-response";
 
 @Injectable({
   providedIn: "root",

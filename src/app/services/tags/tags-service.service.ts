@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { categoryResponse } from "src/app/shared/model/category-response";
-import { Tags } from "src/app/shared/model/Tags";
-import { TagsResponse } from "src/app/shared/model/TagsResponse";
+import { CategoryResponse } from "src/app/shared/model/category/category-response";
+import { Tags } from "src/app/shared/model/tags/Tags";
+import { TagsResponse } from "src/app/shared/model/tags/TagsResponse";
 
 @Injectable({
   providedIn: "root",

@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { PostResponse } from "src/app/shared/model/PostResponse";
-import { PostResponseId } from "src/app/shared/model/post-reponseId";
+import { PostResponse } from "src/app/shared/model/post/PostResponse";
 
 @Injectable({
   providedIn: "root",
@@ -18,7 +17,6 @@ export class PostServiceService {
     return new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-
   }
 
   save(postData: any): Observable<any> {
@@ -39,8 +37,8 @@ export class PostServiceService {
     });
   }
 
-  findById(id: number): Observable<PostResponseId> {
-    return this.http.get<PostResponseId>(`${this.UrlApi}/${id}`, {
+  findById(id: number): Observable<PostResponse> {
+    return this.http.get<PostResponse>(`${this.UrlApi}/${id}`, {
       headers: this.getHeaders(),
     });
   }

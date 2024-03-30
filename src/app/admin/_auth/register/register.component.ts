@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { AuthServiceService } from "../../../services/Authservice/auth-service.service";
 import { Router } from "@angular/router";
-import { CityServiceService } from "src/app/services/city/city-service.service";
+import { AuthFacadeService } from "src/app/services/auth/auth-facade.service";
 
 @Component({
   selector: "app-register",
@@ -15,9 +14,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthServiceService,
-    private router: Router,
-    private cityservice: CityServiceService
+    private FacadeService: AuthFacadeService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -39,10 +37,9 @@ export class RegisterComponent implements OnInit {
 
   register() {
     if (this.registerForm.valid) {
-      this.authService.register(this.registerForm.value).subscribe({
+      this.FacadeService.register(this.registerForm.value).subscribe({
         next: (response) => {
           console.log("Registration successful", response);
-          console.log(this.authService.getToken());
           this.router.navigate(["/login"]);
         },
         error: (error) => {
@@ -53,7 +50,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getCities() {
-    this.cityservice.findAll().subscribe({
+    this.FacadeService.getCities().subscribe({
       next: (response) => (this.cities = response.city),
       error: (err) => console.log(err),
     });
