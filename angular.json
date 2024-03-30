@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "laraSport-front:build:production"
+              "buildTarget": "laraSport-front:build:production"
             },
             "development": {
-              "browserTarget": "laraSport-front:build:development"
+              "buildTarget": "laraSport-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "laraSport-front:build"
+            "buildTarget": "laraSport-front:build"
           }
         },
         "test": {

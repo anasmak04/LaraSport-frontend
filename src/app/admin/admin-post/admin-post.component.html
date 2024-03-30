@@ -8,7 +8,7 @@
     ></div>
     <div
       id="main-content"
-      class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
+      class="w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
     >
       <div class="relative m-4 z-0 overflow-x-auto shadow-md sm:rounded-lg">
         <button
@@ -49,8 +49,8 @@
             </tr>
           </thead>
 
-          
-          <tbody *ngFor="let post of posts">
+          @for (post of posts; track $index) {
+          <tbody>
             <tr class="bg-white border-b">
               <th
                 scope="row"
@@ -72,7 +72,17 @@
               </td>
 
               <td class="px-6 py-4">
-                {{ post.category_id }}
+                {{ post.category }}
+              </td>
+
+              <td class="px-6 py-4">
+                {{ post.user }}
+              </td>
+
+              <td class="px-6 py-4">
+                @for (item of post.tags; track $index) {
+                {{ item.name }}
+                }
               </td>
 
               <td class="px-6 py-4">
@@ -84,14 +94,15 @@
               </td>
 
               <!-- <td class="px-6 py-4">
-              {{ event.sport_type }}
-            </td>
-
-            <td class="px-6 py-4">
-              {{ event.tags_clubs }}
-            </td> -->
+                {{ event.sport_type }}
+              </td>
+  
+              <td class="px-6 py-4">
+                {{ event.tags_clubs }}
+              </td> -->
             </tr>
           </tbody>
+          }
         </table>
       </div>
     </div>
