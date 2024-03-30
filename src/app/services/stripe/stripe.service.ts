@@ -1,26 +1,73 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { loadStripe, Stripe, StripeCardElement } from "@stripe/stripe-js";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class StripeService {
-
   private stripePromise: Promise<Stripe | null>;
-  private publicKey: string = "pk_test_TYooMQauvdEDq54NiTphI7jx";     
+  private stripeApiKey: string = "pk_test_TYooMQauvdEDq54NiTphI7jx";
+  cardElement!: StripeCardElement;
 
-  constructor() {
-    this.stripePromise = loadStripe(this.publicKey);
+  constructor(private http: HttpClient) {
+    this.stripePromise = loadStripe(this.stripeApiKey);
   }
 
-  async confirmPayment(clientSecret: string) {
+  async initializeCardElement(
+    elementId: string
+  ): Promise<StripeCardElement | null> {
     const stripe = await this.stripePromise;
     if (!stripe) {
-      throw new Error("Stripe.js hasn't loaded yet.");
+      console.error("Stripe has not been properly initialized");
+      return null;
     }
-    return await stripe.confirmCardPayment(clientSecret);
+    const elements = stripe.elements();
+    const cardElement = elements.create("card");
+    cardElement.mount(`#${elementId}`);
+    return cardElement;
   }
 
+  async createPaymentMethod(
+    cardElement: StripeCardElement
+  ): Promise<string | undefined> {
+    const stripe = await this.stripePromise;
+    if (!stripe) {
+      console.error("Stripe has not been properly initialized");
+      return;
+    }
 
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: cardElement,
+    });
+
+    if (error) {
+      console.error(`Error creating payment method: ${error.message}`);
+      return;
+    }
+
+    return paymentMethod?.id;
+  }
+
+  async confirmPayment(
+    clientSecret: string,
+    cardElement: StripeCardElement
+  ): Promise<void> {
+    const stripe = await this.stripePromise;
+    if (!stripe) {
+      console.error("Stripe has not been properly initialized");
+      return;
+    }
+
+    const { error } = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: { card: cardElement },
+    });
+
+    if (error) {
+      console.error(`Payment confirmation error: ${error.message}`);
+    } else {
+      console.log("Payment confirmed successfully");
+    }
+  }
 }

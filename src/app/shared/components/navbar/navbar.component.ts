@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth/auth-service.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { AuthServiceService } from 'src/app/services/auth/auth-service.service';
 })
 export class NavbarComponent implements OnInit{
 
-  constructor(public auth : AuthServiceService) { }
+  constructor(
+    public auth : AuthServiceService,
+    private router : Router
+    ) { }
 
 
 
@@ -19,6 +23,19 @@ export class NavbarComponent implements OnInit{
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  logout() {
+    this.auth.logout().subscribe({
+      next: () => {
+        console.log("login");
+        this.router.navigate(['/login']);
+      },
+
+      error : (error) => {
+        console.error('logout failed', error);
+      }
+    });
   }
 
 }

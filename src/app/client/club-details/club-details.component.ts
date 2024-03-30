@@ -1,9 +1,12 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { StripeCardElement } from "@stripe/stripe-js";
 import { ClubServiceService } from "src/app/services/club/club-service.service";
 import { CommentServiceService } from "src/app/services/comment/comment-service.service";
+import { ServiceapiService } from "src/app/services/stripe/serviceapi.service";
 import { StripeService } from "src/app/services/stripe/stripe.service";
+import { PayementResponse } from "src/app/shared/model/paymeent/payement-response";
 
 @Component({
   selector: "app-club-details",
@@ -14,51 +17,43 @@ export class ClubDetailsComponent implements OnInit {
   club: any;
   content: string = "";
   comments: any = [];
+  cardElement!: StripeCardElement;
 
   constructor(
     private route: ActivatedRoute,
     private clubService: ClubServiceService,
     private commentService: CommentServiceService,
     private stripeservice: StripeService,
-    private http: HttpClient
+    private http: HttpClient,
+    private apiService: ServiceapiService
   ) {}
 
-  makeReservationAndPay(clubId: number, duration: string) {
-    const token = localStorage.getItem('access_token');
-
-    if (!token) {
-      console.error('No token found');
-      return;
-    }
-
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-
-    this.http
-      .post("http://127.0.0.1:8000/api/reservation/create", {
-        club_id: clubId,
-        duration: duration,
-        
-      },{ headers: headers }).subscribe(
-        async (response: any) => {
-          console.log(response);
-          const paymentResult = await this.stripeservice.confirmPayment(
-            response.clientSecret
-          );
-
-          if (paymentResult.error) {
-            console.log(paymentResult.error.message);
-          } else {
-            if (paymentResult.paymentIntent.status === "succeeded") {
-              console.log("Payment successful");
-            }
-          }
-        },
-        (error) => {
-          console.error(error);
+  async pay(clubId: number, duration: string) {
+    // First, initiate the reservation and get the client secret
+    this.apiService.startPayment(clubId, duration).subscribe(
+      async (response: PayementResponse) => {
+        const clientSecret = response.clientSecret;
+        if (!clientSecret) {
+          console.error("Failed to retrieve client secret");
+          return;
         }
-      );
+
+        // Now, create a payment method with the card details
+        const paymentMethodId = await this.stripeservice.createPaymentMethod(
+          this.cardElement
+        );
+        if (!paymentMethodId) {
+          console.error("Failed to create payment method");
+          return;
+        }
+
+        // Finally, confirm the payment with the client secret and card details
+        await this.stripeservice.confirmPayment(clientSecret, this.cardElement);
+      },
+      (error) => {
+        console.error("Error starting payment:", error);
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -70,8 +65,20 @@ export class ClubDetailsComponent implements OnInit {
     });
 
     this.FindAllComments();
+    this.stripeservice
+      .initializeCardElement("card-element")
+      .then((cardElement) => {
+        if (cardElement) {
+          this.cardElement = cardElement;
+          console.log("Stripe card element initialized and assigned.");
+        } else {
+          console.error("Failed to initialize Stripe card element.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error initializing Stripe card element:", error);
+      });
   }
-
   FindAllComments() {
     this.commentService.FindAll().subscribe({
       next: (response) => {
