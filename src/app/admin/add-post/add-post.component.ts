@@ -2,14 +2,15 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AlertService } from "src/app/services/alert/alert.service";
 import { CategoryServiceService } from "src/app/services/category/category-service.service";
+import { PostFacadeService } from "src/app/services/post/post-facade.service";
 import { PostServiceService } from "src/app/services/post/post-service.service";
 import { TagsServiceService } from "src/app/services/tags/tags-service.service";
 import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-add-post',
-  templateUrl: './add-post.component.html',
-  styleUrls: ['./add-post.component.css']
+  selector: "app-add-post",
+  templateUrl: "./add-post.component.html",
+  styleUrls: ["./add-post.component.css"],
 })
 export class AddPostComponent implements OnInit {
   PostForm: FormGroup;
@@ -18,9 +19,7 @@ export class AddPostComponent implements OnInit {
   message: string | undefined;
 
   constructor(
-    private categoryservice: CategoryServiceService,
-    private tagsservice: TagsServiceService,
-    private postservice: PostServiceService,
+    private FacadePost: PostFacadeService,
     private fb: FormBuilder,
     private alertService: AlertService
   ) {
@@ -54,12 +53,13 @@ export class AddPostComponent implements OnInit {
         console.warn("Tags are not in an array format.");
       }
 
-      const fileInput: HTMLInputElement = document.querySelector('input[type="file"]')!;
+      const fileInput: HTMLInputElement =
+        document.querySelector('input[type="file"]')!;
       if (fileInput && fileInput.files && fileInput.files[0]) {
         formData.append("image", fileInput.files[0]);
       }
 
-      this.postservice.save(formData).subscribe({
+      this.FacadePost.addPost(formData).subscribe({
         next: () => {
           this.alertService.showSuccess("Post", "Post created successfully");
           this.PostForm.reset();
@@ -73,7 +73,7 @@ export class AddPostComponent implements OnInit {
   }
 
   findAllCategories() {
-    this.categoryservice.findAll().subscribe({
+    this.FacadePost.findAllCategories().subscribe({
       next: (result) => {
         this.categories = result.categories;
       },
@@ -84,7 +84,7 @@ export class AddPostComponent implements OnInit {
   }
 
   findAllTags() {
-    this.tagsservice.findAll().subscribe({
+    this.FacadePost.findAllTags().subscribe({
       next: (result) => {
         this.tags = result.tags;
       },

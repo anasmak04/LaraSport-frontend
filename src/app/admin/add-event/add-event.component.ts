@@ -1,12 +1,7 @@
 import { HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { Header } from "primeng/api";
-import { CityServiceService } from "src/app/services/city/city-service.service";
-import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
-import { EventServiceService } from "src/app/services/event/event-service.service";
-import { SportTypeService } from "src/app/services/sport-type/sport-type.service";
+import { EventFacadeService } from "src/app/services/event/event-facade.service";
 
 @Component({
   selector: "app-add-event",
@@ -21,12 +16,8 @@ export class AddEventComponent implements OnInit {
   FormEvent: FormGroup;
 
   constructor(
-    private clubtag: ClubTagsService,
-    private cityservice: CityServiceService,
-    private sporttypeservice: SportTypeService,
-    private eventservice: EventServiceService,
-    private fb: FormBuilder,
-    private router: Router
+    private FacadeEvent: EventFacadeService,
+    private fb: FormBuilder
   ) {
     this.FormEvent = this.fb.group({
       title: ["", Validators.required],
@@ -85,7 +76,7 @@ export class AddEventComponent implements OnInit {
         console.warn("Tags are not in an array format.");
       }
 
-      this.eventservice.save(formData).subscribe({
+      this.FacadeEvent.addEvent(formData).subscribe({
         next: (response) => {
           console.log(response);
         },
@@ -95,7 +86,7 @@ export class AddEventComponent implements OnInit {
   }
 
   findallcities() {
-    this.cityservice.findAll().subscribe({
+    this.FacadeEvent.findallcities().subscribe({
       next: (response) => {
         this.cities = response.city;
       },
@@ -105,7 +96,7 @@ export class AddEventComponent implements OnInit {
   }
 
   findallsportTypes() {
-    this.sporttypeservice.FindAll().subscribe({
+    this.FacadeEvent.findallsportTypes().subscribe({
       next: (response) => {
         this.sporttypes = response.sport_type;
       },
@@ -115,7 +106,7 @@ export class AddEventComponent implements OnInit {
   }
 
   findAllClubTags() {
-    this.clubtag.getTags().subscribe({
+    this.FacadeEvent.findAllClubTags().subscribe({
       next: (response) => {
         this.TagsClubs = response.clubtag;
       },
