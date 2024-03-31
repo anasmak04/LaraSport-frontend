@@ -274,6 +274,9 @@
                     </tr>
                   </thead>
 
+                  @for (item of cities; track $index) {
+
+                  
                   <tbody *ngFor="let city of cities">
                     <tr class="bg-white border-b">
                       <th
@@ -310,6 +313,7 @@
                       </td>
                     </tr>
                   </tbody>
+                }
                 </table>
               </div>
             </div>

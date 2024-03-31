@@ -105,12 +105,14 @@
                 required
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               >
+              @for (item of sporttypes; track $index) {
                 <option
                   *ngFor="let sporttype of sporttypes"
-                  [value]="sporttype.id"
+                  [value]="item.id"
                 >
                   {{ sporttype.name }}
                 </option>
+              }
               </select>
             </div>
 

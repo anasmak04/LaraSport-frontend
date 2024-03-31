@@ -218,8 +218,8 @@
                   <th scope="col" class="px-6 py-3 text-center">Actions</th>
                 </tr>
               </thead>
-
-              <tbody *ngFor="let tag of tags">
+              @for (tag of tags; track $index) {
+              <tbody>
                 <tr class="bg-white border-b">
                   <th
                     scope="row"
@@ -249,6 +249,7 @@
                   </td>
                 </tr>
               </tbody>
+              }
             </table>
           </div>
         </div>

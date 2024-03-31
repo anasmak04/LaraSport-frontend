@@ -52,7 +52,8 @@
             </tr>
           </thead>
 
-          <tbody *ngFor="let event of events">
+          @for (event of events; track $index) {
+          <tbody>
             <tr class="bg-white border-b">
               <th
                 scope="row"
@@ -120,6 +121,7 @@
                 </button>
               </td>            </tr>
           </tbody>
+        }
         </table>
       </div>
     </div>
