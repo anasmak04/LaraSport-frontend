@@ -11,7 +11,8 @@
           <span class="self-center whitespace-nowrap">LaraSport</span>
         </a>
       </div>
-      <div class="md:hidden">
+
+      <div class="md:hidden" >
         <button
           id="menu-toggle"
           (click)="toggleMenu()"
@@ -24,7 +25,8 @@
           </svg>
         </button>
       </div>
-      <ul class="hidden md:flex space-x-6">
+
+      <ul class="hidden md:flex space-x-6 ">
         <li class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer">
           <a href="" class="font-bold text-[13px]">Clubs de Sport</a>
         </li>
@@ -54,19 +56,23 @@
         </li>
       </ul>
 
-      <div class="hidden md:block">
+
+      <div class="hidden md:block ">
         <button
-          *ngIf="!auth.getToken()"
-          class="px-4 py-2 bg-[#fab31e] text-black font-bold rounded"
-        >
-          S'nscrire
-        </button>
-        <button
-          *ngIf="!auth.getToken()"
-          class="ml-4 px-4 py-2 bg-black border text-white rounded"
-        >
-          Se Connecter
-        </button>
+        (click)="register()"
+        *ngIf="!auth.getToken()"
+        class="px-4 py-2 bg-[#fab31e] text-black font-bold rounded"
+      >
+        S'inscrire
+      </button>
+      <button
+        (click)="login()"
+        *ngIf="!auth.getToken()"
+        class="ml-4 px-4 py-2 bg-black border text-white rounded"
+      >
+        Se Connecter
+      </button>
+      
 
         <button
           *ngIf="auth.getToken()"
@@ -112,3 +118,4 @@
     </ul>
   </nav>
 </header>
+

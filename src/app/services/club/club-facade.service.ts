@@ -27,8 +27,8 @@ export class ClubFacadeService {
     return this.cityservice.findAll();
   }
 
-  saveClub(club : any){
-    return this.clubservice.save(club);
+  saveClub(formdata: FormData){
+    return this.clubservice.save(formdata);
   }
 
 }

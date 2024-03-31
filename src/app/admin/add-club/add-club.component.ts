@@ -18,6 +18,7 @@ export class AddClubComponent implements OnInit {
   FormClub: FormGroup;
   constructor(
     private Facadeservcice: ClubFacadeService,
+    private clubservice: ClubServiceService,
     private fb: FormBuilder,
     private sweet: AlertService
   ) {
@@ -88,7 +89,7 @@ export class AddClubComponent implements OnInit {
         formData.append("image", fileInput.files[0]);
       }
 
-      this.Facadeservcice.saveClub(formData).subscribe({
+      this.clubservice.save(formData).subscribe({
         next: (response) => {
           console.log("Upload successful", response);
           this.sweet.showSuccess("Club", "Club created successfully");

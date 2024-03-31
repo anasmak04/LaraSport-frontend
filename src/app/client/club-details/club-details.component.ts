@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { StripeCardElement } from "@stripe/stripe-js";
+import { CityServiceService } from "src/app/services/city/city-service.service";
 import { ClubServiceService } from "src/app/services/club/club-service.service";
 import { CommentServiceService } from "src/app/services/comment/comment-service.service";
 import { ServiceapiService } from "src/app/services/stripe/serviceapi.service";
@@ -29,7 +30,6 @@ export class ClubDetailsComponent implements OnInit {
   ) {}
 
   async pay(clubId: number, duration: string) {
-    // First, initiate the reservation and get the client secret
     this.apiService.startPayment(clubId, duration).subscribe(
       async (response: PayementResponse) => {
         const clientSecret = response.clientSecret;
@@ -38,7 +38,6 @@ export class ClubDetailsComponent implements OnInit {
           return;
         }
 
-        // Now, create a payment method with the card details
         const paymentMethodId = await this.stripeservice.createPaymentMethod(
           this.cardElement
         );
@@ -47,7 +46,6 @@ export class ClubDetailsComponent implements OnInit {
           return;
         }
 
-        // Finally, confirm the payment with the client secret and card details
         await this.stripeservice.confirmPayment(clientSecret, this.cardElement);
       },
       (error) => {
@@ -82,7 +80,6 @@ export class ClubDetailsComponent implements OnInit {
   FindAllComments() {
     this.commentService.FindAll().subscribe({
       next: (response) => {
-        console.log(response);
         this.comments = response.comments;
       },
 
@@ -94,7 +91,6 @@ export class ClubDetailsComponent implements OnInit {
     this.clubService.getClubById(clubId).subscribe({
       next: (response) => {
         this.club = response.club;
-        console.log(response);
       },
       error: (err) => console.error(err),
     });
@@ -107,10 +103,11 @@ export class ClubDetailsComponent implements OnInit {
     };
     this.commentService.save(commentData).subscribe({
       next: (response) => {
-        console.log("Comment saved:", response.comments);
         this.content = "";
       },
       error: (err) => console.error(err),
     });
   }
+
+
 }

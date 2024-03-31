@@ -69,4 +69,15 @@ export class AdminCityComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
+
+
+  delete(id: number) {
+    this.cityservice.delete(id).subscribe({
+      next: () => {
+        this.finAllCities();
+        this.sweet.showSuccess("City deleted", "City deleted successfully");
+      },
+      error: () => this.sweet.showError("Error", "Error deleting city"),
+    });
+  }
 }

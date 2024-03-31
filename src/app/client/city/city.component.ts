@@ -26,4 +26,14 @@ export class CityComponent implements OnInit {
       error: (err) => console.error("Failed to load cities:", err),
     });
   }
+
+
+  delete(id : number){
+    this.cityService.delete(id).subscribe({
+      next: (response) => {
+        this.findAllCities();
+      },
+      error: (err) => console.error("Failed to delete city:", err),
+    });
+  }
 }

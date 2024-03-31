@@ -21,5 +21,9 @@ export class CityServiceService   {
     return this.http.post(this.ApiCity, formdata);
   }
   
+
+  delete(id : number): Observable<any>{
+    return this.http.delete(this.ApiCity + '/' + id);
+  }
   
 }

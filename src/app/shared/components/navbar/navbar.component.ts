@@ -17,9 +17,7 @@ export class NavbarComponent implements OnInit{
 
 
   ngOnInit(): void {}
-
   isMenuOpen = false;
-
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
@@ -38,4 +36,11 @@ export class NavbarComponent implements OnInit{
     });
   }
 
+
+  login(){
+    this.router.navigate(['/login']);
+  }
+  register(){
+    this.router.navigate(['/register']);
+  }
 }

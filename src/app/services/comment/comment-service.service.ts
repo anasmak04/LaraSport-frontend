@@ -14,18 +14,10 @@ export class CommentServiceService {
     return this.http.get<CommentResponse>(this.urlcomment);
   }
 
-  token = localStorage.getItem("access_token");
-
   save(commentData: any): Observable<CommentResponse> {
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.token}`,
-    });
-
-    console.log(this.token);
     return this.http.post<CommentResponse>(
       "http://127.0.0.1:8000/api/comment",
-      commentData,
-      { headers: headers }
+      commentData
     );
   }
 }
