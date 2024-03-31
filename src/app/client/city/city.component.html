@@ -145,9 +145,25 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+    <div class="flex justify-center pt-8 mb-4">
+      <div class="relative w-full max-w-lg">
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (keyup)="search(searchTerm)"
+          placeholder="Search cities..."
+          class="w-full bg-white text-gray-700 border border-gray-300 rounded-lg py-3 pl-12 pr-4 transition duration-200 ease-in-out transform focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 shadow-md"
+        />
+   
+      </div>
+    </div>
+    
+
+    <div *ngIf="!(searchTerm == '') " class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      
+      @for (city of cititessearch; track $index) {
       <div
-        *ngFor="let city of cities"
         class="relative w-full h-[200px] overflow-hidden"
         [routerLink]="['/city/club', city.id]"
       >
@@ -167,6 +183,35 @@
           </p>
         </div>
       </div>
+    }
+    </div>
+
+    
+
+    <div *ngIf="(searchTerm == '') " class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    
+      @for (city of cities; track $index) {
+      <div
+        class="relative w-full h-[200px] overflow-hidden"
+        [routerLink]="['/city/club', city.id]"
+      >
+        <img
+          src="{{ city.image }}"
+          alt=""
+          class="w-full h-full object-cover"
+          style="filter: brightness(40%)"
+        />
+
+        <div class="absolute bottom-0 w-full p-4">
+          <h1 class="text-white font-bold capitalize text-lg">
+            {{ city.name }}
+          </h1>
+          <p class="text-white font-bold capitalize">
+            Découvrez les clubs et les salles de sport à {{ city.name }}
+          </p>
+        </div>
+      </div>
+    }
     </div>
   </div>
 </section>

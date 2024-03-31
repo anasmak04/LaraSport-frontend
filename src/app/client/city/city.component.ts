@@ -1,17 +1,19 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CityServiceService } from 'src/app/services/city/city-service.service';
-import { LoaderServiceService } from 'src/app/services/loader/loader-service.service';
+import { Component, OnInit, inject } from "@angular/core";
+import { CityServiceService } from "src/app/services/city/city-service.service";
+import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
-  selector: 'app-city',
-  templateUrl: './city.component.html',
-  styleUrls: ['./city.component.css']
+  selector: "app-city",
+  templateUrl: "./city.component.html",
+  styleUrls: ["./city.component.css"],
 })
 export class CityComponent implements OnInit {
   cities: any[] = [];
+  cititessearch: any[] = [];
+  searchTerm: String = "";
+
   constructor(private cityService: CityServiceService) {}
-   loader = inject(LoaderServiceService);
-   
+  loader = inject(LoaderServiceService);
 
   ngOnInit(): void {
     this.findAllCities();
@@ -27,8 +29,7 @@ export class CityComponent implements OnInit {
     });
   }
 
-
-  delete(id : number){
+  delete(id: number) {
     this.cityService.delete(id).subscribe({
       next: (response) => {
         this.findAllCities();
@@ -36,4 +37,16 @@ export class CityComponent implements OnInit {
       error: (err) => console.error("Failed to delete city:", err),
     });
   }
+
+  search(searchTerm: String) {
+    this.cityService.search(searchTerm).subscribe({
+      next: (response) => {
+        this.cititessearch = response.search;
+        console.log("search result:", this.cititessearch);
+      },
+      error: (err) => console.error("Failed to search city:", err),
+    });
+  }
+
+  
 }
