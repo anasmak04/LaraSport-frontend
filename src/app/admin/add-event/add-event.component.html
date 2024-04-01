@@ -30,6 +30,16 @@
                 required
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
+
+              <div
+                *ngIf="
+                  FormEvent.controls['title'].invalid &&
+                  FormEvent.controls['title'].touched
+                "
+                class="text-red-600"
+              >
+                title is required.
+              </div>
             </div>
 
             <!-- Description -->
@@ -45,6 +55,16 @@
                 required
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               ></textarea>
+
+              <div
+                *ngIf="
+                  FormEvent.controls['description'].invalid &&
+                  FormEvent.controls['description'].touched
+                "
+                class="text-red-600"
+              >
+                description is required.
+              </div>
             </div>
 
             <!-- Content -->
@@ -60,6 +80,16 @@
                 required
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               ></textarea>
+
+              <div
+                *ngIf="
+                  FormEvent.controls['content'].invalid &&
+                  FormEvent.controls['content'].touched
+                "
+                class="text-red-600"
+              >
+                content is required.
+              </div>
             </div>
 
             <!-- Event Date -->
@@ -76,20 +106,29 @@
                 required
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
-            </div>
 
+              @if ( FormEvent.controls['content'].invalid &&
+              FormEvent.controls['content'].touched) {
+              <span>content is required</span>
+              }
+            </div>
             <!-- Image -->
-           
+
             <div>
               <label for="image" class="block text-sm font-medium text-gray-700"
                 >Image</label
               >
-           
+
               <input
                 type="file"
                 id="image"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
+
+              @if ( FormEvent.controls['image'].invalid &&
+              FormEvent.controls['image'].touched) {
+              <span>image is required</span>
+              }
             </div>
 
             <!-- Sport Type ID -->
@@ -112,6 +151,11 @@
                   {{ sporttype.name }}
                 </option>
               </select>
+
+              @if ( FormEvent.controls['sport_type_id'].invalid &&
+              FormEvent.controls['sport_type_id'].touched) {
+              <span>sport_type is required</span>
+              }
             </div>
 
             <!-- City ID -->
@@ -131,6 +175,11 @@
                   {{ city.name }}
                 </option>
               </select>
+
+              @if ( FormEvent.controls['city_id'].invalid &&
+              FormEvent.controls['city_id'].touched) {
+              <span>city is required</span>
+              }
             </div>
 
             <div>
@@ -146,6 +195,11 @@
                 optionValue="id"
                 placeholder="Select tags"
               ></p-multiSelect>
+
+              @if ( FormEvent.controls['TagsClubs'].invalid &&
+              FormEvent.controls['TagsClubs'].touched) {
+              <span>Tags is required</span>
+              }
             </div>
 
             <div>

@@ -49,6 +49,11 @@
                       placeholder="New York"
                       required
                     />
+
+                    @if ( TagsForm.controls['name'].invalid &&
+                    TagsForm.controls['name'].touched) {
+                    <span>name is required</span>
+                    }
                   </div>
                 </form>
                 <!-- Modal footer -->

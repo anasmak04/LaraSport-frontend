@@ -50,6 +50,11 @@
                       required
                     />
 
+                    @if ( categoryForm.controls['name'].invalid &&
+                    categoryForm.controls['name'].touched) {
+                    <span>image is required</span>
+                    }
+
                     <label
                       for="first_name"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -64,6 +69,11 @@
                       placeholder="Description"
                       required
                     />
+
+                    @if ( categoryForm.controls['image'].invalid &&
+                    categoryForm.controls['image'].touched) {
+                    <span>image is required</span>
+                    }
                   </div>
                 </form>
                 <!-- Modal footer -->

@@ -24,7 +24,7 @@ export class AddClubComponent implements OnInit {
     private sweet: AlertService
   ) {
     this.FormClub = this.fb.group({
-      name: ["", Validators.required],
+      name: ["", Validators.required , Validators.minLength(20)],
       description: ["", Validators.required],
       city_id: ["", Validators.required],
       tags: ["", Validators.required],

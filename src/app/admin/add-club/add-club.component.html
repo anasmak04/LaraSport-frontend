@@ -1,106 +1,152 @@
 <div>
-    <app-header></app-header>
-    <div class="flex overflow-hidden bg-white pt-16 h-screen">
-      <app-sidebar></app-sidebar>
-      <div
-        class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
-        id="sidebarBackdrop"
-      ></div>
-      <div
-        id="main-content"
-        class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
-      >
-        <main>
-          <div class="container mx-auto m-4">
-              <h1 class="capitalize text-[#2e294d] mb-2 text-2xl font-bold text-center">Add New Club</h1>
-            <form
-              [formGroup]="FormClub"
-              (ngSubmit)="add()"
-              enctype="multipart/form-data"
-            >
-              <div class="mb-4">
-                <label for="name" class="block text-gray-700">Name:</label>
-                <input
-                  formControlName="name"
-                  type="text"
-                  placeholder="name"
-                  id="name"
-                  name="name"
-                  class="border border-gray-300 rounded-md px-4 py-2"
-                />
-              </div>
-              <div class="mb-4">
-                <label for="description" class="block text-gray-700"
-                  >Description:</label
-                >
-                <input
-                  formControlName="description"
-                  type="text"
-                  placeholder="description"
-                  id="description"
-                  name="description"
-                  class="border border-gray-300 rounded-md px-4 py-2"
-                />
-              </div>
-              <div class="mb-4">
-                <label for="city" class="block text-gray-700">City:</label>
-                <select
-                  formControlName="city_id"
-                  id="city"
-                  name="city_id"
-                  class="border border-gray-300 rounded-md px-4 py-2"
-                >
-                <option value="" selected>casablanca</option>
-                
-                  <option  *ngFor="let city of cities" [value]="city.id">
-                    {{ city.name }}
-                  </option>
-                </select>
-              </div>
-  
-              <div class="mb-4">
-                <label
-                  for="tags"
-                  class="block text-gray-700 text-sm font-bold mb-2"
-                  >Tags:</label
-                >
-  
-                <p-multiSelect
-                  formControlName="tags"
-                  [options]="tags"
-                  optionLabel="name"
-                  optionValue="id"
-                  placeholder="Select tags"
-                ></p-multiSelect>
-                
-              </div>
-  
-              <div class="mb-4">
-                <label for="image" class="block text-gray-700">Image:</label>
-  
-                <input
-                  formControlName="image"
-                  type="file"
-                  id="image"
-                  name="image"
-                  accept="image/*"
-                  class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                />
-              </div>
-              <button
-                type="submit"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  <app-header></app-header>
+  <div class="flex overflow-hidden bg-white pt-16 h-screen">
+    <app-sidebar></app-sidebar>
+    <div
+      class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
+      id="sidebarBackdrop"
+    ></div>
+    <div
+      id="main-content"
+      class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
+    >
+      <main>
+        <div class="container mx-auto m-4">
+          <h1
+            class="capitalize text-[#2e294d] mb-2 text-2xl font-bold text-center"
+          >
+            Add New Club
+          </h1>
+          <form
+            [formGroup]="FormClub"
+            (ngSubmit)="add()"
+            enctype="multipart/form-data"
+          >
+            <div class="mb-4">
+              <label for="name" class="block text-gray-700">Name:</label>
+              <input
+                formControlName="name"
+                type="text"
+                placeholder="name"
+                id="name"
+                name="name"
+                class="border border-gray-300 rounded-md px-4 py-2"
+              />
+              <div
+                *ngIf="
+                  FormClub.controls['name'].invalid &&
+                  FormClub.controls['name'].touched
+                "
+                class="text-red-600"
               >
-                Submit
-              </button>
-            </form>
-  
-            
-  
-          </div>
-        </main>
-      </div>
+                name is required.
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="description" class="block text-gray-700"
+                >Description:</label
+              >
+              <input
+                formControlName="description"
+                type="text"
+                placeholder="description"
+                id="description"
+                name="description"
+                class="border border-gray-300 rounded-md px-4 py-2"
+              />
+
+              <div
+                *ngIf="
+                  FormClub.controls['description'].invalid &&
+                  FormClub.controls['description'].touched
+                "
+                class="text-red-600"
+              >
+                description is required.
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="city" class="block text-gray-700">City:</label>
+              <select
+                formControlName="city_id"
+                id="city"
+                name="city_id"
+                class="border border-gray-300 rounded-md px-4 py-2"
+              >
+                <option value="" selected>casablanca</option>
+
+                <option *ngFor="let city of cities" [value]="city.id">
+                  {{ city.name }}
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  FormClub.controls['city_id'].invalid &&
+                  FormClub.controls['city_id'].touched
+                "
+                class="text-red-600"
+              >
+                city is required.
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="tags"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Tags:</label
+              >
+
+              <p-multiSelect
+                formControlName="tags"
+                [options]="tags"
+                optionLabel="name"
+                optionValue="id"
+                placeholder="Select tags"
+              ></p-multiSelect>
+
+              <div
+                *ngIf="
+                  FormClub.controls['tags'].invalid &&
+                  FormClub.controls['tags'].touched
+                "
+                class="text-red-600"
+              >
+                tags is required.
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="image" class="block text-gray-700">Image:</label>
+
+              <input
+                formControlName="image"
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*"
+                class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+
+              <div
+                *ngIf="
+                  FormClub.controls['image'].invalid &&
+                  FormClub.controls['image'].touched
+                "
+                class="text-red-600"
+              >
+                image is required.
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </main>
     </div>
   </div>
-  
-  
+</div>
