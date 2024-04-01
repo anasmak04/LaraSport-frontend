@@ -21,8 +21,7 @@
         <div>
           <label for="firstName" class="block text-sm font-medium text-gray-700"
             >Prénom :</label
-          >   
-
+          >
           <input
             placeholder="Prénom"
             type="text"
@@ -31,13 +30,21 @@
             required
             class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           />
+          <div
+            *ngIf="
+              registerForm.controls['firstName'].invalid &&
+              registerForm.controls['firstName'].touched
+            "
+            class="text-red-600"
+          >
+            Please enter a valid first name.
+          </div>
         </div>
 
         <div>
           <label for="lastName" class="block text-sm font-medium text-gray-700"
             >Nom :</label
           >
-
           <input
             placeholder="Nom"
             type="text"
@@ -46,7 +53,17 @@
             required
             class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           />
+          <div
+            *ngIf="
+              registerForm.controls['lastName'].invalid &&
+              registerForm.controls['lastName'].touched
+            "
+            class="text-red-600"
+          >
+            Please enter a valid last name.
+          </div>
         </div>
+
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700"
             >Votre adresse éléctronique :</label
@@ -59,6 +76,15 @@
             required
             class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           />
+          <div
+            *ngIf="
+              registerForm.controls['email'].invalid &&
+              registerForm.controls['email'].touched
+            "
+            class="text-red-600"
+          >
+            Please enter a valid email.
+          </div>
         </div>
 
         <div>
@@ -105,6 +131,7 @@
             class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           />
         </div>
+
         <div>
           <label
             for="password_confirmation"
@@ -119,7 +146,14 @@
             required
             class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           />
+          <div
+            *ngIf="registerForm.errors?.['mustMatch'] && registerForm.controls['password_confirmation'].touched"
+            class="text-red-600"
+          >
+            Passwords must match.
+          </div>
         </div>
+
         <button
           type="submit"
           [disabled]="!registerForm.valid"
@@ -128,6 +162,7 @@
           Register
         </button>
       </form>
+
       <p>
         Conformément à la loi 09-08, vous disposez d'un droit d'accès, de
         rectification et d'opposition au traitement de vos données personnelles.
