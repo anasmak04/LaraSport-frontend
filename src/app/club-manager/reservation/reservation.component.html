@@ -1,0 +1,50 @@
+<div>
+  <app-header></app-header>
+  <div class="flex overflow-hidden bg-white pt-16 min-h-screen">
+    <app-sidebar></app-sidebar>
+    <div
+      class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
+      id="sidebarBackdrop"
+    ></div>
+    <div
+      id="main-content"
+      class="h-full w-full relative overflow-y-auto lg:ml-64"
+    >
+      <main>
+        <div class="relative overflow-x-auto container mx-auto">
+          <h1 class="mt-6 capitalize font-bold">les reservations</h1>
+          <table
+            class="w-full mt-6 text-sm text-left rtl:text-right text-gray-500"
+          >
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3">Id</th>
+                <th scope="col" class="px-6 py-3">Club</th>
+                <th scope="col" class="px-6 py-3">User</th>
+                <th scope="col" class="px-6 py-3">Duration</th>
+                <th scope="col" class="px-6 py-3">Price</th>
+              </tr>
+            </thead>
+            @for (item of reservations; track $index) {
+
+            <tbody>
+              <tr class="bg-white border-b">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  {{ item.id }}
+                </th>
+                <td class="px-6 py-4">{{ item.club }}</td>
+                <td class="px-6 py-4">{{ item.user }}</td>
+                <td class="px-6 py-4">{{ item.duration }}</td>
+                <td class="px-6 py-4">${{ getPrice(item.duration) }}</td>
+              </tr>
+            </tbody>
+            }
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

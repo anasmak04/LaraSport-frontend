@@ -18,6 +18,7 @@ export class ClubDetailsComponent implements OnInit {
   content: string = "";
   comments: any = [];
   cardElement!: StripeCardElement;
+  selectedDuration: string = 'day'; 
 
   constructor(
     private route: ActivatedRoute,
@@ -60,6 +61,8 @@ export class ClubDetailsComponent implements OnInit {
         this.loadClubDetails(clubId);
       }
     });
+
+    
 
     this.FindAllComments();
     this.stripeservice
@@ -108,4 +111,15 @@ export class ClubDetailsComponent implements OnInit {
       error: (err) => console.error(err),
     });
   }
+
+
+  
+
+
+
+
+
+
+
+
 }

@@ -24,28 +24,28 @@
 
 <section class="bg-white py-8 lg:py-16 antialiased">
   <div class="max-w-2xl mx-auto px-4">
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="text-lg lg:text-2xl font-bold text-gray-900">
-        Discussion (20)
-      </h2>
-    </div>
+    <select [(ngModel)]="selectedDuration" name="duration">
+      <option value="day">Day</option>
+      <option value="month">Month</option>
+      <option value="year">Year</option>
+    </select>
 
     <div
       id="card-element"
       class="p-4 border border-gray-300 rounded-md shadow-sm"
     ></div>
+
     <button
-      (click)="pay(club.id, 'month')"
+      (click)="pay(club.id, selectedDuration)"
       class="mt-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
     >
       Pay
     </button>
 
-
-
-
-    <form  (ngSubmit)="saveComment()" class="mb-6">
-      <div class="py-2 mt-4 px-4 mb-4 bg-white rounded-lg border border-gray-200">
+    <form (ngSubmit)="saveComment()" class="mb-6">
+      <div
+        class="py-2 mt-4 px-4 mb-4 bg-white rounded-lg border border-gray-200"
+      >
         <label for="content" class="sr-only">Your comment</label>
         <input type="hidden" [value]="club?.id" name="club_id" />
 
@@ -66,6 +66,11 @@
         Post comment
       </button>
     </form>
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-lg lg:text-2xl font-bold text-gray-900">
+        Discussion (20)
+      </h2>
+    </div>
     <article
       class="p-6 text-base bg-white rounded-lg"
       *ngFor="let comment of comments"

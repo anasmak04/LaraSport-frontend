@@ -15,7 +15,7 @@ import { ClientModuleModule } from "./client/client-module.module";
 import { FormsModule } from "@angular/forms";
 import { RatingModule } from "primeng/rating";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
+import { ManagerModule } from "./club-manager/manager.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +40,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     RatingModule,
     AdminmoduleModule,
     ProgressSpinnerModule,
-    ClientModuleModule
+    ClientModuleModule,
+    ManagerModule
   ],
 
   bootstrap: [AppComponent],

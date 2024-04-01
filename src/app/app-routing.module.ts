@@ -6,6 +6,7 @@ import { LoginComponent } from "./admin/_auth/login/login.component";
 import { PostDetailsComponent } from "./components/post-details/post-details.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { AccessDeniedComponent } from "./shared/components/permission/access-denied/access-denied.component";
+import { ReservationComponent } from "./club-manager/reservation/reservation.component";
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
@@ -23,6 +24,10 @@ const routes: Routes = [
       import("./client/client-module.module").then((m) => m.ClientModuleModule),
   },
 
+
+
+
+  {path: "manager/reservations", component: ReservationComponent},
 
   
 

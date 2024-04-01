@@ -1,13 +1,16 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { loadStripe, Stripe, StripeCardElement } from "@stripe/stripe-js";
+import { jsPDF } from "jspdf";
+import * as QRCode from "qrcode";
 
 @Injectable({
   providedIn: "root",
 })
 export class StripeService {
   private stripePromise: Promise<Stripe | null>;
-  private stripeApiKey: string = "pk_test_51ORHSEGOE2spzWx43dWFcVPxmIsy3xnADEShDAljC4lfitFG19QMntVNu55ImRsUte7hVaXHNEmQFcUi6Gs05UZY001VdWNVFZ";
+  private stripeApiKey: string =
+    "pk_test_51ORHSEGOE2spzWx43dWFcVPxmIsy3xnADEShDAljC4lfitFG19QMntVNu55ImRsUte7hVaXHNEmQFcUi6Gs05UZY001VdWNVFZ";
   cardElement!: StripeCardElement;
 
   constructor(private http: HttpClient) {
@@ -60,14 +63,45 @@ export class StripeService {
       return;
     }
 
-    const { error } = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: { card: cardElement },
-    });
+    const { error, paymentIntent } = await stripe.confirmCardPayment(
+      clientSecret,
+      {
+        payment_method: { card: cardElement },
+      }
+    );
 
     if (error) {
       console.error(`Payment confirmation error: ${error.message}`);
     } else {
+      this.generatePDFTicket(paymentIntent);
+
       console.log("Payment confirmed successfully");
     }
   }
+
+
+  async generatePDFTicket(paymentIntent: any): Promise<void> {
+    const doc = new jsPDF();
+    doc.text("Ticket Confirmation", 20, 20);
+    doc.text(`Payment ID: ${paymentIntent.id}`, 20, 30);
+    doc.text(
+      `Amount: ${(paymentIntent.amount / 100).toFixed(2)} ${paymentIntent.currency.toUpperCase()}`,
+      20,
+      40
+    );
+
+    const qrCodeData = `Payment ID: ${paymentIntent.id}, Amount: ${(paymentIntent.amount / 100).toFixed(2)} ${paymentIntent.currency.toUpperCase()}`;
+    try {
+      // Correctly handling the asynchronous nature of toDataURL
+      const qrImage = await QRCode.toDataURL(qrCodeData);
+      // Adding await here to wait for the QR code to be generated
+      doc.addImage(qrImage, "JPEG", 20, 50, 50, 50);
+    } catch (error) {
+      console.error("Error generating QR code", error);
+    }
+
+    doc.save("ticket.pdf");
+}
+
+
 }
