@@ -15,6 +15,8 @@ import { AvatarModule } from "primeng/avatar";
 import { FormsModule } from "@angular/forms";
 import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { RatingModule } from "primeng/rating";
+import { SidebarManagerComponent } from "./components/manager/sidebar-manager/sidebar-manager.component";
+
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { RatingModule } from "primeng/rating";
     HeaderComponent,
     SidebarComponent,
     AccessDeniedComponent,
+    SidebarManagerComponent
+    
   ],
   imports: [
     CommonModule,
@@ -60,6 +64,7 @@ import { RatingModule } from "primeng/rating";
     NavbarComponent,
     HeaderComponent,
     SidebarComponent,
+    SidebarManagerComponent
   ],
 })
 export class SharedModule {}
