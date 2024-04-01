@@ -42,7 +42,6 @@ export class CityComponent implements OnInit {
     this.cityService.search(searchTerm).subscribe({
       next: (response) => {
         this.cititessearch = response.search;
-        console.log("search result:", this.cititessearch);
       },
       error: (err) => console.error("Failed to search city:", err),
     });

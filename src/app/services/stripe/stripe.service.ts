@@ -7,7 +7,7 @@ import { loadStripe, Stripe, StripeCardElement } from "@stripe/stripe-js";
 })
 export class StripeService {
   private stripePromise: Promise<Stripe | null>;
-  private stripeApiKey: string = "pk_test_TYooMQauvdEDq54NiTphI7jx";
+  private stripeApiKey: string = "pk_test_51ORHSEGOE2spzWx43dWFcVPxmIsy3xnADEShDAljC4lfitFG19QMntVNu55ImRsUte7hVaXHNEmQFcUi6Gs05UZY001VdWNVFZ";
   cardElement!: StripeCardElement;
 
   constructor(private http: HttpClient) {

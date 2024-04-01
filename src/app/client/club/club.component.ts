@@ -1,11 +1,8 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { CityServiceService } from "src/app/services/city/city-service.service";
 import { ClubServiceService } from "src/app/services/club/club-service.service";
 import { CommentServiceService } from "src/app/services/comment/comment-service.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
-import { CityResponse } from "src/app/shared/model/city/city-response";
-import { ClubResponse } from "src/app/shared/model/club/club-response";
 
 @Component({
   selector: "app-club",
@@ -23,6 +20,8 @@ export class ClubComponent implements OnInit {
 
   clubs: any[] = [];
   comments: any[] = [];
+  clubssearch: any[] = [];
+  searchTerm: String = "";
 
   value = 5;
   ngOnInit(): void {
@@ -66,4 +65,15 @@ export class ClubComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
+
+  search(searchTerm: String) {
+    this.clubservice.search(searchTerm).subscribe({
+      next: (response) => {
+        this.clubssearch = response.search;
+        console.log(this.clubssearch);
+      },
+      error: (err) => console.log(err),
+    });
+  }
+
 }

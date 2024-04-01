@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { StripeCardElement } from "@stripe/stripe-js";
-import { CityServiceService } from "src/app/services/city/city-service.service";
 import { ClubServiceService } from "src/app/services/club/club-service.service";
 import { CommentServiceService } from "src/app/services/comment/comment-service.service";
 import { ServiceapiService } from "src/app/services/stripe/serviceapi.service";
@@ -104,10 +103,9 @@ export class ClubDetailsComponent implements OnInit {
     this.commentService.save(commentData).subscribe({
       next: (response) => {
         this.content = "";
+        this.FindAllComments();
       },
       error: (err) => console.error(err),
     });
   }
-
-
 }

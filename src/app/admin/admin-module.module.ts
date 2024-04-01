@@ -23,6 +23,7 @@ import { AddEventComponent } from './add-event/add-event.component';
 import { AdminPostComponent } from './admin-post/admin-post.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { AdminRoutingRoutingModule } from './admin-routing-routing.module';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AdminRoutingRoutingModule } from './admin-routing-routing.module';
     EditorModule,
     TagModule,
     MultiSelectModule,
-    AdminRoutingRoutingModule
+    AdminRoutingRoutingModule,
+    MatDialogModule
   ],
 
   exports : [
@@ -76,7 +78,8 @@ import { AdminRoutingRoutingModule } from './admin-routing-routing.module';
     MultiSelectModule,
     ReactiveFormsModule,
     AddPostComponent,
-    AdminRoutingRoutingModule
+    AdminRoutingRoutingModule,
+    MatDialogModule
   ]
 })
 export class AdminmoduleModule { }

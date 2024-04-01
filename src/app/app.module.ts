@@ -25,6 +25,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     PostDetailsComponent,
   ],
   imports: [
+    // StoreModule.forRoot({categories: categoryReducer}),
+    // EffectsModule.forRoot([]),
+    // StoreDevtoolsModule.instrument({
+    //   maxAge: 25,
+    // }),
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

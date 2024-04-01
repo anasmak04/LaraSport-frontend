@@ -12,7 +12,7 @@
         </a>
       </div>
 
-      <div class="md:hidden" >
+      <div class="md:hidden">
         <button
           id="menu-toggle"
           (click)="toggleMenu()"
@@ -26,7 +26,7 @@
         </button>
       </div>
 
-      <ul class="hidden md:flex space-x-6 ">
+      <ul class="hidden md:flex space-x-6">
         <li class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer">
           <a href="" class="font-bold text-[13px]">Clubs de Sport</a>
         </li>
@@ -56,31 +56,28 @@
         </li>
       </ul>
 
-
-      <div class="hidden md:block ">
+      <div class="hidden md:block">
+        @if (!auth.getToken()) {
         <button
-        (click)="register()"
-        *ngIf="!auth.getToken()"
-        class="px-4 py-2 bg-[#fab31e] text-black font-bold rounded"
-      >
-        S'inscrire
-      </button>
-      <button
-        (click)="login()"
-        *ngIf="!auth.getToken()"
-        class="ml-4 px-4 py-2 bg-black border text-white rounded"
-      >
-        Se Connecter
-      </button>
-      
-
+          (click)="register()"
+          class="px-4 py-2 bg-[#fab31e] text-black font-bold rounded"
+        >
+          S'inscrire
+        </button>
         <button
-          *ngIf="auth.getToken()"
+          (click)="login()"
+          class="ml-4 px-4 py-2 bg-black border text-white rounded"
+        >
+          Se Connecter
+        </button>
+        } @if (auth.getToken()) {
+        <button
           (click)="logout()"
           class="ml-4 px-10 py-2 font-bold text-[13px] capitalize rounded-xl bg-red-500 border text-white"
         >
           logout
         </button>
+        }
       </div>
     </div>
 
@@ -118,4 +115,3 @@
     </ul>
   </nav>
 </header>
-

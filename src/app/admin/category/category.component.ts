@@ -81,4 +81,36 @@ export class CategoryComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
+
+
+  update(id : number) {
+    if (this.categoryForm.valid) {
+      this.categoryService.update(id,this.categoryForm.value).subscribe({
+        next: () => {
+          this.sweet.showSuccess(
+            "Category updated",
+            "Category updated successfully"
+          );
+          this.categoryForm.reset();
+          this.showModalUpdate = false;
+        },
+        error: (err) => {
+          this.sweet.showError("Error", "Category not updated");
+          console.error(err);
+        },
+      });
+    }
+  }
+
+  findbyid(id: number) {
+    this.categoryService.findById(id).subscribe({
+      next: (response) => {
+        this.categoryForm.patchValue(response);
+        this.showModalUpdate = true;
+      },
+      error: (err) => console.log(err),
+    });
+  }
+
+
 }
