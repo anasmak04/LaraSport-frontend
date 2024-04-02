@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ClubServiceService } from './club-service.service';
 import { CityServiceService } from '../city/city-service.service';
 import { ClubTagsService } from '../club-tags/club-tags.service';
+import { ManagerService } from '../manager/manager.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,14 @@ export class ClubFacadeService {
     private clubservice : ClubServiceService,
     private cityservice : CityServiceService,
     private ClubTagsService : ClubTagsService,
+    private managerservice : ManagerService
   ) { }
+
+
+
+  findAllManagers(){
+    return this.managerservice.FindAllManagers();
+  }
 
 
   findAllClubTags(){

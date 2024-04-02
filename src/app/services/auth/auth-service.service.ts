@@ -77,6 +77,7 @@ export class AuthServiceService {
           localStorage.removeItem("access_token");
           localStorage.removeItem("roles");
           localStorage.removeItem("user");
+          localStorage.removeItem("managerId");
         })
       );
   }

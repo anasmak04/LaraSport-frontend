@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ReservationResponse } from "src/app/shared/model/reservation/ReservationResponse";
@@ -7,11 +7,15 @@ import { ReservationResponse } from "src/app/shared/model/reservation/Reservatio
   providedIn: "root",
 })
 export class ReservationService {
-  Apiurl = "http://localhost:8000/api/reservation/";
+  Apiurl = "http://localhost:8000/api/reservation";
   constructor(private http: HttpClient) {}
 
   // Get all reservations
-  getAllReservations(club_id: number): Observable<ReservationResponse> {
-    return this.http.get<ReservationResponse>(this.Apiurl + club_id);
+  getAllReservations(): Observable<ReservationResponse> {
+    const header = new HttpHeaders({
+      Authorization: "Bearer " + localStorage.getItem("access_token"),
+    })
+    return this.http.get<ReservationResponse>(this.Apiurl , {headers: header});
   }
+
 }

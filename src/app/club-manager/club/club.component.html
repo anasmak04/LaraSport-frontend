@@ -1,0 +1,58 @@
+<div>
+  <app-header></app-header>
+  <div class="flex overflow-hidden bg-white pt-16 min-h-screen">
+    <app-sidebar-manager></app-sidebar-manager>
+    <div
+      class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
+      id="sidebarBackdrop"
+    ></div>
+    <div
+      id="main-content"
+      class="h-full w-full relative overflow-y-auto lg:ml-64"
+    >
+      <main>
+        <div class="relative overflow-x-auto container mx-auto">
+          <h1 class="mt-6 capitalize font-bold">mon club</h1>
+          <table
+            class="w-full mt-6 text-sm text-left rtl:text-right text-gray-500"
+          >
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3">Id</th>
+                <th scope="col" class="px-6 py-3">Name</th>
+                <th scope="col" class="px-6 py-3">Description</th>
+                <th scope="col" class="px-6 py-3">City</th>
+                <th scope="col" class="px-6 py-3">User</th>
+                <th scope="col" class="px-6 py-3">Image</th>
+                <th scope="col" class="px-6 py-3">Tags</th>
+              </tr>
+            </thead>
+
+            <tbody *ngFor="let club of clubs">
+              <tr class="border-b border-gray-200">
+                <td class="px-6 py-4">{{ club.id }}</td>
+                <td class="px-6 py-4">{{ club.name }}</td>
+                <td class="px-6 py-4">{{ club.description }}</td>
+                <td class="px-6 py-4">{{ club.city }}</td>
+                <td class="px-6 py-4">{{ club.user }}</td>
+                <td class="px-6 py-4">
+                  <img
+                    src="{{ club.image }}"
+                    alt="{{ club.name }}"
+                    class="w-16 h-16 object-cover rounded-full"
+                  />
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="inline-block px-2 py-1 text-xs font-semibold text-green-900 bg-green-200 rounded-full"
+                    >{{ club.tags }}</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

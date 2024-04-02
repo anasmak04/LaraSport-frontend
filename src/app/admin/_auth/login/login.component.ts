@@ -35,18 +35,18 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           console.log("login successful", response);
           this.authservice.storeToken(response.token);
-
-          
-          console.log("login", this.authservice.getToken())
+          const id = localStorage.setItem("managerId", response.id.toString());
+          console.log(id);
+          // console.log("login", this.authservice.getToken());
           this.authservice.storeRoles(response.roles);
           this.authservice.storeUser(response.user);
-
           if (response.roles.includes("Admin")) {
             this.router.navigate(["/admin/dashboard"]);
+          } else if (response.roles.includes("Manager")) {
+            this.router.navigate(["/manager/reservation"]);
           } else {
             this.router.navigate(["/city"]);
           }
-          
         },
         error: (error) => {
           this.errorMessage = "Incorrect username or password.";

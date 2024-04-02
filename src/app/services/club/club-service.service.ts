@@ -41,6 +41,7 @@ export class ClubServiceService {
     });
   }
 
+
   search(searchTerm: String): Observable<ClubSearchResponse> {
     return this.http.get<ClubSearchResponse>(`${this.ApiClubSearch}/${searchTerm}`);
   }

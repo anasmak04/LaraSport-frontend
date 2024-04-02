@@ -9,7 +9,12 @@ import { Router } from "@angular/router";
 export class SidebarManagerComponent {
   constructor(private router: Router) {}
 
+
+  reservation(){
+    this.router.navigate(["manager/reservation"]);
+  }
+
   club() {
-    this.router.navigate(["/mangager/club"]);
+    this.router.navigate(["manager/club"]);
   }
 }

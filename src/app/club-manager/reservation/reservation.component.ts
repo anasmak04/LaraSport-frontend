@@ -3,11 +3,9 @@ import { ReservationService } from "src/app/services/manager/reservation.service
 import { SharedModule } from "../../shared/shared.module";
 
 @Component({
-    selector: "app-reservation",
-    standalone: true,
-    templateUrl: "./reservation.component.html",
-    styleUrl: "./reservation.component.css",
-    imports: [SharedModule]
+  selector: "app-reservation",
+  templateUrl: "./reservation.component.html",
+  styleUrl: "./reservation.component.css",
 })
 export class ReservationComponent {
   reservations: any = [];
@@ -15,7 +13,7 @@ export class ReservationComponent {
   constructor(private reservatrion: ReservationService) {}
 
   ngOnInit(): void {
-    this.getAllReservations(3);
+    this.getAllReservations();
   }
 
   getPrice(duration: string): number {
@@ -31,10 +29,16 @@ export class ReservationComponent {
     }
   }
 
-  getAllReservations(club_id: number) {
-    this.reservatrion.getAllReservations(club_id).subscribe((data) => {
-      this.reservations = data.reservation;
-      console.log(data);
+  getAllReservations() {
+    this.reservatrion.getAllReservations().subscribe({
+      next : (response) => {
+        this.reservations = response.reservation;
+        console.log(this.reservations);
+      },
+
+      error : (error) => {
+        console.log(error);
+      }
     });
   }
 }

@@ -15,6 +15,7 @@ export class AddClubComponent implements OnInit {
   clubs: any = [];
   cities: any = [];
   tags: any[] = [];
+  managers: any[] = [];
 
   FormClub: FormGroup;
   constructor(
@@ -24,9 +25,10 @@ export class AddClubComponent implements OnInit {
     private sweet: AlertService
   ) {
     this.FormClub = this.fb.group({
-      name: ["", Validators.required , Validators.minLength(20)],
+      name: ["", Validators.required],
       description: ["", Validators.required],
       city_id: ["", Validators.required],
+      user_id: ["", Validators.required],
       tags: ["", Validators.required],
       image: ["", Validators.required],
     });
@@ -36,6 +38,16 @@ export class AddClubComponent implements OnInit {
     this.findAllClubs();
     this.FindAllCities();
     this.findAllClubTags();
+    this.FindAllManagers();
+  }
+
+  FindAllManagers() {
+    return this.Facadeservcice.findAllManagers().subscribe({
+      next: (response) => {
+        this.managers = response.managers;
+      },
+      error: (err) => console.log(err),
+    });
   }
 
   findAllClubTags() {
@@ -74,6 +86,7 @@ export class AddClubComponent implements OnInit {
       formData.append("name", this.FormClub.get("name")?.value);
       formData.append("description", this.FormClub.get("description")?.value);
       formData.append("city_id", this.FormClub.get("city_id")?.value);
+      formData.append("user_id", this.FormClub.get("user_id")?.value);
 
       const tags = this.FormClub.get("tags")?.value;
       if (Array.isArray(tags)) {

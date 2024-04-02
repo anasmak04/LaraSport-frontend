@@ -1,17 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-
-
+import { ClubComponent } from './club/club.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { ClientRoutingRoutingModule } from './manager-routing-routing.module';
 @NgModule({
-  declarations: [],
+  declarations: [
+    ClubComponent,
+    ReservationComponent
+  ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    ClientRoutingRoutingModule
   ],
 
   exports : [
-    SharedModule
+    SharedModule,
+    ClubComponent,
+    ClientRoutingRoutingModule,
+    ReservationComponent
   ]
 })
 export class ManagerModule { }
