@@ -55,14 +55,14 @@ export class StripeService {
 
   async confirmPayment(
     clientSecret: string,
-    cardElement: StripeCardElement
+    cardElement: StripeCardElement,
+    selectedDate: Date
   ): Promise<void> {
     const stripe = await this.stripePromise;
     if (!stripe) {
       console.error("Stripe has not been properly initialized");
       return;
     }
-
     const { error, paymentIntent } = await stripe.confirmCardPayment(
       clientSecret,
       {
@@ -73,35 +73,42 @@ export class StripeService {
     if (error) {
       console.error(`Payment confirmation error: ${error.message}`);
     } else {
-      this.generatePDFTicket(paymentIntent);
-
+      this.generatePDFTicket(paymentIntent, selectedDate);
       console.log("Payment confirmed successfully");
     }
   }
 
-
-  async generatePDFTicket(paymentIntent: any): Promise<void> {
+  async generatePDFTicket(
+    paymentIntent: any,
+    selectedDate: Date
+  ): Promise<void> {
     const doc = new jsPDF();
     doc.text("Ticket Confirmation", 20, 20);
     doc.text(`Payment ID: ${paymentIntent.id}`, 20, 30);
     doc.text(
-      `Amount: ${(paymentIntent.amount / 100).toFixed(2)} ${paymentIntent.currency.toUpperCase()}`,
+      `Amount: ${(paymentIntent.amount / 100).toFixed(
+        2
+      )} ${paymentIntent.currency.toUpperCase()}`,
       20,
       40
     );
+    const formattedDate = selectedDate.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    doc.text(`Date: ${formattedDate}`, 20, 50);
 
-    const qrCodeData = `Payment ID: ${paymentIntent.id}, Amount: ${(paymentIntent.amount / 100).toFixed(2)} ${paymentIntent.currency.toUpperCase()}`;
+    const qrCodeData = `Payment ID: ${paymentIntent.id}, Amount: ${(
+      paymentIntent.amount / 100
+    ).toFixed(2)} ${paymentIntent.currency.toUpperCase()}`;
     try {
-      // Correctly handling the asynchronous nature of toDataURL
       const qrImage = await QRCode.toDataURL(qrCodeData);
-      // Adding await here to wait for the QR code to be generated
-      doc.addImage(qrImage, "JPEG", 20, 50, 50, 50);
+      doc.addImage(qrImage, "JPEG", 20, 60, 50, 50);
     } catch (error) {
       console.error("Error generating QR code", error);
     }
 
     doc.save("ticket.pdf");
-}
-
-
+  }
 }

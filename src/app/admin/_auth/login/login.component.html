@@ -3,7 +3,9 @@
 </header>
 
 <section class="mb-8 pt-10">
-  <div class="container mx-auto w-full grid grid-cols-1 md:grid-cols-2 p-6 gap-4">
+  <div
+    class="container mx-auto w-full grid grid-cols-1 md:grid-cols-2 p-6 gap-4"
+  >
     <div class="">
       <div class="mb-4 bg-[#f8f8f8] mt-4 border p-8 space-y-4">
         <h1 class="text-[#45294d] font-bold text-2xl">
@@ -41,14 +43,14 @@
             class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           />
           <div
-          *ngIf="
-            loginForm.controls['email'].invalid &&
-            loginForm.controls['email'].touched
-          "
-          class="text-red-600"
-        >
-          Please enter a valid email.
-        </div>
+            *ngIf="
+              loginForm.controls['email'].invalid &&
+              loginForm.controls['email'].touched
+            "
+            class="text-red-600"
+          >
+            Please enter a valid email.
+          </div>
         </div>
         <div>
           <label for="password" class="block text-sm font-medium text-gray-700"
@@ -62,14 +64,14 @@
             class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           />
           <div
-          *ngIf="
-            loginForm.controls['password'].invalid &&
-            loginForm.controls['password'].touched
-          "
-          class="text-red-600"
-        >
-          Please enter a valid password.
-        </div>
+            *ngIf="
+              loginForm.controls['password'].invalid &&
+              loginForm.controls['password'].touched
+            "
+            class="text-red-600"
+          >
+            Please enter a valid password.
+          </div>
         </div>
         <button
           type="submit"

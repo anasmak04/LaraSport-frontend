@@ -22,6 +22,11 @@ export class UsersComponent implements OnInit {
     this.findAll();
   }
 
+
+  
+
+
+
   findAll() {
     this.userservice.findAllUsers().subscribe({
       next: (response) => {
@@ -53,7 +58,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  search(searchTerm : String) {
+  search(searchTerm: String) {
     return this.userservice.search(searchTerm).subscribe({
       next: (response) => {
         this.Search = response.user;

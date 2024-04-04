@@ -6,6 +6,7 @@ import { LoginComponent } from "./admin/_auth/login/login.component";
 import { PostDetailsComponent } from "./components/post-details/post-details.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { AccessDeniedComponent } from "./shared/components/permission/access-denied/access-denied.component";
+import { BlogHomeComponent } from "./client/blog-home/blog-home.component";
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
@@ -31,6 +32,10 @@ const routes: Routes = [
 
   { path: "post-details/:id", component: PostDetailsComponent },
   { path: "edit-post", component: EditPostComponent },
+
+
+
+
 
   { path: "access-denied", component: AccessDeniedComponent },
   { path: "**", component: NotFoundComponent },

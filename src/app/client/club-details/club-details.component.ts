@@ -18,7 +18,8 @@ export class ClubDetailsComponent implements OnInit {
   content: string = "";
   comments: any = [];
   cardElement!: StripeCardElement;
-  selectedDuration: string = 'day'; 
+  selectedDuration: string = "day";
+  selectedDate: Date = new Date();
 
   constructor(
     private route: ActivatedRoute,
@@ -31,28 +32,27 @@ export class ClubDetailsComponent implements OnInit {
 
   async pay(clubId: number, duration: string) {
     this.apiService.startPayment(clubId, duration).subscribe(
-      async (response: PayementResponse) => {
-        const clientSecret = response.clientSecret;
-        if (!clientSecret) {
-          console.error("Failed to retrieve client secret");
-          return;
-        }
+        async (response: PayementResponse) => {
+          const clientSecret = response.clientSecret;
+          if (!clientSecret) {
+            console.error("Failed to retrieve client secret");
+            return;
+          }
 
-        const paymentMethodId = await this.stripeservice.createPaymentMethod(
-          this.cardElement
-        );
-        if (!paymentMethodId) {
-          console.error("Failed to create payment method");
-          return;
-        }
+          const paymentMethodId = await this.stripeservice.createPaymentMethod(this.cardElement);
+          if (!paymentMethodId) {
+            console.error("Failed to create payment method");
+            return;
+          }
 
-        await this.stripeservice.confirmPayment(clientSecret, this.cardElement);
-      },
-      (error) => {
-        console.error("Error starting payment:", error);
-      }
+          const selectedDate = this.selectedDate || null; 
+          await this.stripeservice.confirmPayment(clientSecret, this.cardElement, selectedDate);
+        },
+        (error) => {
+            console.error("Error starting payment:", error);
+        }
     );
-  }
+}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -61,8 +61,6 @@ export class ClubDetailsComponent implements OnInit {
         this.loadClubDetails(clubId);
       }
     });
-
-    
 
     this.FindAllComments();
     this.stripeservice
@@ -111,15 +109,4 @@ export class ClubDetailsComponent implements OnInit {
       error: (err) => console.error(err),
     });
   }
-
-
-  
-
-
-
-
-
-
-
-
 }

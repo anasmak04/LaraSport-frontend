@@ -23,12 +23,68 @@
 </div>
 
 <section class="bg-white py-8 lg:py-16 antialiased">
+
+  <div class="credit-card m-auto block bg-gray-800 rounded-lg p-4 w-[500px]">
+    <div class="flex justify-between items-center ">
+      <img
+        src="../../../assets/mastercard2.png"
+        alt="Mastercard logo"
+        class="w-16 h-16"
+      />
+      <span class="text-white font-bold text-lg">Mastercard</span>
+    </div>
+    <div class="mt-6">
+      <span class="text-white text-sm">Card Number</span>
+      <div class="flex justify-between mt-2">
+        <span class="text-white font-mono">**** **** **** ****</span>
+        <span class="text-white text-sm">1234</span>
+      </div>
+    </div>
+    <div class="flex justify-between mt-4">
+      <div>
+        <span class="text-white text-sm">Cardholder Name</span>
+        <span class="text-white font-medium mt-2">JOHN DOE</span>
+      </div>
+      <div>
+        <span class="text-white text-sm">Valid Thru</span>
+        <span class="text-white font-medium mt-2">04/24</span>
+      </div>
+    </div>
+  </div>
+
   <div class="max-w-2xl mx-auto px-4">
-    <select [(ngModel)]="selectedDuration" name="duration">
-      <option value="day">Day</option>
-      <option value="month">Month</option>
-      <option value="year">Year</option>
+    <label
+      for="countries"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Select an option</label
+    >
+    <select
+      id="countries"
+      [(ngModel)]="selectedDuration"
+      name="duration"
+      id="duration"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    >
+      <option selected>Choose a country</option>
+      <option value="US">United States</option>
+      <option value="CA">Canada</option>
+      <option value="FR">France</option>
+      <option value="DE">Germany</option>
     </select>
+
+    <div *ngIf="selectedDuration" class="mt-4">
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Choose a date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="selectedDate"
+          class="w-full"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
 
     <div
       id="card-element"
@@ -66,6 +122,7 @@
         Post comment
       </button>
     </form>
+
     <div class="flex justify-between items-center mb-6">
       <h2 class="text-lg lg:text-2xl font-bold text-gray-900">
         Discussion (20)
