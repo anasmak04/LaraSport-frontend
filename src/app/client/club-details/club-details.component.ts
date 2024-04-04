@@ -32,27 +32,33 @@ export class ClubDetailsComponent implements OnInit {
 
   async pay(clubId: number, duration: string) {
     this.apiService.startPayment(clubId, duration).subscribe(
-        async (response: PayementResponse) => {
-          const clientSecret = response.clientSecret;
-          if (!clientSecret) {
-            console.error("Failed to retrieve client secret");
-            return;
-          }
-
-          const paymentMethodId = await this.stripeservice.createPaymentMethod(this.cardElement);
-          if (!paymentMethodId) {
-            console.error("Failed to create payment method");
-            return;
-          }
-
-          const selectedDate = this.selectedDate || null; 
-          await this.stripeservice.confirmPayment(clientSecret, this.cardElement, selectedDate);
-        },
-        (error) => {
-            console.error("Error starting payment:", error);
+      async (response: PayementResponse) => {
+        const clientSecret = response.clientSecret;
+        if (!clientSecret) {
+          console.error("Failed to retrieve client secret");
+          return;
         }
+
+        const paymentMethodId = await this.stripeservice.createPaymentMethod(
+          this.cardElement
+        );
+        if (!paymentMethodId) {
+          console.error("Failed to create payment method");
+          return;
+        }
+
+        const selectedDate = this.selectedDate || null;
+        await this.stripeservice.confirmPayment(
+          clientSecret,
+          this.cardElement,
+          selectedDate
+        );
+      },
+      (error) => {
+        console.error("Error starting payment:", error);
+      }
     );
-}
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
