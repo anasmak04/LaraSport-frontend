@@ -1,4 +1,4 @@
-<section class="bg-[#f8f9fa] p-[100px]">
+<section class="bg-[#f8f9fa] py-[100px] px-4 md:px-8">
   <div class="container mx-auto max-w-7xl">
     <h1 class="text-center font-bold text-xl mb-2">
       Conseils en sport et nutrition sur notre blog
@@ -8,46 +8,33 @@
       blog.
     </p>
 
-    <div
-      class="px-2 flex justify-center flex-wrap space-y-8 md:space-y-0 mb-10"
-    >
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
       @for (post of posts; track $index) {
-      <div class="w-full md:w-1/2 lg:w-1/3 mb-4 h-[380px]">
-        <div
-          class="card border border-gray-200 h-full flex flex-col rounded-lg overflow-hidden transition-shadow duration-300 ease-in-out"
-        >
-          <img
-            src="{{ post.image }}"
-            alt="{{ post.title }}"
-            class="w-full h-60 object-cover"
-          />
-          <div class="p-4 flex-col flex-grow">
-            <h1 class="text-gray-800 font-semibold text-xl mb-2">
-              {{ post.title }}
-            </h1>
-            <p class="flex-grow text-gray-600 text-sm">
-              {{ post.content | truncate : 300 : true : "..." }}
-            </p>
-            <p class="text-gray-500 text-xs mt-2">
-              Published: {{ post.publish_date | date : "mediumDate" }}
-            </p>
-            <div class="flex flex-wrap mt-2">
-              <span
-                class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded dark:bg-blue-800 dark:text-blue-100"
-                *ngFor="let tag of post.tags"
-              >
-                {{ tag.name }}
-              </span>
+        <div class="mb-4 h-full">
+          <div class="card border border-gray-200 h-full flex flex-col rounded-lg overflow-hidden transition-shadow duration-300 ease-in-out">
+            <img src="{{ post.image }}" alt="{{ post.title }}" class="w-full h-60 object-cover" />
+            <div class="p-4 flex flex-col flex-grow">
+              <h1 class="text-gray-800 font-semibold text-xl mb-2">
+                {{ post.title }}
+              </h1>
+              <p class="flex-grow text-gray-600 text-sm">
+                {{ post.content | truncate : 300 : true : "..." }}
+              </p>
+              <p class="text-gray-500 text-xs mt-2">
+                Published: {{ post.publish_date | date : "mediumDate" }}
+              </p>
+              <div class="flex flex-wrap mt-2">
+                <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded dark:bg-blue-800 dark:text-blue-100" *ngFor="let tag of post.tags">
+                  {{ tag.name }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       }
     </div>
-    <button
-      class="bg-black hover:border hover:border-black text-white hover:bg-white hover:text-black m-auto block px-4 py-4 capitalize"
-    >
-      consultez notre blog
+    <button class="bg-black hover:border hover:border-black text-white hover:bg-white hover:text-black m-auto block px-4 py-4 capitalize">
+      Consultez notre blog
     </button>
   </div>
 </section>
