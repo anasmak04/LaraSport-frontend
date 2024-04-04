@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<div class="bg-custom-gradient bg-cover w-full h-52 flex justify-center items-center">
+  <h1 class="text-white text-center font-bold text-xl md:text-3xl px-4">
+    LES CLUBS ET SALLES DE SPORT À
+  </h1>
+</div>
+
+<section class="container mx-auto max-w-7xl mb-4 p-10">
+  <h1 class="capitalize text-[#2e294d] mb-2 text-2xl font-bold">
+    La liste des villes du Maroc
+  </h1>
+
+  <p class="mb-2">
+    Vous trouverez ci-dessous les 50 villes qui contiennent des clubs et des
+    salles de sport.
+  </p>
+  <div  class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    @for (city of cities; track $index) {
+    <div
+      class="relative w-full h-[200px] overflow-hidden"
+      [routerLink]="['/city/club', city.id]"
+    >
+      <img
+        src="{{ city.image }}"
+        alt=""
+        class="w-full h-full object-cover"
+        style="filter: brightness(40%)"
+      />
+  
+      <div class="absolute bottom-0 w-full p-4">
+        <h1 class="text-white font-bold capitalize text-lg">
+          {{ city.name }}
+        </h1>
+        <p class="text-white font-bold capitalize">
+          Découvrez les clubs et les salles de sport à {{ city.name }}
+        </p>
+      </div>
+    </div>
+    }
+  </div>
+  <button class="bg-black hover:border mt-20 hover:border-black text-white hover:bg-white hover:text-black m-auto block px-4 py-4 capitalize">
+    Consultez plus de 44 villes
+  </button>
+
+
+
+</section>
+<app-blog-home></app-blog-home>
+<section class="container mx-auto max-w-7xl mb-4 p-10">
+  <h1 class="text-center font-bold text-xl mb-2">
+    Découvrez plus de 100 disciplines sportives au Maroc
+  </h1>
+  <p class="text-center mb-10">
+    Découvrez tous les sports que vous pouvez pratiquer dans les clubs et les
+    salles de sport au Maroc.
+  </p>
+
+<div  class="flex flex-wrap justify-center items-center gap-4">
+  <div class="w-[300px] h-[200px] border relative" *ngFor="let tag of tags">
+    <img
+      src="{{ tag.image }}"
+      alt="{{ tag.name }}"
+      class="w-full h-full object-cover"
+      [style.objectFit]="'cover'"
+    />
+    <div class="absolute inset-0 flex flex-col justify-end p-4 text-xl font-bold">
+      <h2 class="font-bold text-black ">{{ tag.name }}</h2>
+    </div>
+  </div>
+</div>
+</section>
+<app-footer></app-footer>

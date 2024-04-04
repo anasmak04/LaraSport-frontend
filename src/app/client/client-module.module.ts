@@ -17,7 +17,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatNativeDateModule } from "@angular/material/core";
 import { BlogHomeComponent } from "./blog-home/blog-home.component";
 import { SportHomeComponent } from "./sport-home/sport-home.component";
-
+import { HomeComponent } from "./home/home.component";
 @NgModule({
   declarations: [
     ClubComponent,
@@ -29,6 +29,7 @@ import { SportHomeComponent } from "./sport-home/sport-home.component";
     EventComponent,
     SportHomeComponent,
     BlogHomeComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
@@ -51,6 +52,7 @@ import { SportHomeComponent } from "./sport-home/sport-home.component";
     EventComponent,
     SportHomeComponent,
     BlogHomeComponent,
+    HomeComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
