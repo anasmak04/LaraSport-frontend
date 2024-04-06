@@ -1,11 +1,49 @@
-<div *ngIf="clubs.length > 0">
-  <h2>Search Results</h2>
-  <ul>
-    <li *ngFor="let club of clubs">
-      <h3>{{ club.name }}</h3>
-      <h3>{{ club.description }}</h3>
-      <h3>{{ club.city.name }}</h3>
-      <h3 *ngFor="let tag of club.club_tags">{{ tag.name }}</h3>
-    </li>
-  </ul>
-</div>
+<app-navbar></app-navbar>
+
+<section>
+  <div
+    class="bg-custom-gradient bg-cover w-full h-52 flex justify-center items-center"
+  >
+    <h1 class="text-white text-center font-bold text-xl md:text-3xl px-4">
+      LES CLUBS ET SALLES DE SPORT À
+    </h1>
+  </div>
+
+  <div class="container mx-auto p-4">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div
+        *ngFor="let club of clubs"
+        class="bg-white rounded-lg overflow-hidden shadow-lg"
+      >
+        <img
+          [src]="club.image"
+          alt="Image of {{ club.name }}"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">{{ club.name }}</h3>
+          <p class="text-sm my-2">{{ club.description }}</p>
+          <p class="text-sm"><strong>City:</strong> {{ club.city.name }}</p>
+          <div class="mt-2">
+            <strong>Tags:</strong>
+            <ul class="flex flex-wrap">
+              <li
+                *ngFor="let tag of club.tags"
+                class="mr-2 text-xs font-medium text-gray-700 bg-gray-200 rounded-full px-2 py-1"
+              >
+                {{ tag.name }}
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+        <button class="bg-black text-white px-6 py-3 m-4">details</button>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
