@@ -18,6 +18,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { BlogHomeComponent } from "./blog-home/blog-home.component";
 import { SportHomeComponent } from "./sport-home/sport-home.component";
 import { HomeComponent } from "./home/home.component";
+import { ClubResultComponent } from "./club-result/club-result.component";
 @NgModule({
   declarations: [
     ClubComponent,
@@ -29,7 +30,8 @@ import { HomeComponent } from "./home/home.component";
     EventComponent,
     SportHomeComponent,
     BlogHomeComponent,
-    HomeComponent
+    HomeComponent,
+    ClubResultComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +54,8 @@ import { HomeComponent } from "./home/home.component";
     EventComponent,
     SportHomeComponent,
     BlogHomeComponent,
-    HomeComponent
+    HomeComponent,
+    ClubResultComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },

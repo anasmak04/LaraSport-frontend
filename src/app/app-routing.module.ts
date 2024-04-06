@@ -1,12 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { RegisterComponent } from "./admin/_auth/register/register.component";
-import { EditPostComponent } from "./components/edit-post/edit-post.component";
-import { LoginComponent } from "./admin/_auth/login/login.component";
-import { PostDetailsComponent } from "./components/post-details/post-details.component";
+import { RegisterComponent } from "./_auth/register/register.component";
+import { EditPostComponent } from "./admin/post/edit-post/edit-post.component";
+import { LoginComponent } from "./_auth/login/login.component";
+import { PostDetailsComponent } from "./admin/post/post-details/post-details.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { AccessDeniedComponent } from "./shared/components/permission/access-denied/access-denied.component";
-import { BlogHomeComponent } from "./client/blog-home/blog-home.component";
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
@@ -27,8 +26,9 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () =>
-      import("./client/client-module.module").then((m) => m.ClientModuleModule),
+    import("./client/client-module.module").then((m) => m.ClientModuleModule),
   },
+  
 
   { path: "post-details/:id", component: PostDetailsComponent },
   { path: "edit-post", component: EditPostComponent },

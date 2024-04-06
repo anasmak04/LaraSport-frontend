@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
+import { Route, Router } from "@angular/router";
 import { map } from "rxjs";
 import { CityServiceService } from "src/app/services/city/city-service.service";
 import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
-import { PostServiceService } from "src/app/services/post/post-service.service";
+import { ClubServiceService } from "src/app/services/club/club-service.service";
+
 
 @Component({
   selector: "app-home",
@@ -12,14 +14,34 @@ import { PostServiceService } from "src/app/services/post/post-service.service";
 export class HomeComponent implements OnInit {
   cities: any = [];
   tags: any = [];
+  selectedTag: string = "";
+  selectedCity: string = "";
   constructor(
     private cityservice: CityServiceService,
-    private tagsservice: ClubTagsService
+    private tagsservice: ClubTagsService,
+    private clubservice: ClubServiceService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.findcities();
     this.findtags();
+  }
+
+  tocities() {
+    this.router.navigate(["/city"]);
+  }
+
+  toblogs() {
+    this.router.navigate(["/post"]);
+  }
+
+  clubs: any;
+
+  searchclub() {
+    this.router.navigate(["/club-result"], {
+      queryParams: { tag: this.selectedTag, city: this.selectedCity },
+    });
   }
 
   findcities() {
@@ -43,6 +65,7 @@ export class HomeComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.tags = response;
+          console.log(this.tags);
         },
         error: (error) => {
           console.log(error);

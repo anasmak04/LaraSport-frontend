@@ -75,5 +75,4 @@ export class ClubComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
-
 }

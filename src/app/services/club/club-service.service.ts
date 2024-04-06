@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
 import { Club } from "src/app/shared/model/club/club";
@@ -14,7 +14,6 @@ import { ClubSearchResponse } from "src/app/shared/model/club-search-response";
 export class ClubServiceService {
   private ApiUrl = "http://127.0.0.1:8000/api";
   private ApiClubSearch = "http://127.0.0.1:8000/api/search/club";
-
 
   constructor(private http: HttpClient) {}
 
@@ -41,8 +40,25 @@ export class ClubServiceService {
     });
   }
 
-
   search(searchTerm: String): Observable<ClubSearchResponse> {
-    return this.http.get<ClubSearchResponse>(`${this.ApiClubSearch}/${searchTerm}`);
+    return this.http.get<ClubSearchResponse>(
+      `${this.ApiClubSearch}/${searchTerm}`
+    );
   }
+
+
+
+  searchClubs(tagId: string, cityId: string): Observable<ClubResponse> {
+    let params = new HttpParams();
+    if (cityId) {
+      params = params.append('city_id', cityId);
+    }
+    if (tagId) {
+      params = params.append('tag_id', tagId);
+    }
+
+    return this.http.get<ClubResponse>(`${this.ApiUrl}/search/clubs`, { params });
+  }
+
+
 }

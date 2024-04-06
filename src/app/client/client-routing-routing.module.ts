@@ -7,9 +7,13 @@ import { ContactComponent } from './contact/contact.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { ClubComponent } from './club/club.component';
 import { ClubDetailsComponent } from './club-details/club-details.component';
+import { HomeComponent } from './home/home.component';
+import { ClubResultComponent } from './club-result/club-result.component';
 
 const routes: Routes = [
+  { path: "", component: HomeComponent},
   { path: "post", component: PostComponent },
+  { path: "club-result", component: ClubResultComponent },
   { path: "city", component: CityComponent },
   { path: "event", component: EventComponent },
   { path: "contact", component: ContactComponent },

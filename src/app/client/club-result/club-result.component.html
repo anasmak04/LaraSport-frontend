@@ -1,0 +1,11 @@
+<div *ngIf="clubs.length > 0">
+  <h2>Search Results</h2>
+  <ul>
+    <li *ngFor="let club of clubs">
+      <h3>{{ club.name }}</h3>
+      <h3>{{ club.description }}</h3>
+      <h3>{{ club.city.name }}</h3>
+      <h3 *ngFor="let tag of club.club_tags">{{ tag.name }}</h3>
+    </li>
+  </ul>
+</div>

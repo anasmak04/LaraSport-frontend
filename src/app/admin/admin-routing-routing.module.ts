@@ -1,17 +1,20 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { guardRoleGuard } from "../shared/guard/guard-role.guard";
-import { AdminPostComponent } from "./admin-post/admin-post.component";
-import { AddPostComponent } from "./add-post/add-post.component";
+import { AdminPostComponent } from "./post/admin-post/admin-post.component";
+import { AddPostComponent } from "./post/add-post/add-post.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { CategoryComponent } from "./category/category.component";
 import { TagsComponent } from "./tags/tags.component";
 import { UsersComponent } from "./users/users.component";
 import { AdminCityComponent } from "./admin-city/admin-city.component";
-import { AdminClubComponent } from "./admin-club/admin-club.component";
-import { AdminEventComponent } from "./admin-event/admin-event.component";
-import { AddEventComponent } from "./add-event/add-event.component";
-import { AddClubComponent } from "./add-club/add-club.component";
+import { AdminClubComponent } from "./club/admin-club/admin-club.component";
+import { AdminEventComponent } from "./event/admin-event/admin-event.component";
+import { AddEventComponent } from "./event/add-event/add-event.component";
+import { AddClubComponent } from "./club/add-club/add-club.component";
+import { ClubtagsComponent } from "./clubtags/clubtags.component";
+import { EditPostComponent } from "./post/edit-post/edit-post.component";
+import { EditClubComponent } from "./club/edit-club/edit-club.component";
 
 const routes: Routes = [
   {
@@ -34,6 +37,13 @@ const routes: Routes = [
     canActivate: [guardRoleGuard],
     component: CategoryComponent,
   },
+
+  {
+    path: "clubtags",
+    canActivate: [guardRoleGuard],
+    component: ClubtagsComponent,
+  },
+  
   {
     path: "tags",
     canActivate: [guardRoleGuard],
@@ -70,6 +80,13 @@ const routes: Routes = [
     canActivate: [guardRoleGuard],
     component: AddClubComponent,
   },
+
+  {
+    path: 'edit/:id',
+    canActivate: [guardRoleGuard],
+    component: EditClubComponent,
+  },
+  
 ];
 
 @NgModule({

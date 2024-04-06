@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PostServiceService } from "src/app/services/post/post-service.service";
 import { map } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-blog-home",
@@ -8,13 +9,17 @@ import { map } from "rxjs/operators";
   styleUrl: "./blog-home.component.css",
 })
 export class BlogHomeComponent implements OnInit{
-  constructor(private blogservice: PostServiceService) {}
+  constructor(private blogservice: PostServiceService,
+    private router : Router) {}
   ngOnInit(): void {
     this.getPosts();
 
   }
    posts : any = [];
-
+   
+   toblogs(){
+    this.router.navigate(['/post']);
+  }
 
   getPosts() {
     this.blogservice

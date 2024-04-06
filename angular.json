@@ -13,6 +13,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "sweetalert2",
+              "qrcode",
+              "core-js",
+              "raf",
+              "rgbcolor"
+            ],
             "outputPath": "dist/lara-sport-front",
             "index": "src/index.html",
             "main": "src/main.ts",

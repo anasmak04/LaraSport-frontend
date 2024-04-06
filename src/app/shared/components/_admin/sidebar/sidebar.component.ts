@@ -28,6 +28,10 @@ export class SidebarComponent implements OnInit {
     this.route.navigate(["/admin/dashboard"]);
   }
 
+  clubtags(){
+    this.route.navigate(["/admin/clubtags"]);
+  }
+
   events() {
     this.route.navigate(["/admin/event"]);
   }
@@ -40,4 +44,6 @@ export class SidebarComponent implements OnInit {
   clubs(){
     this.route.navigate(["/admin/club"]);
   }
+
+
 }

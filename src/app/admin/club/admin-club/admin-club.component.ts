@@ -27,6 +27,9 @@ export class AdminClubComponent implements OnInit {
     this.route.navigate(["admin/add/club"]);
   }
 
+  editroute(){
+    
+  }
 
 
 

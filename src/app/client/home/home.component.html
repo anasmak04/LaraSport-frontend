@@ -1,8 +1,57 @@
 <app-navbar></app-navbar>
-<div class="bg-custom-gradient bg-cover w-full h-52 flex justify-center items-center">
+<div
+  class="bg-custom-gradient bg-cover w-full pt-8 flex flex-col justify-center items-center"
+>
   <h1 class="text-white text-center font-bold text-xl md:text-3xl px-4">
     LES CLUBS ET SALLES DE SPORT À
   </h1>
+  <div
+    class="w-full max-w-4xl mx-auto mt-4 bg-transparent bg-opacity-80 rounded-lg"
+  >
+    <form
+      accept-charset="UTF-8"
+      class="p-4"
+      (ngSubmit)="searchclub()"
+    >
+      <div class="flex flex-wrap justify-center gap-4">
+        <div class="w-full sm:w-1/3">
+          <select
+            class="form-select block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+            id="tags"
+            name="tags"
+            [(ngModel)]="selectedTag"
+          >
+            <option selected="selected" value="">Tous les sports</option>
+            <option *ngFor="let tag of tags" value="{{ tag.id }}">
+              {{ tag.name }}
+            </option>
+          </select>
+        </div>
+        <div class="w-full sm:w-1/3">
+          <select
+            class="form-select block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+            id="city"
+            name="city"
+            [(ngModel)]="selectedCity"
+          >
+            <option selected="selected" value="">Toutes les villes</option>
+            <option *ngFor="let city of cities" value="{{ city.id }}">
+              {{ city.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="w-full sm:w-1/3 flex justify-center">
+          <button
+            type="submit"
+            class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition ease-in-out duration-150"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
 <section class="container mx-auto max-w-7xl mb-4 p-10">
@@ -14,7 +63,7 @@
     Vous trouverez ci-dessous les 50 villes qui contiennent des clubs et des
     salles de sport.
   </p>
-  <div  class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     @for (city of cities; track $index) {
     <div
       class="relative w-full h-[200px] overflow-hidden"
@@ -26,7 +75,7 @@
         class="w-full h-full object-cover"
         style="filter: brightness(40%)"
       />
-  
+
       <div class="absolute bottom-0 w-full p-4">
         <h1 class="text-white font-bold capitalize text-lg">
           {{ city.name }}
@@ -38,12 +87,12 @@
     </div>
     }
   </div>
-  <button class="bg-black hover:border mt-20 hover:border-black text-white hover:bg-white hover:text-black m-auto block px-4 py-4 capitalize">
+  <button
+    (click)="tocities()"
+    class="bg-black hover:border mt-20 hover:border-black text-white hover:bg-white hover:text-black m-auto block px-4 py-4 capitalize"
+  >
     Consultez plus de 44 villes
   </button>
-
-
-
 </section>
 <app-blog-home></app-blog-home>
 <section class="container mx-auto max-w-7xl mb-4 p-10">
@@ -55,18 +104,29 @@
     salles de sport au Maroc.
   </p>
 
-<div  class="flex flex-wrap justify-center items-center gap-4">
-  <div class="w-[300px] h-[200px] border relative" *ngFor="let tag of tags">
-    <img
-      src="{{ tag.image }}"
-      alt="{{ tag.name }}"
-      class="w-full h-full object-cover"
-      [style.objectFit]="'cover'"
-    />
-    <div class="absolute inset-0 flex flex-col justify-end p-4 text-xl font-bold">
-      <h2 class="font-bold text-black ">{{ tag.name }}</h2>
+  <div class="flex flex-wrap justify-center items-center gap-4">
+    <div
+      class="w-full h-[200px] md:w-[300px] md:h-[200px] border relative"
+      *ngFor="let tag of tags"
+    >
+      <img
+        src="{{ tag.image }}"
+        alt="{{ tag.name }}"
+        class="w-full h-full object-cover"
+        [style.objectFit]="'cover'"
+      />
+      <div
+        class="absolute inset-0 flex flex-col justify-end p-4 text-xl font-bold"
+      >
+        <h2 class="font-bold text-black">{{ tag.name }}</h2>
+      </div>
     </div>
   </div>
-</div>
+  <button
+    (click)="tocities()"
+    class="bg-black hover:border mt-20 hover:border-black text-white hover:bg-white hover:text-black m-auto block px-4 py-4 capitalize"
+  >
+    Consultez plus de 44 villes
+  </button>
 </section>
 <app-footer></app-footer>
