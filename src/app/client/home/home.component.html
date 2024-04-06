@@ -8,11 +8,7 @@
   <div
     class="w-full max-w-4xl mx-auto mt-4 bg-transparent bg-opacity-80 rounded-lg"
   >
-    <form
-      accept-charset="UTF-8"
-      class="p-4"
-      (ngSubmit)="searchclub()"
-    >
+    <form accept-charset="UTF-8" class="p-4" (ngSubmit)="searchclub()">
       <div class="flex flex-wrap justify-center gap-4">
         <div class="w-full sm:w-1/3">
           <select
@@ -129,4 +125,36 @@
     Consultez plus de 44 villes
   </button>
 </section>
+
+<section class="container mx-auto max-w-7xl mb-4 p-10">
+  <h1 class="text-center font-bold text-xl mb-2">
+    Découvrez plus de 100 disciplines sportives au Maroc
+  </h1>
+  <p class="text-center mb-10">
+    Découvrez tous les sports que vous pouvez pratiquer dans les clubs et les
+    salles de sport au Maroc.
+  </p>
+
+  <div class="flex flex-wrap justify-center items-center gap-4">
+    <div
+      class="w-full h-[200px] md:w-[300px] md:h-[200px] border"
+      *ngFor="let event of events"
+    >
+      <img
+        src="{{ event.image }}"
+        alt="{{ event.name }}"
+        class="w-full h-full object-cover"
+        [style.objectFit]="'cover'"
+      />
+      <h2 class="font-bold text-black">{{ event.title }}</h2>
+    </div>
+  </div>
+  <button
+    (click)="eventroute()"
+    class="bg-black hover:border mt-20 hover:border-black text-white hover:bg-white hover:text-black m-auto block px-4 py-4 capitalize"
+  >
+    Consultez plus 44 events
+  </button>
+</section>
+
 <app-footer></app-footer>

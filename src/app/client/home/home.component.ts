@@ -4,6 +4,7 @@ import { map } from "rxjs";
 import { CityServiceService } from "src/app/services/city/city-service.service";
 import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
 import { ClubServiceService } from "src/app/services/club/club-service.service";
+import { EventServiceService } from "src/app/services/event/event-service.service";
 
 
 @Component({
@@ -13,6 +14,7 @@ import { ClubServiceService } from "src/app/services/club/club-service.service";
 })
 export class HomeComponent implements OnInit {
   cities: any = [];
+  events: any = [];
   tags: any = [];
   selectedTag: string = "";
   selectedCity: string = "";
@@ -20,12 +22,14 @@ export class HomeComponent implements OnInit {
     private cityservice: CityServiceService,
     private tagsservice: ClubTagsService,
     private clubservice: ClubServiceService,
+    private eventservice: EventServiceService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.findcities();
     this.findtags();
+    this.getevents();
   }
 
   tocities() {
@@ -54,6 +58,24 @@ export class HomeComponent implements OnInit {
         },
         error: (error) => {
           console.log(error);
+        },
+      });
+  }
+
+
+  eventroute() {
+    this.router.navigate(["/event"]);
+  }
+  getevents() {
+    this.eventservice
+      .FindAllEvents()
+       .subscribe({
+        next: (response) => {
+          this.events = response.event.slice(0, 3);
+          console.log(this.events);
+        },
+        error: (err) => {
+          console.log(err);
         },
       });
   }

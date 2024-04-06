@@ -9,6 +9,7 @@ import { ClubComponent } from './club/club.component';
 import { ClubDetailsComponent } from './club-details/club-details.component';
 import { HomeComponent } from './home/home.component';
 import { ClubResultComponent } from './club-result/club-result.component';
+import { SportHomeComponent } from './sport-home/sport-home.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: "city", component: CityComponent },
   { path: "event", component: EventComponent },
   { path: "contact", component: ContactComponent },
+  { path: "tags", component: SportHomeComponent },
   { path: "event/:id", component: EventDetailsComponent },
   { path: "city/club/:id", component: ClubComponent },
   { path: "club/:id", component: ClubDetailsComponent },
