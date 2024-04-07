@@ -6,6 +6,7 @@ import { LoginComponent } from "./_auth/login/login.component";
 import { PostDetailsComponent } from "./admin/post/post-details/post-details.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { AccessDeniedComponent } from "./shared/components/permission/access-denied/access-denied.component";
+import { AuthGuard } from "./shared/guard/auth.guard";
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
@@ -32,8 +33,6 @@ const routes: Routes = [
 
   { path: "post-details/:id", component: PostDetailsComponent },
   { path: "edit-post", component: EditPostComponent },
-
-
 
 
 
