@@ -32,6 +32,12 @@ export class AuthServiceService {
     localStorage.setItem("user", JSON.stringify(user));
   }
 
+  storeisBanned(isBanned: boolean | number) {
+    const isBannedValue = Boolean(isBanned); // Converts 1 to true, 0 to false, if needed
+    localStorage.setItem('is_banned', JSON.stringify(isBannedValue));
+  }
+  
+
   getUser(): any {
     const userString = localStorage.getItem("user");
     if (userString) {
@@ -78,6 +84,7 @@ export class AuthServiceService {
           localStorage.removeItem("roles");
           localStorage.removeItem("user");
           localStorage.removeItem("managerId");
+          localStorage.removeItem("is_banned");
         })
       );
   }

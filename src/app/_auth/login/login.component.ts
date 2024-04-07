@@ -36,10 +36,9 @@ export class LoginComponent implements OnInit {
           console.log("login successful", response);
           this.authservice.storeToken(response.token);
           const id = localStorage.setItem("managerId", response.id.toString());
-          console.log(id);
-          // console.log("login", this.authservice.getToken());
           this.authservice.storeRoles(response.roles);
           this.authservice.storeUser(response.user);
+          this.authservice.storeisBanned(response.is_banned);
           if (response.roles.includes("Admin")) {
             this.router.navigate(["/admin/dashboard"]);
           } else if (response.roles.includes("Manager")) {

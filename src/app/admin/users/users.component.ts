@@ -23,6 +23,39 @@ export class UsersComponent implements OnInit {
   }
 
 
+
+  banUser(userId: number): void {
+    this.userservice.banUser(userId).subscribe({
+      next: (response) => {
+        console.log("User Banned", response);
+        this.updateUserStatus(userId, true);
+         // Update user's status in the local array
+      },
+      error: (err) => {
+        console.error('Error banning user', err);
+      }
+    });
+  }
+
+  unbanUser(userId: number): void {
+    this.userservice.unbanUser(userId).subscribe({
+      next: (response) => {
+        console.log("User Unbanned", response);
+        this.updateUserStatus(userId, false); // Update user's status in the local array
+      },
+      error: (err) => {
+        console.error('Error unbanning user', err);
+      }
+    });
+  }
+
+  private updateUserStatus(userId: number, isBanned: boolean): void {
+    const user = this.users.find((u: { id: number; }) => u.id === userId);
+    if (user) {
+      user.is_banned = isBanned;
+    }
+  }
+
   
 
 

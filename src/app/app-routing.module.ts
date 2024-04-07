@@ -6,7 +6,7 @@ import { LoginComponent } from "./_auth/login/login.component";
 import { PostDetailsComponent } from "./admin/post/post-details/post-details.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { AccessDeniedComponent } from "./shared/components/permission/access-denied/access-denied.component";
-import { AuthGuard } from "./shared/guard/auth.guard";
+import { isBannedGuard } from "./shared/auth/is-banned.guard";
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
@@ -26,6 +26,7 @@ const routes: Routes = [
 
   {
     path: "",
+    canActivate : [isBannedGuard],
     loadChildren: () =>
     import("./client/client-module.module").then((m) => m.ClientModuleModule),
   },

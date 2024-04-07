@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { User } from "src/app/shared/model/user/user";
 import { UserResponse } from "src/app/shared/model/user/user-response";
 
 @Injectable({
@@ -26,4 +27,17 @@ export class UsersService {
   search(sarchTerm: String): Observable<any> {
     return this.http.get<any>(this.ApiSearch + sarchTerm);
   }
+  
+
+
+  banUser(userId: number) : Observable<User> {
+    return this.http.patch<User>(`http://127.0.0.1:8000/api/user/${userId}/ban`, {});
+  }
+  
+  unbanUser(userId: number) : Observable<User>{
+    return this.http.patch<User>(`http://127.0.0.1:8000/api/user/${userId}/unban`, {});
+  }
+
+  
+
 }

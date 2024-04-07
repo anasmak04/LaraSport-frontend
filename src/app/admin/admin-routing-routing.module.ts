@@ -43,7 +43,7 @@ const routes: Routes = [
     canActivate: [guardRoleGuard],
     component: ClubtagsComponent,
   },
-  
+
   {
     path: "tags",
     canActivate: [guardRoleGuard],
@@ -82,11 +82,10 @@ const routes: Routes = [
   },
 
   {
-    path: 'edit/:id',
+    path: "edit/:id",
     canActivate: [guardRoleGuard],
     component: EditClubComponent,
   },
-  
 ];
 
 @NgModule({

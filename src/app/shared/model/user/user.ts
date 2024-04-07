@@ -4,4 +4,5 @@ export interface User {
     lastName : string;
     city : number;
     email : string;
+    is_banned : boolean;
 }

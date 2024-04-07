@@ -50,7 +50,10 @@
   </div>
 </div>
 
-<section class="container mx-auto max-w-7xl mb-4 p-10">
+<section
+  *ngIf="!(loader.isLoading | async)"
+  class="container mx-auto max-w-7xl mb-4 p-10"
+>
   <h1 class="capitalize text-[#2e294d] mb-2 text-2xl font-bold">
     La liste des villes du Maroc
   </h1>
@@ -91,7 +94,8 @@
   </button>
 </section>
 <app-blog-home></app-blog-home>
-<section class="container mx-auto max-w-7xl mb-4 p-10">
+
+<section class="container mx-auto max-w-7xl mb-4 mt-10 p-10">
   <h1 class="text-center font-bold text-xl mb-2">
     Découvrez plus de 100 disciplines sportives au Maroc
   </h1>
@@ -124,9 +128,77 @@
   >
     Consultez plus de 44 villes
   </button>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div
+      role="status"
+      *ngIf="loader.isLoading | async"
+      class="w-full h-[200px] bg-red-500 rounded shadow animate-pulse"
+    >
+      <div
+        class="flex items-center justify-center w-full h-full bg-gray-300 rounded"
+      >
+        <svg
+          class="w-10 h-10 text-gray-200"
+          aria-hidden="true"
+          fill="currentColor"
+          viewBox="0 0 16 20"
+        >
+          <path
+            d="M14.066 0H7v5a2 2 0 01-2 2H0v11a1.97 1.97 0 001.934 2h12.132A1.97 1.97 0 0016 18V2a1.97 1.97 0 00-1.934-2zM10.5 6a1.5 1.5 0 110 2.999A1.5 1.5 0 0110.5 6zm2.221 10.515a1 1 0 01-.858.485h-8a1 1 0 01-.9-1.43L5.6 10.039a.978.978 0 01.936-.57 1 1 0 01.9.632l1.181 2.981.541-1a.945.945 0 01.883-.522 1 1 0 01.879.529l1.832 3.438a1 1 0 01-.031.988zM5 5V.13a2.96 2.96 0 00-1.293.749L.879 3.707A2.98 2.98 0 00.13 5H5z"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <div
+      role="status"
+      *ngIf="loader.isLoading | async"
+      class="w-full h-[200px] bg-red-500 rounded shadow animate-pulse"
+    >
+      <div
+        class="flex items-center justify-center w-full h-full bg-gray-300 rounded"
+      >
+        <svg
+          class="w-10 h-10 text-gray-200"
+          aria-hidden="true"
+          fill="currentColor"
+          viewBox="0 0 16 20"
+        >
+          <path
+            d="M14.066 0H7v5a2 2 0 01-2 2H0v11a1.97 1.97 0 001.934 2h12.132A1.97 1.97 0 0016 18V2a1.97 1.97 0 00-1.934-2zM10.5 6a1.5 1.5 0 110 2.999A1.5 1.5 0 0110.5 6zm2.221 10.515a1 1 0 01-.858.485h-8a1 1 0 01-.9-1.43L5.6 10.039a.978.978 0 01.936-.57 1 1 0 01.9.632l1.181 2.981.541-1a.945.945 0 01.883-.522 1 1 0 01.879.529l1.832 3.438a1 1 0 01-.031.988zM5 5V.13a2.96 2.96 0 00-1.293.749L.879 3.707A2.98 2.98 0 00.13 5H5z"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <div
+      role="status"
+      *ngIf="loader.isLoading | async"
+      class="w-full h-[200px] bg-red-500 rounded shadow animate-pulse"
+    >
+      <div
+        class="flex items-center justify-center w-full h-full bg-gray-300 rounded"
+      >
+        <svg
+          class="w-10 h-10 text-gray-200"
+          aria-hidden="true"
+          fill="currentColor"
+          viewBox="0 0 16 20"
+        >
+          <path
+            d="M14.066 0H7v5a2 2 0 01-2 2H0v11a1.97 1.97 0 001.934 2h12.132A1.97 1.97 0 0016 18V2a1.97 1.97 0 00-1.934-2zM10.5 6a1.5 1.5 0 110 2.999A1.5 1.5 0 0110.5 6zm2.221 10.515a1 1 0 01-.858.485h-8a1 1 0 01-.9-1.43L5.6 10.039a.978.978 0 01.936-.57 1 1 0 01.9.632l1.181 2.981.541-1a.945.945 0 01.883-.522 1 1 0 01.879.529l1.832 3.438a1 1 0 01-.031.988zM5 5V.13a2.96 2.96 0 00-1.293.749L.879 3.707A2.98 2.98 0 00.13 5H5z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="container mx-auto max-w-7xl mb-4 p-10">
+<section
+  *ngIf="!(loader.isLoading | async)"
+  class="container mx-auto max-w-7xl mb-4 p-10"
+>
   <h1 class="text-center font-bold text-xl mb-2">
     Découvrez plus de 100 disciplines sportives au Maroc
   </h1>
