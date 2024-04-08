@@ -25,9 +25,7 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-
   loader = inject(LoaderServiceService);
-
 
   categories: any[] = [];
 
@@ -82,10 +80,9 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-
-  update(id : number) {
+  update(id: number) {
     if (this.categoryForm.valid) {
-      this.categoryService.update(id,this.categoryForm.value).subscribe({
+      this.categoryService.update(id, this.categoryForm.value).subscribe({
         next: () => {
           this.sweet.showSuccess(
             "Category updated",
@@ -111,6 +108,4 @@ export class CategoryComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
-
-
 }

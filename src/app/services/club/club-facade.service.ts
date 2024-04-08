@@ -3,6 +3,7 @@ import { ClubServiceService } from './club-service.service';
 import { CityServiceService } from '../city/city-service.service';
 import { ClubTagsService } from '../club-tags/club-tags.service';
 import { ManagerService } from '../manager/manager.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class ClubFacadeService {
     private managerservice : ManagerService
   ) { }
 
+
+  
 
 
   findAllManagers(){

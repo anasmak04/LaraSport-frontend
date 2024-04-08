@@ -14,25 +14,25 @@ export class ClubtagsComponent implements OnInit {
 
   selectedTagId: number | null = null;
 
-toggleEdit(id: number) {
-  if (this.selectedTagId === id) {
-    this.selectedTagId = null;
-  } else {
-    this.selectedTagId = id;
+  toggleEdit(id: number) {
+    if (this.selectedTagId === id) {
+      this.selectedTagId = null;
+    } else {
+      this.selectedTagId = id;
+    }
   }
-}
 
-isModalShown(id: number): boolean {
-  return this.selectedTagId === id;
-}
+  isModalShown(id: number): boolean {
+    return this.selectedTagId === id;
+  }
 
   constructor(
     private clubtagsservice: ClubTagsService,
     private fb: FormBuilder
-
-    ) {
+  ) {
     this.TagsForm = fb.group({
       name: ["", Validators.required],
+      image: ["", Validators.required],
     });
   }
 

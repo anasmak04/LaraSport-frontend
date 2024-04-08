@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
@@ -8,13 +8,23 @@ import { Observable } from "rxjs";
 export class ChartDataService {
   constructor(private http: HttpClient) {}
 
-  getChartDataPosts(): Observable<any> {
-    return this.http.get("http://127.0.0.1:8000/api/chart/posts");
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem("access_token");
+    console.log("token", token);
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
   }
 
+  getChartDataPosts(): Observable<any> {
+    return this.http.get("http://127.0.0.1:8000/api/chart/posts", {
+      headers: this.getHeaders(),
+    });
+  }
 
-  getUserGrowth() : Observable<any>{
-    return this.http.get("http://127.0.0.1:8000/api/chart/users");
-
+  getUserGrowth(): Observable<any> {
+    return this.http.get("http://127.0.0.1:8000/api/chart/users", {
+      headers: this.getHeaders(),
+    });
   }
 }

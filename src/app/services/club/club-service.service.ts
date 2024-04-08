@@ -17,48 +17,56 @@ export class ClubServiceService {
 
   constructor(private http: HttpClient) {}
 
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem("access_token");
+    console.log("token", token);
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+  }
+
   getClubsByCity(cityid: number): Observable<ClubResponse> {
-    return this.http.get<ClubResponse>(`${this.ApiUrl}/city/${cityid}/clubs`);
+    return this.http.get<ClubResponse>(`${this.ApiUrl}/city/${cityid}/clubs`, {
+      headers: this.getHeaders(),
+    });
   }
 
   getClubById(id: number): Observable<ClubdetailsResponse> {
-    return this.http.get<ClubdetailsResponse>(`${this.ApiUrl}/clubs/${id}`);
+    return this.http.get<ClubdetailsResponse>(`${this.ApiUrl}/clubs/${id}`, {
+      headers: this.getHeaders(),
+    });
   }
 
   FindAllClubs(): Observable<ClubResponse> {
-    return this.http.get<ClubResponse>(`${this.ApiUrl}/clubs`);
+    return this.http.get<ClubResponse>(`${this.ApiUrl}/clubs`, {
+      headers: this.getHeaders(),
+    });
   }
 
   save(formdata: FormData): Observable<any> {
-    const headers = new HttpHeaders();
-    headers.append(
-      "Authorization",
-      "Bearer " + localStorage.getItem("access_token")
-    );
     return this.http.post(`${this.ApiUrl}/clubs`, formdata, {
-      headers: headers,
+      headers: this.getHeaders(),
     });
   }
 
   search(searchTerm: String): Observable<ClubSearchResponse> {
     return this.http.get<ClubSearchResponse>(
-      `${this.ApiClubSearch}/${searchTerm}`
+      `${this.ApiClubSearch}/${searchTerm}`,
+      { headers: this.getHeaders() }
     );
   }
-
-
 
   searchClubs(tagId: string, cityId: string): Observable<ClubResponse> {
     let params = new HttpParams();
     if (cityId) {
-      params = params.append('city_id', cityId);
+      params = params.append("city_id", cityId);
     }
     if (tagId) {
-      params = params.append('tag_id', tagId);
+      params = params.append("tag_id", tagId);
     }
 
-    return this.http.get<ClubResponse>(`${this.ApiUrl}/search/clubs`, { params });
+    return this.http.get<ClubResponse>(`${this.ApiUrl}/search/clubs`, {
+      headers: this.getHeaders(),
+    });
   }
-
-
 }

@@ -11,12 +11,17 @@ export class ServiceapiService {
 
   constructor(private http: HttpClient) {}
 
-  startPayment(clubId: number, duration: string) {
-    const token = localStorage.getItem('access_token'); 
-    const headers = new HttpHeaders({
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem("access_token");
+    console.log("token", token);
+    return new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.post<PayementResponse>('http://127.0.0.1:8000/api/reservation/create', { club_id: clubId, duration: duration }, { headers });
+  }
+
+
+  startPayment(clubId: number, duration: string) {
+    return this.http.post<PayementResponse>('http://127.0.0.1:8000/api/reservation/create', { club_id: clubId, duration: duration }, { headers : this.getHeaders() });
   }
 
 }
