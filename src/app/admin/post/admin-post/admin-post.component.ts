@@ -16,19 +16,11 @@ import Swal from "sweetalert2";
 export class AdminPostComponent implements OnInit {
   posts: any[] = [];
   message: string | undefined;
-
-
   confirmDelete = false;
 
-  cancel(){
-    this.confirmDelete = false;
+  ngOnInit(): void {
+    this.findallposts();
   }
-
-
-  toggleconfirmDelete() {
-    this.confirmDelete = !this.confirmDelete;
-  }
-
 
   constructor(
     private postservice: PostServiceService,
@@ -38,15 +30,16 @@ export class AdminPostComponent implements OnInit {
 
   loader = inject(LoaderServiceService);
 
-  handleadd() {
-    this.router.navigate(["/admin/add/post"]);
+  cancel() {
+    this.confirmDelete = false;
   }
 
+  toggleconfirmDelete() {
+    this.confirmDelete = !this.confirmDelete;
+  }
 
-
-
-  ngOnInit(): void {
-    this.findallposts();
+  handleadd() {
+    this.router.navigate(["/admin/add/post"]);
   }
 
   findallposts() {

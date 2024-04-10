@@ -1,10 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AlertService } from "src/app/services/alert/alert.service";
-import { CityServiceService } from "src/app/services/city/city-service.service";
-import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
 import { ClubFacadeService } from "src/app/services/club/club-facade.service";
-import { ClubServiceService } from "src/app/services/club/club-service.service";
 
 @Component({
   selector: "app-add-club",
@@ -16,12 +13,10 @@ export class AddClubComponent implements OnInit {
   cities: any = [];
   tags: any[] = [];
   managers: any[] = [];
-  
 
   FormClub: FormGroup;
   constructor(
     private Facadeservcice: ClubFacadeService,
-    private clubservice: ClubServiceService,
     private fb: FormBuilder,
     private sweet: AlertService
   ) {
@@ -102,7 +97,7 @@ export class AddClubComponent implements OnInit {
         formData.append("image", fileInput.files[0]);
       }
 
-      this.clubservice.save(formData).subscribe({
+      this.Facadeservcice.saveClub(formData).subscribe({
         next: (response) => {
           console.log("Upload successful", response);
           this.sweet.showSuccess("Club", "Club created successfully");
@@ -114,6 +109,4 @@ export class AddClubComponent implements OnInit {
       });
     }
   }
-
-
 }

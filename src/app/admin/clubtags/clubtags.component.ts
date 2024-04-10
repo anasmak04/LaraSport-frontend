@@ -13,34 +13,14 @@ export class ClubtagsComponent implements OnInit {
   clubtags: any = [];
   TagsForm: FormGroup;
   confirmDelete = false;
-
-  cancel(){
-    this.confirmDelete = false;
-  }
-
-
-  toggleconfirmDelete() {
-    this.confirmDelete = !this.confirmDelete;
-  }
-
   selectedTagId: number | null = null;
-
-  toggleEdit(id: number) {
-    if (this.selectedTagId === id) {
-      this.selectedTagId = null;
-    } else {
-      this.selectedTagId = id;
-    }
-  }
-
-  isModalShown(id: number): boolean {
-    return this.selectedTagId === id;
-  }
+  showModal = false;
+  showModal1 = false;
 
   constructor(
     private clubtagsservice: ClubTagsService,
     private fb: FormBuilder,
-    private sweet : AlertService
+    private sweet: AlertService
   ) {
     this.TagsForm = fb.group({
       name: ["", Validators.required],
@@ -54,8 +34,29 @@ export class ClubtagsComponent implements OnInit {
     this.findAllClubTas();
   }
 
-  showModal = false;
-  showModal1 = false;
+  cancel() {
+    this.confirmDelete = false;
+  }
+
+  toggleconfirmDelete() {
+    this.confirmDelete = !this.confirmDelete;
+  }
+
+  toggleEdit(id: number) {
+    if (this.selectedTagId === id) {
+      this.selectedTagId = null;
+    } else {
+      this.selectedTagId = id;
+    }
+  }
+
+  isModalShown(id: number): boolean {
+    return this.selectedTagId === id;
+  }
+
+  toggleModal() {
+    this.showModal = !this.showModal;
+  }
 
   save() {
     if (this.TagsForm.valid) {
@@ -70,24 +71,24 @@ export class ClubtagsComponent implements OnInit {
       this.clubtagsservice.save(formData).subscribe({
         next: () => {
           this.TagsForm.reset();
-          this.sweet.showSuccess("clubtag inserted", "clubtag inserted successfully");
+          this.sweet.showSuccess(
+            "clubtag inserted",
+            "clubtag inserted successfully"
+          );
           this.findAllClubTas();
         },
         error: (error) => {
           console.log(error);
-          this.sweet.showError("clubtag failed to insert ", "clubtag failed to inserted")
+          this.sweet.showError(
+            "clubtag failed to insert ",
+            "clubtag failed to inserted"
+          );
         },
       });
     }
   }
 
-
-  toggleModal() {
-    this.showModal = !this.showModal;
-  }
-
-
-  delete(id : number){
+  delete(id: number) {
     this.clubtagsservice.delete(id).subscribe({
       next: () => {
         this.findAllClubTas();
@@ -111,6 +112,4 @@ export class ClubtagsComponent implements OnInit {
       },
     });
   }
-
- 
 }

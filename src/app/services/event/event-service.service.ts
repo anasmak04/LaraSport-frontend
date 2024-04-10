@@ -24,9 +24,9 @@ export class EventServiceService {
     return this.http.get<EventResponse>(this.apiUrl);
   }
 
-  FindEventById(id: number): Observable<EventResponse> {
-    return this.http.get<EventResponse>(this.apiUrl + "/" + id);
-  }
+  // FindEventById(id: number): Observable<EventResponse> {
+  //   return this.http.get<EventResponse>(this.apiUrl + "/" + id);
+  // }
 
   delete(id: number): Observable<void> {
     return this.http.delete<void>(this.apiUrl + "/" + id);

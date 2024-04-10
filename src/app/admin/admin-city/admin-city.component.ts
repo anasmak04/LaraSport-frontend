@@ -14,28 +14,31 @@ export class AdminCityComponent implements OnInit {
   cities: any = [];
   confirmDelete = false;
 
-  toggleconfirmDelete() {
-    this.confirmDelete = !this.confirmDelete;
-  }
-
-
-  cancel(){
-    this.confirmDelete = false;
-  }
-
   constructor(
     private cityservice: CityServiceService,
     private fb: FormBuilder,
     private sweet: AlertService
   ) {
     this.cityForm = this.fb.group({
-      id : [""],
+      id: [""],
       name: ["", Validators.required],
       image: ["", Validators.required],
     });
   }
 
   loader = inject(LoaderServiceService);
+
+  ngOnInit(): void {
+    this.finAllCities();
+  }
+
+  toggleconfirmDelete() {
+    this.confirmDelete = !this.confirmDelete;
+  }
+
+  cancel() {
+    this.confirmDelete = false;
+  }
 
   showModal: boolean = false;
   showModalUpdate: boolean = false;
@@ -44,12 +47,7 @@ export class AdminCityComponent implements OnInit {
     this.showModal = !this.showModal;
   }
 
-  ngOnInit(): void {
-    this.finAllCities();
-  }
-
-
-  toggleModalUpdate(){
+  toggleModalUpdate() {
     this.showModalUpdate = !this.showModalUpdate;
   }
 
@@ -59,33 +57,18 @@ export class AdminCityComponent implements OnInit {
     if (id && this.cityForm.valid) {
       this.cityservice.update(id, this.cityForm.value).subscribe({
         next: () => {
-          this.sweet.showSuccess(
-            "city updated",
-            "city updated successfully"
-          );
+          this.sweet.showSuccess("city updated", "city updated successfully");
           this.cityForm.reset();
           this.toggleModalUpdate();
-          this.finAllCities(); 
+          this.finAllCities();
         },
         error: (err) => {
           this.sweet.showError("Error", "city not updated");
           console.error(err);
         },
       });
-    } 
+    }
   }
-
-  findbyid(id: number) {
-    this.showModalUpdate = true;
-    this.cityservice.findbyid(id).subscribe({
-      next: (result) => {
-        this.cityForm.patchValue(result.city);
-      },
-      error: (err) => console.log(err),
-    });
-  }
-
-
 
   add() {
     if (this.cityForm.valid) {
@@ -102,7 +85,7 @@ export class AdminCityComponent implements OnInit {
           this.finAllCities();
           this.sweet.showSuccess("City added", "City added successfully");
           this.cityForm.reset();
-          this.showModal = !this.showModal;
+          this.showModal = false;
         },
         error: () => this.sweet.showError("Error", "Error adding city"),
       });
@@ -125,6 +108,16 @@ export class AdminCityComponent implements OnInit {
         this.sweet.showSuccess("City deleted", "City deleted successfully");
       },
       error: () => this.sweet.showError("Error", "Error deleting city"),
+    });
+  }
+
+  findbyid(id: number) {
+    this.showModalUpdate = true;
+    this.cityservice.findbyid(id).subscribe({
+      next: (result) => {
+        this.cityForm.patchValue(result.city);
+      },
+      error: (err) => console.log(err),
     });
   }
 }

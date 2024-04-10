@@ -18,16 +18,7 @@ import { SportTypeService } from "src/app/services/sport-type/sport-type.service
 })
 export class AdminEventComponent implements OnInit {
   events: any[] = [];
-
   confirmDelete = false;
-
-  cancel() {
-    this.confirmDelete = false;
-  }
-
-  toggleconfirmDelete() {
-    this.confirmDelete = !this.confirmDelete;
-  }
 
   constructor(
     private eventservice: EventServiceService,
@@ -41,12 +32,19 @@ export class AdminEventComponent implements OnInit {
     this.findallEvents();
   }
 
+
+  cancel() {
+    this.confirmDelete = false;
+  }
+
+  toggleconfirmDelete() {
+    this.confirmDelete = !this.confirmDelete;
+  }
+
+  
   handleAdd() {
     this.router.navigate(["/admin/add/event"]);
   }
-
-
-
   
 
   delete(id: number) {

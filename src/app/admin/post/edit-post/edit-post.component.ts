@@ -28,7 +28,7 @@ export class EditPostComponent implements OnInit {
       content: ["", Validators.required],
       publish_date: ["", Validators.required],
       category_id: ["", Validators.required],
-      tags: [[], Validators.required], // Ensure this is an array of numbers
+      tags: [[], Validators.required],
     });
   }
 
@@ -47,7 +47,7 @@ export class EditPostComponent implements OnInit {
           content: response.post.content,
           publish_date: response.post.publish_date,
           category_id: response.post.category_id,
-          tags: response.post.tags.map((tag) => tag.id), 
+          tags: response.post.tags.map((tag) => tag.id),
         });
       },
       error: (err) => console.log(err),

@@ -26,7 +26,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   findeventbyid(id: number) {
-    this.eventservice.FindEventById(id).subscribe({
+    this.eventservice.findById(id).subscribe({
       next: (response) => {
         this.event= response.event;
         console.log(this.event);

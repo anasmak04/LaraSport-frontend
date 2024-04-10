@@ -2,13 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert/alert.service";
-import { CityServiceService } from "src/app/services/city/city-service.service";
 import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
-import { ClubServiceService } from "src/app/services/club/club-service.service";
-import { EventServiceService } from "src/app/services/event/event-service.service";
-import { ManagerService } from "src/app/services/manager/manager.service";
-import { Club } from "src/app/shared/model/club/club";
-import { ClubResponse } from "src/app/shared/model/club/club-response";
+import { ClubFacadeService } from "src/app/services/club/club-facade.service";
 
 @Component({
   selector: "app-edit-club",
@@ -23,9 +18,7 @@ export class EditClubComponent implements OnInit {
   managers: any[] = [];
 
   constructor(
-    private clubservice: ClubServiceService,
-    private cityservice: CityServiceService,
-    private managerservice : ManagerService,
+    private facadeclubservice: ClubFacadeService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private clubtag: ClubTagsService,
@@ -60,7 +53,7 @@ export class EditClubComponent implements OnInit {
   }
 
   loadPostData(id: number) {
-    this.clubservice.getClubById(id).subscribe({
+    this.facadeclubservice.FindClubByid(id).subscribe({
       next: (response) => {
         this.ClubForm.setValue({
           name: response.club.name,
@@ -78,7 +71,7 @@ export class EditClubComponent implements OnInit {
   }
 
   findallCities() {
-    this.cityservice.findAll().subscribe({
+    this.facadeclubservice.FindAllCities().subscribe({
       next: (response) => {
         this.cities = response.city;
       },
@@ -86,16 +79,14 @@ export class EditClubComponent implements OnInit {
     });
   }
 
-
-  findallmanager(){
-    this.managerservice.FindAllManagers().subscribe({
+  findallmanager() {
+    this.facadeclubservice.findAllManagers().subscribe({
       next: (response) => {
         this.managers = response.managers;
         console.log(this.managers);
       },
       error: (err) => console.log(err),
     });
-    
   }
 
   updatePost() {
@@ -103,17 +94,19 @@ export class EditClubComponent implements OnInit {
     console.log("Form Validity: ", this.ClubForm.valid);
 
     if (this.ClubForm.valid) {
-      this.clubservice.update(this.postId, this.ClubForm.value).subscribe({
-        next: (club) => {
-          this.sweet.showSuccess("Club Updated Successfully", "Success");
-          this.router.navigate(["/admin/club"]);
-          console.log("Post updated successfully:", event);
-        },
-        error: (err) => {
-          this.sweet.showError("Error Updating Event", "Error");
-          console.log("Error updating post:", err);
-        },
-      });
+      this.facadeclubservice
+        .updateclub(this.postId, this.ClubForm.value)
+        .subscribe({
+          next: (club) => {
+            this.sweet.showSuccess("Club Updated Successfully", "Success");
+            this.router.navigate(["/admin/club"]);
+            console.log("Post updated successfully:", event);
+          },
+          error: (err) => {
+            this.sweet.showError("Error Updating Event", "Error");
+            console.log("Error updating post:", err);
+          },
+        });
     } else {
       console.log("Validation failed");
     }

@@ -14,10 +14,9 @@ export class CategoryComponent implements OnInit {
   categoryForm: FormGroup;
   message: string = "";
   confirmDelete: boolean = false;
-
-  toggleconfirmDelete() {
-    this.confirmDelete = !this.confirmDelete;
-  }
+  categories: any[] = [];
+  showModal: boolean = false;
+  showModalUpdate: boolean = false;
 
   cancel() {
     this.confirmDelete = false;
@@ -35,23 +34,22 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  loader = inject(LoaderServiceService);
+
+  ngOnInit(): void {
+    this.findAll();
+  }
+
   toggleModalUpdate() {
     this.showModalUpdate = !this.showModalUpdate;
   }
 
-  loader = inject(LoaderServiceService);
-
-  categories: any[] = [];
-
-  showModal: boolean = false;
-  showModalUpdate: boolean = false;
+  toggleconfirmDelete() {
+    this.confirmDelete = !this.confirmDelete;
+  }
 
   toggleModal() {
     this.showModal = !this.showModal;
-  }
-
-  ngOnInit(): void {
-    this.findAll();
   }
 
   findbyid(id: number) {

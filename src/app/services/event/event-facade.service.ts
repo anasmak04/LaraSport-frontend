@@ -3,6 +3,7 @@ import { EventServiceService } from './event-service.service';
 import { ClubTagsService } from '../club-tags/club-tags.service';
 import { CityServiceService } from '../city/city-service.service';
 import { SportTypeService } from '../sport-type/sport-type.service';
+import { Event } from 'src/app/shared/model/event/event';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,11 @@ export class EventFacadeService {
     private sporttypeservice: SportTypeService,
   ) { }
 
+
+
+  update(id : number , event : Event){
+    return this.eventservice.update(id, event);
+  }
 
 
 findallcities(){
@@ -32,6 +38,11 @@ findallsportTypes(){
 
 addEvent(event: any){
   return this.eventservice.save(event);
+}
+
+
+findEventById(id: number){
+  return this.eventservice.findById(id);
 }
 
 }

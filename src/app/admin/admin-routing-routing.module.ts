@@ -41,7 +41,7 @@ const routes: Routes = [
   },
 
   {
-    path: "clubtags",
+    path: "sport",
     canActivate: [guardRoleGuard],
     component: ClubtagsComponent,
   },

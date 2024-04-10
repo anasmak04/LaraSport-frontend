@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert/alert.service";
 import { CityServiceService } from "src/app/services/city/city-service.service";
 import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
+import { EventFacadeService } from "src/app/services/event/event-facade.service";
 import { EventServiceService } from "src/app/services/event/event-service.service";
 
 @Component({
@@ -18,8 +19,7 @@ export class EditEventComponent implements OnInit {
   tags: any[] = [];
 
   constructor(
-    private eventservice: EventServiceService,
-    private cityservice: CityServiceService,
+    private facadeeventservice: EventFacadeService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private clubtag: ClubTagsService,
@@ -53,7 +53,7 @@ export class EditEventComponent implements OnInit {
   }
 
   loadPostData(id: number) {
-    this.eventservice.findById(id).subscribe({
+    this.facadeeventservice.findEventById(id).subscribe({
       next: (response) => {
         this.EventForm.setValue({
           title: response.event.title,
@@ -71,7 +71,7 @@ export class EditEventComponent implements OnInit {
   }
 
   findallCities() {
-    this.cityservice.findAll().subscribe({
+    this.facadeeventservice.findallcities().subscribe({
       next: (response) => {
         this.cities = response.city;
       },
@@ -82,19 +82,20 @@ export class EditEventComponent implements OnInit {
   updatePost() {
     console.log("Form Value: ", this.EventForm.value);
     console.log("Form Validity: ", this.EventForm.valid);
-
     if (this.EventForm.valid) {
-      this.eventservice.update(this.postId, this.EventForm.value).subscribe({
-        next: (event) => {
-          this.sweet.showSuccess("Event Updated Successfully", "Success");
-          this.router.navigate(["/admin/event"]);
-          console.log("Post updated successfully:", event);
-        },
-        error: (err) => {
-          this.sweet.showError("Error Updating Event", "Error");
-          console.log("Error updating post:", err);
-        },
-      });
+      this.facadeeventservice
+        .update(this.postId, this.EventForm.value)
+        .subscribe({
+          next: (event) => {
+            this.sweet.showSuccess("Event Updated Successfully", "Success");
+            this.router.navigate(["/admin/event"]);
+            console.log("Post updated successfully:", event);
+          },
+          error: (err) => {
+            this.sweet.showError("Error Updating Event", "Error");
+            console.log("Error updating post:", err);
+          },
+        });
     } else {
       console.log("Validation failed");
     }
