@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { CityServiceService } from "src/app/services/city/city-service.service";
 import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
 import { ClubServiceService } from "src/app/services/club/club-service.service";
+import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
   selector: "app-admin-club",
@@ -17,6 +18,9 @@ export class AdminClubComponent implements OnInit {
   constructor(private clubservice : ClubServiceService,
     private route : Router){
   }
+
+  loader = inject(LoaderServiceService);
+
 
   ngOnInit(): void {
     this.FindAllClubs();

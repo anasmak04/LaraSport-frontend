@@ -97,6 +97,7 @@
             </div>
           </div>
 
+
           <div
             *ngIf="loader.isLoading | async"
             class="relative z-0 overflow-x-auto shadow-md sm:rounded-lg"
@@ -226,7 +227,9 @@
             </table>
           </div>
 
-          <div class="relative z-0 overflow-x-auto shadow-md sm:rounded-lg">
+          <div
+          *ngIf="!(loader.isLoading | async)"
+          class="relative z-0 overflow-x-auto shadow-md sm:rounded-lg">
             <table
               class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
             >
@@ -243,6 +246,9 @@
                 </p>
               </caption>
 
+              
+
+              
               <thead
                 class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
               >
@@ -279,7 +285,6 @@
                     >
                       Delete
                     </button>
-                    <h2 mat-dialog-title>Edit Category</h2>
 
                     <button
                       type="button"
