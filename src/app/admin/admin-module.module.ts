@@ -10,14 +10,10 @@ import { AdminClubComponent } from './club/admin-club/admin-club.component';
 import { AdminEventComponent } from './event/admin-event/admin-event.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from "@angular/forms";
-import { CardsComponent } from '../components/cards/cards.component';
+import { CardsComponent } from '../shared/components/cards/cards.component';
 import { EditorModule } from "@tinymce/tinymce-angular";
 import { TagModule } from "primeng/tag";
-import { AddTagsComponent } from '../components/add-tags/add-tags.component';
 import { EditPostComponent } from './post/edit-post/edit-post.component';
-import { AddCategoryComponent } from '../components/add-category/add-category.component';
-import { EditCategoryComponent } from '../components/edit-category/edit-category.component';
-import { EditTagsComponent } from '../components/edit-tags/edit-tags.component';
 import { MultiSelectModule } from "primeng/multiselect";
 import { AddEventComponent } from './event/add-event/add-event.component';
 import { AdminPostComponent } from './post/admin-post/admin-post.component';
@@ -40,11 +36,7 @@ import { EditClubComponent } from './club/edit-club/edit-club.component';
     AdminClubComponent,
     AdminEventComponent,
     CardsComponent,
-    AddTagsComponent,
     EditPostComponent,
-    AddCategoryComponent,
-    EditCategoryComponent,
-    EditTagsComponent,
     AddEventComponent,
     AddPostComponent,
     ClubtagsComponent,
@@ -75,11 +67,7 @@ import { EditClubComponent } from './club/edit-club/edit-club.component';
     CardsComponent,
     EditorModule,
     TagModule,
-    AddTagsComponent,
     EditPostComponent,
-    AddCategoryComponent,
-    EditCategoryComponent,
-    EditTagsComponent,
     MultiSelectModule,
     ReactiveFormsModule,
     AddPostComponent,

@@ -10,33 +10,23 @@ export class CategoryServiceService {
 
   UrlApi: string = "http://127.0.0.1:8000/api/category";
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem("access_token");
-    console.log("token", token);
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
-
-
-
   save(category: CategoryResponse): Observable<CategoryResponse> {
-    return this.http.post<CategoryResponse>(this.UrlApi, category, {headers: this.getHeaders()});
+    return this.http.post<CategoryResponse>(this.UrlApi, category);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.UrlApi}/${id}`, {headers: this.getHeaders()});
+    return this.http.delete<void>(`${this.UrlApi}/${id}`);
   }
 
   findAll(): Observable<CategoryResponse> {
-    return this.http.get<CategoryResponse>(`${this.UrlApi}`, {headers: this.getHeaders()});
+    return this.http.get<CategoryResponse>(`${this.UrlApi}`);
   }
 
   findById(id: number): Observable<CategoryResponse> {
-    return this.http.get<CategoryResponse>(`${this.UrlApi}${id}`, {headers: this.getHeaders()});
+    return this.http.get<CategoryResponse>(`${this.UrlApi}${id}`);
   }
 
   update(id: number, category: CategoryResponse): Observable<CategoryResponse> {
-    return this.http.put<CategoryResponse>(`${this.UrlApi}/${id}`, category, {headers: this.getHeaders()});
+    return this.http.put<CategoryResponse>(`${this.UrlApi}/${id}`, category);
   }
 }

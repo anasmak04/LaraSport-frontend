@@ -11,19 +11,9 @@ export class ReservationService {
   
   constructor(private http: HttpClient) {}
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem("access_token");
-    console.log("token", token);
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
-
 
   // Get all reservations
   getAllReservations(): Observable<ReservationResponse> {
-    return this.http.get<ReservationResponse>(this.Apiurl, {
-      headers: this.getHeaders(),
-    });
+    return this.http.get<ReservationResponse>(this.Apiurl);
   }
 }

@@ -19,17 +19,20 @@ export class ClubTagsService {
   }
 
   getTags(): Observable<ClubtagRESPONSE> {
-    return this.http.get<ClubtagRESPONSE>("http://127.0.0.1:8000/api/clubtags", {headers: this.getHeaders()});
+    return this.http.get<ClubtagRESPONSE>("http://127.0.0.1:8000/api/clubtags");
   }
 
   save(formData: FormData): Observable<ClubTagsService> {
     return this.http.post<ClubTagsService>(
       "http://127.0.0.1:8000/api/clubtags",
-      formData , {headers: this.getHeaders()}
+      formData
     );
   }
 
   update(formData: FormData, id: number): Observable<Clubtag> {
-    return this.http.put<Clubtag>(`http://127.0.0.1:8000/api/clubtags/${id}`, formData, {headers: this.getHeaders()});
+    return this.http.put<Clubtag>(
+      `http://127.0.0.1:8000/api/clubtags/${id}`,
+      formData,
+    );
   }
 }

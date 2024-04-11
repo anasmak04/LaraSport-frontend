@@ -12,41 +12,25 @@ export class TagsServiceService {
   constructor(private http: HttpClient) {}
   UrlApi: string = "http://127.0.0.1:8000/api/tags";
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem("access_token");
-    console.log("token", token);
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
+
 
   save(tags: Tags): Observable<Tags> {
-    return this.http.post<Tags>(this.UrlApi, tags, {
-      headers: this.getHeaders(),
-    });
+    return this.http.post<Tags>(this.UrlApi, tags);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.UrlApi}/${id}`, {
-      headers: this.getHeaders(),
-    });
+    return this.http.delete<void>(`${this.UrlApi}/${id}`);
   }
 
   findById(id: number): Observable<Tags> {
-    return this.http.get<Tags>(`${this.UrlApi}/${id}`, {
-      headers: this.getHeaders(),
-    });
+    return this.http.get<Tags>(`${this.UrlApi}/${id}`);
   }
 
   findAll(): Observable<TagsResponse> {
-    return this.http.get<TagsResponse>(this.UrlApi, {
-      headers: this.getHeaders(),
-    });
+    return this.http.get<TagsResponse>(this.UrlApi);
   }
 
   update(id: number, tags: Tags): Observable<Tags> {
-    return this.http.put<Tags>(`${this.UrlApi}/${id}`, tags, {
-      headers: this.getHeaders(),
-    });
+    return this.http.put<Tags>(`${this.UrlApi}/${id}`, tags);
   }
 }

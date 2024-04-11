@@ -11,17 +11,10 @@ export class EventServiceService {
 
   constructor(private http: HttpClient) {}
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem("access_token");
-    console.log("token", token);
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
-
+ 
 
   save(formData: FormData): Observable<any> {
-    return this.http.post<any>(this.apiUrl, formData, {headers: this.getHeaders()});
+    return this.http.post<any>(this.apiUrl, formData);
   }
 
   FindAllEvents(): Observable<EventResponse> {

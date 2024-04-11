@@ -13,32 +13,25 @@ export class CityServiceService   {
   
   private ApiCitySearch = "http://127.0.0.1:8000/api/search/city";
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem("access_token");
-    console.log("token", token);
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
 
   constructor(private http: HttpClient) {}
 
 
   findAll(): Observable<CityResponse> {
-    return this.http.get<CityResponse>(this.ApiCity, {headers: this.getHeaders()});
+    return this.http.get<CityResponse>(this.ApiCity);
   }
 
   save(formdata: FormData): Observable<any>{
-    return this.http.post(this.ApiCity, formdata, {headers: this.getHeaders()});
+    return this.http.post(this.ApiCity, formdata);
   }
   
 
   delete(id : number): Observable<any>{
-    return this.http.delete(this.ApiCity + '/' + id, {headers: this.getHeaders()});
+    return this.http.delete(this.ApiCity + '/' + id);
   }
 
   search(searchTerm : String) : Observable<CitySearchResponse>{
-    return this.http.get<CitySearchResponse>(this.ApiCitySearch + '/' + searchTerm , {headers: this.getHeaders()});
+    return this.http.get<CitySearchResponse>(this.ApiCitySearch + '/' + searchTerm);
   }
 
   

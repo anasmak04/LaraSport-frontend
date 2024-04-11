@@ -17,42 +17,25 @@ export class ClubServiceService {
 
   constructor(private http: HttpClient) {}
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem("access_token");
-    console.log("token", token);
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
-
   getClubsByCity(cityid: number): Observable<ClubResponse> {
-    return this.http.get<ClubResponse>(`${this.ApiUrl}/city/${cityid}/clubs`, {
-      headers: this.getHeaders(),
-    });
+    return this.http.get<ClubResponse>(`${this.ApiUrl}/city/${cityid}/clubs`);
   }
 
   getClubById(id: number): Observable<ClubdetailsResponse> {
-    return this.http.get<ClubdetailsResponse>(`${this.ApiUrl}/clubs/${id}`, {
-      headers: this.getHeaders(),
-    });
+    return this.http.get<ClubdetailsResponse>(`${this.ApiUrl}/clubs/${id}`);
   }
 
   FindAllClubs(): Observable<ClubResponse> {
-    return this.http.get<ClubResponse>(`${this.ApiUrl}/clubs`, {
-      headers: this.getHeaders(),
-    });
+    return this.http.get<ClubResponse>(`${this.ApiUrl}/clubs`);
   }
 
   save(formdata: FormData): Observable<any> {
-    return this.http.post(`${this.ApiUrl}/clubs`, formdata, {
-      headers: this.getHeaders(),
-    });
+    return this.http.post(`${this.ApiUrl}/clubs`, formdata);
   }
 
   search(searchTerm: String): Observable<ClubSearchResponse> {
     return this.http.get<ClubSearchResponse>(
-      `${this.ApiClubSearch}/${searchTerm}`,
-      { headers: this.getHeaders() }
+      `${this.ApiClubSearch}/${searchTerm}`
     );
   }
 
@@ -65,8 +48,6 @@ export class ClubServiceService {
       params = params.append("tag_id", tagId);
     }
 
-    return this.http.get<ClubResponse>(`${this.ApiUrl}/search/clubs`, {
-      headers: this.getHeaders(),
-    });
+    return this.http.get<ClubResponse>(`${this.ApiUrl}/search/clubs`);
   }
 }

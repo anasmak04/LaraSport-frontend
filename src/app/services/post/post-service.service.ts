@@ -11,41 +11,24 @@ export class PostServiceService {
 
   constructor(private http: HttpClient) {}
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem("access_token");
-    console.log("token", token);
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
 
   save(postData: any): Observable<any> {
-    return this.http.post(this.UrlApi, postData, {
-      headers: this.getHeaders(),
-    });
+    return this.http.post(this.UrlApi, postData);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.UrlApi}/${id}`, {
-      headers: this.getHeaders(),
-    });
+    return this.http.delete<void>(`${this.UrlApi}/${id}`);
   }
 
   findAll(): Observable<PostResponse> {
-    return this.http.get<PostResponse>(`${this.UrlApi}`, {
-      headers: this.getHeaders(),
-    });
+    return this.http.get<PostResponse>(`${this.UrlApi}`);
   }
 
   findById(id: number): Observable<PostResponse> {
-    return this.http.get<PostResponse>(`${this.UrlApi}/${id}`, {
-      headers: this.getHeaders(),
-    });
+    return this.http.get<PostResponse>(`${this.UrlApi}/${id}`);
   }
 
   update(id: number, category: PostResponse): Observable<PostResponse> {
-    return this.http.put<PostResponse>(`${this.UrlApi}/${id}`, category, {
-      headers: this.getHeaders(),
-    });
+    return this.http.put<PostResponse>(`${this.UrlApi}/${id}`, category);
   }
 }

@@ -26,7 +26,7 @@ export class CommentServiceService {
   save(commentData: any): Observable<CommentResponse> {
     return this.http.post<CommentResponse>(
       "http://127.0.0.1:8000/api/comment",
-      commentData , {headers: this.getHeaders()}
+      commentData 
     );
   }
 }

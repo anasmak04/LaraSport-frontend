@@ -8,39 +8,29 @@ import { Statistics } from "src/app/shared/model/statistics";
 export class StatisticsService {
   constructor(private http: HttpClient) {}
 
-
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem("access_token");
-    console.log("token", token);
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
-
-
   CountUsers() {
-    return this.http.get<Statistics>("http://127.0.0.1:8000/api/countusers", {headers : this.getHeaders()});
+    return this.http.get<Statistics>("http://127.0.0.1:8000/api/countusers");
   }
 
   CountBlogs() {
-    return this.http.get<Statistics>("http://localhost:8000/api/countposts", {headers : this.getHeaders()});
+    return this.http.get<Statistics>("http://localhost:8000/api/countposts");
   }
 
   CountCategories() {
     return this.http.get<Statistics>(
-      "http://localhost:8000/api/countcategories", {headers : this.getHeaders()}
+      "http://localhost:8000/api/countcategories"
     );
   }
 
   CountCities() {
-    return this.http.get<Statistics>("http://localhost:8000/api/countcities", {headers : this.getHeaders()});
+    return this.http.get<Statistics>("http://localhost:8000/api/countcities");
   }
 
   CountClubs() {
-    return this.http.get<Statistics>("http://localhost:8000/api/countclubs", {headers : this.getHeaders()});
+    return this.http.get<Statistics>("http://localhost:8000/api/countclubs");
   }
 
   CountEvents() {
-    return this.http.get<Statistics>("http://localhost:8000/api/countevents", {headers : this.getHeaders()});
+    return this.http.get<Statistics>("http://localhost:8000/api/countevents");
   }
 }
