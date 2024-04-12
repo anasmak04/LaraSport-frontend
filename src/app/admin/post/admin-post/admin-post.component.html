@@ -10,14 +10,7 @@
       id="main-content"
       class="w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
     >
-
-  
-
-
-
-      <div 
-      
-      class="relative m-4 z-0 overflow-x-auto shadow-md sm:rounded-lg">
+      <div class="relative m-4 z-0 overflow-x-auto shadow-md sm:rounded-lg">
         <button
           (click)="handleadd()"
           class="block mb-10 m-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -27,368 +20,409 @@
         </button>
 
         <div
-        *ngIf="loader.isLoading | async"
-        class="relative z-0 overflow-x-auto shadow-md sm:rounded-lg"
-      >
-        <table
-          class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          *ngIf="loader.isLoading | async"
+          class="relative z-0 overflow-x-auto shadow-md sm:rounded-lg"
         >
-        <caption
-        class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white"
-      >
-        Post Management
-        <p
-          class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"
-        >
-          Browse, add, or modify posts within the system. This table
-          provides an overview of all cities currently managed, including
-          options to edit or delete each entry as needed.
-        </p>
-      </caption>
-      <thead
-      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-    >
-      <tr>
-        <th scope="col" class="px-6 py-3">Id</th>
-        <th scope="col" class="px-6 py-3">Title</th>
-        <th scope="col" class="px-6 py-3">Content</th>
-        <th scope="col" class="px-6 py-3 capitalize">Publish date</th>
-        <th scope="col" class="px-6 py-3 capitalize">Image</th>
-        <th scope="col" class="px-6 py-3 capitalize">Category</th>
-        <th scope="col" class="px-6 py-3 capitalize">Author</th>
-        <th scope="col" class="px-6 py-3 capitalize">Actions</th>
-      </tr>
-    </thead>
+          <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
+            <caption
+              class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white"
+            >
+              Post Management
+              <p
+                class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"
+              >
+                Browse, add, or modify posts within the system. This table
+                provides an overview of all cities currently managed, including
+                options to edit or delete each entry as needed.
+              </p>
+            </caption>
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3">Id</th>
+                <th scope="col" class="px-6 py-3">Title</th>
+                <th scope="col" class="px-6 py-3">Content</th>
+                <th scope="col" class="px-6 py-3 capitalize">Publish date</th>
+                <th scope="col" class="px-6 py-3 capitalize">Author</th>
+                <th scope="col" class="px-6 py-3 capitalize">Category</th>
+                <th scope="col" class="px-6 py-3 capitalize">Tag</th>
+                <th scope="col" class="px-6 py-3 capitalize">Avatar</th>
+                <th scope="col" class="px-6 py-3 capitalize">Actions</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            <tr class="bg-white border-b animate-pulse">
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-            </tr>
-       
-            <tr class="bg-white border-b animate-pulse">
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-            </tr>
-            <tr class="bg-white border-b animate-pulse">
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-            </tr>
+            <tbody>
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
 
-            
-            <tr class="bg-white border-b animate-pulse">
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-            </tr>
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
 
-            <tr class="bg-white border-b animate-pulse">
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-            </tr>
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
 
-            <tr class="bg-white border-b animate-pulse">
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-            </tr>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
 
-            <tr class="bg-white border-b animate-pulse">
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-            </tr>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+              </tr>
 
-            <tr class="bg-white border-b animate-pulse">
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
-              </td>
-    
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-              <td class="px-6 py-4">
-                <div
-                  class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
-                ></div>
-              </td>
-            </tr>
-            
-          </tbody>
-        </table>
-      </div>
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
 
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+              </tr>
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+              </tr>
+
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+              </tr>
+
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+              </tr>
+
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+              </tr>
+
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+              </tr>
+
+              <tr class="bg-white border-b animate-pulse">
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div class="h-4 bg-gray-200 rounded dark:bg-gray-700"></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+
+                <td class="px-6 py-4">
+                  <div
+                    class="h-4 bg-gray-200 rounded dark:bg-gray-700 w-3/4"
+                  ></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <table
-        *ngIf="!(loader.isLoading | async)"
-
+          *ngIf="!(loader.isLoading | async)"
           class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
         >
           <caption
@@ -412,9 +446,10 @@
               <th scope="col" class="px-6 py-3">Title</th>
               <th scope="col" class="px-6 py-3">Content</th>
               <th scope="col" class="px-6 py-3 capitalize">Publish date</th>
-              <th scope="col" class="px-6 py-3 capitalize">Image</th>
-              <th scope="col" class="px-6 py-3 capitalize">Category</th>
               <th scope="col" class="px-6 py-3 capitalize">Author</th>
+              <th scope="col" class="px-6 py-3 capitalize">Category</th>
+              <th scope="col" class="px-6 py-3 capitalize">Tag</th>
+              <th scope="col" class="px-6 py-3 capitalize">Avatar</th>
               <th scope="col" class="px-6 py-3 capitalize">Actions</th>
             </tr>
           </thead>
@@ -470,12 +505,29 @@
               <td class="px-6 py-4">
                 {{ event.tags_clubs }}
               </td> -->
-            </tr>
+              <td>
+                <button
+                type="button"
+                (click)="delete(post.id)"
+                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              >
+                Delete
+              </button>
+
+              <button
+                type="button"
+                (click)="edit(post.id)"
+                class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
+              >
+                Edit
+              </button>
+            
+              </td>
+             
           </tbody>
           }
         </table>
       </div>
-
     </div>
   </div>
 </div>

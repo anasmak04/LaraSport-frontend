@@ -81,6 +81,13 @@ const routes: Routes = [
     component: AddClubComponent,
   },
 
+
+  {
+    path: "edit/post/:id",
+    canActivate: [guardRoleGuard],
+    component: EditPostComponent,
+  },
+
   {
     path: "edit/:id",
     canActivate: [guardRoleGuard],

@@ -20,15 +20,13 @@ export class AdminPostComponent implements OnInit {
   constructor(
     private postservice: PostServiceService,
     private sweet: AlertService,
-    private router : Router
+    private router: Router
   ) {}
-
 
   loader = inject(LoaderServiceService);
 
-
-  handleadd(){
-    this.router.navigate(['/admin/add/post']);
+  handleadd() {
+    this.router.navigate(["/admin/add/post"]);
   }
 
   ngOnInit(): void {
@@ -44,5 +42,32 @@ export class AdminPostComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  findbyid(id: number) {
+    this.postservice.findById(id).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  delete(id: number) {
+    this.postservice.delete(id).subscribe({
+      next: (response) => {
+        this.sweet.showSuccess("Post Deleted", "Post deleted successfully");
+        this.findallposts();
+      },
+      error: (err) => {
+        this.sweet.showError("Post not deleted", "Post could not be deleted");
+      },
+    });
+  }
+
+  edit(id: number) {
+    this.router.navigate(["/admin/edit/post", id]);
   }
 }
