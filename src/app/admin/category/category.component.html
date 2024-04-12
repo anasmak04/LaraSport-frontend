@@ -291,41 +291,63 @@
                       Edit
                     </button>
 
-                    <!-- Modal for Update -->
-                    
-           
                   </td>
                 </tr>
-
-                
               </tbody>
             </table>
-    
 
-            <div *ngIf="showModalUpdate" class="fixed inset-0 bg-opacity-25 flex items-center justify-center">
+            <div
+              *ngIf="showModalUpdate"
+              class="fixed inset-0 bg-opacity-25 flex items-center justify-center"
+            >
               <div class="modal-content bg-white p-6 rounded-lg shadow-lg">
-                  <h3 class="text-xl font-semibold mb-4">Edit Category</h3>
-                  <form [formGroup]="categoryForm" class="space-y-4">
-                      <div>
-                          <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
-                          <input type="text" id="name" formControlName="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                      </div>
-                      <div>
-                          <label for="description" class="block text-sm font-medium text-gray-700">Description:</label>
-                          <input type="text" id="description" formControlName="description" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                      </div>
-                      <div class="flex justify-end space-x-4">
-                          <button type="button" (click)="update()" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">Update Category</button>
-                          <button type="button" (click)="toggleModalUpdate()" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">Cancel</button>
-                      </div>
-                  </form>
+                <h3 class="text-xl font-semibold mb-4">Edit Category</h3>
+                <form [formGroup]="categoryForm" class="space-y-4">
+                  <div>
+                    <label
+                      for="name"
+                      class="block text-sm font-medium text-gray-700"
+                      >Name:</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      formControlName="name"
+                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="description"
+                      class="block text-sm font-medium text-gray-700"
+                      >Description:</label
+                    >
+                    <input
+                      type="text"
+                      id="description"
+                      formControlName="description"
+                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                  </div>
+                  <div class="flex justify-end space-x-4">
+                    <button
+                      type="button"
+                      (click)="update()"
+                      class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+                    >
+                      Update Category
+                    </button>
+                    <button
+                      type="button"
+                      (click)="toggleModalUpdate()"
+                      class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
               </div>
-          </div>
-          
-          
-        
-
-            
+            </div>
           </div>
         </div>
       </main>

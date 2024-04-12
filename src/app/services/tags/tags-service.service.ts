@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { CategoryResponse } from "src/app/shared/model/category/category-response";
-import { Tags } from "src/app/shared/model/tags/Tags";
+import { Tags, TagsResponsee } from "src/app/shared/model/tags/Tags";
 import { TagsResponse } from "src/app/shared/model/tags/TagsResponse";
 
 @Injectable({
@@ -22,8 +22,8 @@ export class TagsServiceService {
     return this.http.delete<void>(`${this.UrlApi}/${id}`);
   }
 
-  findById(id: number): Observable<Tags> {
-    return this.http.get<Tags>(`${this.UrlApi}/${id}`);
+  findById(id: number): Observable<TagsResponsee> {
+    return this.http.get<TagsResponsee>(`${this.UrlApi}/${id}`);
   }
 
   findAll(): Observable<TagsResponse> {

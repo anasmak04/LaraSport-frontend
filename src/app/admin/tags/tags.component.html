@@ -34,7 +34,7 @@
                   enctype="multipart/form-data"
                 >
                   <div class="mb-6 space-y-4 p-8">
-                    <h1 class="capitalize text-xl font-bold">add new city</h1>
+                    <h1 class="capitalize text-xl font-bold">add new Tag</h1>
                     <label
                       for="first_name"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -204,12 +204,12 @@
               <caption
                 class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white"
               >
-                City Management
+                Tag Management
                 <p
                   class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"
                 >
-                  Browse, add, or modify cities within the system. This table
-                  provides an overview of all cities currently managed,
+                  Browse, add, or modify tags within the system. This table
+                  provides an overview of all tags currently managed,
                   including options to edit or delete each entry as needed.
                 </p>
               </caption>
@@ -246,15 +246,60 @@
                     </button>
 
                     <button
-                      type="button"
-                      class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
-                    >
-                      Edit
-                    </button>
+                    type="button"
+                    (click)="findbyid(tag.id)"
+                    class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
+                  >
+                    Edit
+                  </button>
                   </td>
                 </tr>
               </tbody>
             </table>
+
+
+            <div
+            *ngIf="showModalUpdate"
+            class="fixed inset-0 bg-opacity-25 flex items-center justify-center"
+          >
+            <div class="modal-content bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold mb-4">Edit Category</h3>
+              <form [formGroup]="TagsForm" class="space-y-4">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-gray-700"
+                    >Name:</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    formControlName="name"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
+              
+                <div class="flex justify-end space-x-4">
+                  <button
+                    type="button"
+                    (click)="update()"
+                    class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+                  >
+                    Update Tag
+                  </button>
+                  <button
+                    type="button"
+                    (click)="toggleModalUpdate()"
+                    class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+
           </div>
         </div>
       </main>
