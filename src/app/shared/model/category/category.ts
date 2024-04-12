@@ -5,8 +5,7 @@ export interface category {
 }
 
 
-export interface CategoryState {
-    list: category[];
-    catrgoryobject: category;
-    error: string;
+export interface CategoryResponsee {
+    message: string;
+    category: category; 
 }
