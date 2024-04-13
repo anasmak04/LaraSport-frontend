@@ -22,18 +22,16 @@ export class UsersComponent implements OnInit {
     this.findAll();
   }
 
-
-
   banUser(userId: number): void {
     this.userservice.banUser(userId).subscribe({
       next: (response) => {
         console.log("User Banned", response);
         this.updateUserStatus(userId, true);
-         // Update user's status in the local array
+        // Update user's status in the local array
       },
       error: (err) => {
-        console.error('Error banning user', err);
-      }
+        console.error("Error banning user", err);
+      },
     });
   }
 
@@ -44,21 +42,17 @@ export class UsersComponent implements OnInit {
         this.updateUserStatus(userId, false); // Update user's status in the local array
       },
       error: (err) => {
-        console.error('Error unbanning user', err);
-      }
+        console.error("Error unbanning user", err);
+      },
     });
   }
 
   private updateUserStatus(userId: number, isBanned: boolean): void {
-    const user = this.users.find((u: { id: number; }) => u.id === userId);
+    const user = this.users.find((u: { id: number }) => u.id === userId);
     if (user) {
       user.is_banned = isBanned;
     }
   }
-
-  
-
-
 
   findAll() {
     this.userservice.findAllUsers().subscribe({
@@ -95,10 +89,13 @@ export class UsersComponent implements OnInit {
     return this.userservice.search(searchTerm).subscribe({
       next: (response) => {
         this.Search = response.user;
+        console.log(this.Search);
       },
       error: (err) => {
         console.log(err);
       },
     });
   }
+
+
 }

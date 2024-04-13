@@ -8,23 +8,31 @@ import { Observable } from "rxjs";
 export class ChartDataService {
   constructor(private http: HttpClient) {}
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem("access_token");
-    console.log("token", token);
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
+ 
 
   getChartDataPosts(): Observable<any> {
-    return this.http.get("http://127.0.0.1:8000/api/chart/posts", {
-      headers: this.getHeaders(),
-    });
+    return this.http.get("http://127.0.0.1:8000/api/chart/posts");
   }
 
+
+  getChartDataEvents(): Observable<any> {
+    return this.http.get("http://127.0.0.1:8000/api/chart/events");
+  }
+
+  
+  getChartDataClubs(): Observable<any> {
+    return this.http.get("http://127.0.0.1:8000/api/chart/clubs");
+  }
+
+  
+
   getUserGrowth(): Observable<any> {
-    return this.http.get("http://127.0.0.1:8000/api/chart/users", {
-      headers: this.getHeaders(),
-    });
+    return this.http.get("http://127.0.0.1:8000/api/chart/users");
   }
 }
+
+
+
+
+
+

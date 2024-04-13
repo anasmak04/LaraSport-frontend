@@ -23,6 +23,9 @@ export class AddClubComponent implements OnInit {
     this.FormClub = this.fb.group({
       name: ["", Validators.required],
       description: ["", Validators.required],
+      price_day: ["", Validators.required],
+      price_month: ["", Validators.required],
+      price_year: ["", Validators.required],
       city_id: ["", Validators.required],
       user_id: ["", Validators.required],
       tags: ["", Validators.required],
@@ -78,6 +81,10 @@ export class AddClubComponent implements OnInit {
     if (this.FormClub.valid) {
       const formData = new FormData();
       formData.append("name", this.FormClub.get("name")?.value);
+      formData.append("description", this.FormClub.get("description")?.value);
+      formData.append("price_day", this.FormClub.get("price_day")?.value);
+      formData.append("price_month", this.FormClub.get("price_month")?.value);
+      formData.append("price_year", this.FormClub.get("price_year")?.value);
       formData.append("description", this.FormClub.get("description")?.value);
       formData.append("city_id", this.FormClub.get("city_id")?.value);
       formData.append("user_id", this.FormClub.get("user_id")?.value);

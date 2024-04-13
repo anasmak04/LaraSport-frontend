@@ -11,13 +11,15 @@
       class="w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
     >
       <div class="relative m-4 z-0 overflow-x-auto shadow-md sm:rounded-lg">
-        <button
-          (click)="handleadd()"
-          class="block mb-10 m-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          type="button"
-        >
-          Add New post
-        </button>
+        <div>
+          <button
+            (click)="handleadd()"
+            class="block mb-10 m-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            type="button"
+          >
+            Add New post
+          </button>
+        </div>
 
         <div
           *ngIf="loader.isLoading | async"

@@ -13,12 +13,20 @@
     >
       <app-cards></app-cards>
 
-      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3">
-        <div>
-          <canvas id="myChart">
-          </canvas>
+      <div class="container mx-auto p-4 flex flex-row justify-around flex-wrap items-center">
+        <div class="p-2 w-[600px]"> 
+          <canvas class="w-full" id="postCanvasId"></canvas>
+        </div>
+        <div class="p-2 w-[600px]"> 
+          <canvas class="w-full" id="eventCanvasId"></canvas>
+        </div>
+
+
+        <div class="p-2 w-[600px]"> 
+          <canvas class="w-full" id="clubCanvasId"></canvas>
         </div>
       </div>
+      
     </div>
   </div>
 </div>

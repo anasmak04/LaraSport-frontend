@@ -1,50 +1,69 @@
-import { AfterViewInit, Component, OnInit, inject } from "@angular/core";
-import Chart from "chart.js/auto";
-import { ChartDataService } from "src/app/services/chart/chart-data.service";
-import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
+import { Component, OnInit } from '@angular/core';
+import Chart from 'chart.js/auto';
+import { ChartDataService } from 'src/app/services/chart/chart-data.service';
 
 @Component({
-  selector: "app-dashboard",
-  templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.css"],
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private chartservice: ChartDataService) {}
+  blogStats: any[] = [];
+  eventStats: any[] = [];
+  clubStats: any[] = [];
 
-  loader = inject(LoaderServiceService);
+  constructor(private chartService: ChartDataService) {}
 
   ngOnInit(): void {
-    this.chartservice.getChartDataPosts().subscribe((count) => {
-      this.createChart(count);
+    this.chartService.getChartDataPosts().subscribe(data => {
+      this.blogStats = data;
+      this.createChart(this.blogStats, 'postCanvasId', 'Blogs per Day');
+    });
+
+    this.chartService.getChartDataEvents().subscribe(data => {
+      this.eventStats = data;
+      this.createChart(this.eventStats, 'eventCanvasId', 'Events per Day');
+    });
+
+
+    this.chartService.getChartDataClubs().subscribe(data => {
+      this.clubStats = data;
+      this.createChart(this.clubStats, 'clubCanvasId', 'Clubs per Day');
     });
   }
 
-  createChart(data: any): void {
-    const months = data.map((item: any) => `${item.month}-${item.year}`);
-    const counts = data.map((item: any) => item.count);
-
-    const ctx = document.getElementById("myChart") as HTMLCanvasElement;
-    const myChart = new Chart(ctx, {
-      type: "bar",
+  createChart(stats: any[], canvasId: string, label: string): void {
+    const labels = stats.map(stat => stat.date);
+    const data = stats.map(stat => stat.count);
+  
+    const chart = new Chart(canvasId, {
+      type: 'bar',
       data: {
-        labels: months,
-        datasets: [
-          {
-            label: "# of Blogs",
-            data: counts,
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            borderColor: "rgba(54, 162, 235, 1)",
-            borderWidth: 1,
-          },
-        ],
+        labels: labels,
+        datasets: [{
+          label: label,
+          data: data,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        }]
       },
       options: {
         scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Date'
+            }
+          },
           y: {
             beginAtZero: true,
-          },
+            title: {
+              display: true,
+              text: 'Count'
+            }
+          }
         },
-      },
+        responsive: true,
+      }
     });
   }
 }
