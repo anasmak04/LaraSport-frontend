@@ -1,6 +1,8 @@
 import { HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { AlertService } from "src/app/services/alert/alert.service";
 import { EventFacadeService } from "src/app/services/event/event-facade.service";
 
 @Component({
@@ -17,14 +19,15 @@ export class AddEventComponent implements OnInit {
 
   constructor(
     private FacadeEvent: EventFacadeService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private sweet : AlertService,
+    private router : Router
   ) {
     this.FormEvent = this.fb.group({
       title: ["", Validators.required],
       description: ["", Validators.required],
       content: ["", Validators.required],
       event_date: ["", Validators.required],
-      sport_type_id: ["", Validators.required],
       city_id: ["", Validators.required],
       TagsClubs: [""],
     });
@@ -33,7 +36,6 @@ export class AddEventComponent implements OnInit {
   ngOnInit() {
     this.findallcities();
     this.findAllClubTags();
-    this.findallsportTypes();
   }
 
   add() {
@@ -50,10 +52,7 @@ export class AddEventComponent implements OnInit {
       formData.append("description", this.FormEvent.get("description")?.value);
       formData.append("content", this.FormEvent.get("content")?.value);
       formData.append("event_date", this.FormEvent.get("event_date")?.value);
-      formData.append(
-        "sport_type_id",
-        this.FormEvent.get("sport_type_id")?.value
-      );
+
       formData.append("city_id", this.FormEvent.get("city_id")?.value);
 
       const fileInput = document.querySelector('input[type="file"]');
@@ -78,9 +77,15 @@ export class AddEventComponent implements OnInit {
 
       this.FacadeEvent.addEvent(formData).subscribe({
         next: (response) => {
-          console.log(response);
+          this.sweet.showSuccess("Event ", "Event added successfully");
+          this.router.navigate(['/admin/event'])
         },
-        error: (err) => console.log(err),
+        
+        error: (err) => {
+          console.log(err)
+          this.sweet.showError("Event", "Event not added")
+        }
+        
       });
     }
   }
@@ -95,15 +100,15 @@ export class AddEventComponent implements OnInit {
     });
   }
 
-  findallsportTypes() {
-    this.FacadeEvent.findallsportTypes().subscribe({
-      next: (response) => {
-        this.sporttypes = response.sport_type;
-      },
+  // findallsportTypes() {
+  //   this.FacadeEvent.findallsportTypes().subscribe({
+  //     next: (response) => {
+  //       this.sporttypes = response.sport_type;
+  //     },
 
-      error: (err) => console.log(err),
-    });
-  }
+  //     error: (err) => console.log(err),
+  //   });
+  // }
 
   findAllClubTags() {
     this.FacadeEvent.findAllClubTags().subscribe({

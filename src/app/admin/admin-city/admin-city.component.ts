@@ -19,14 +19,13 @@ export class AdminCityComponent implements OnInit {
     private sweet: AlertService
   ) {
     this.cityForm = this.fb.group({
+      id : [""],
       name: ["", Validators.required],
       image: ["", Validators.required],
     });
   }
 
-
   loader = inject(LoaderServiceService);
-
 
   showModal: boolean = false;
   showModalUpdate: boolean = false;
@@ -38,6 +37,45 @@ export class AdminCityComponent implements OnInit {
   ngOnInit(): void {
     this.finAllCities();
   }
+
+
+  toggleModalUpdate(){
+    this.showModalUpdate = !this.showModalUpdate;
+  }
+
+  update() {
+    const id = this.cityForm.value.id;
+    console.log("Updating category with ID:", id);
+    if (id && this.cityForm.valid) {
+      this.cityservice.update(id, this.cityForm.value).subscribe({
+        next: () => {
+          this.sweet.showSuccess(
+            "city updated",
+            "city updated successfully"
+          );
+          this.cityForm.reset();
+          this.toggleModalUpdate();
+          this.finAllCities(); 
+        },
+        error: (err) => {
+          this.sweet.showError("Error", "city not updated");
+          console.error(err);
+        },
+      });
+    } 
+  }
+
+  findbyid(id: number) {
+    this.showModalUpdate = true;
+    this.cityservice.findbyid(id).subscribe({
+      next: (result) => {
+        this.cityForm.patchValue(result.city);
+      },
+      error: (err) => console.log(err),
+    });
+  }
+
+
 
   add() {
     if (this.cityForm.valid) {
@@ -69,7 +107,6 @@ export class AdminCityComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
-
 
   delete(id: number) {
     this.cityservice.delete(id).subscribe({

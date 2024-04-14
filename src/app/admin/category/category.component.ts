@@ -111,6 +111,8 @@ export class CategoryComponent implements OnInit {
             "Category added successfully"
           );
           this.categoryForm.reset();
+
+          this.findAll();
         },
         error: (err) => {
           this.sweet.showError("Error", "Category not added");

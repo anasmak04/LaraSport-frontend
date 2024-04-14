@@ -463,7 +463,6 @@
               <th scope="col" class="px-6 py-3 capitalize">city</th>
               <th scope="col" class="px-6 py-3 capitalize">user</th>
               <th scope="col" class="px-6 py-3 capitalize">image</th>
-              <th scope="col" class="px-6 py-3 capitalize">sport type</th>
               <th scope="col" class="px-6 py-3 capitalize">tags/clubs</th>
               <th scope="col" class="px-6 py-3 capitalize text-center">
                 Actions
@@ -489,7 +488,7 @@
               </td>
 
               <td class="px-6 py-4">
-                {{ event.content }}
+                {{ event.content | truncate:50}}
               </td>
 
               <td class="px-6 py-4">
@@ -504,20 +503,24 @@
                 {{ event.user }}
               </td>
 
-              <td class="px-6 py-4">
-                {{ event.sport_type }}
-              </td>
+             
+           
 
-              <td class="px-6 py-4">
-                {{ event.tags }}
-              </td>
+        
 
+              
+
+           
               <td class="px-6 py-4">
                 <img
                   class="w-10 h-10 rounded"
                   src="{{ event.image }}"
                   alt="Default avatar"
                 />
+              </td>
+
+              <td class="px-6 py-4">
+                {{ event.tags }}
               </td>
 
               <td class="px-6 py-4 text-center">

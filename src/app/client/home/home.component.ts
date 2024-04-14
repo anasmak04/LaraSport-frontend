@@ -44,6 +44,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(["/post"]);
   }
 
+  toclubtags(){
+    this.router.navigate(["/tags"]);
+  }
+
   clubs: any;
 
   searchclub() {

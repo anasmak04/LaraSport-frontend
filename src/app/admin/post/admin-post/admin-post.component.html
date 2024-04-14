@@ -469,7 +469,7 @@
               </td>
 
               <td class="px-6 py-4">
-                {{ post.content }}
+                {{ post.content | truncate:50 }}
               </td>
 
               <td class="px-6 py-4">
@@ -477,12 +477,14 @@
               </td>
 
               <td class="px-6 py-4">
-                {{ post.category }}
+                {{ post.user }}
               </td>
 
               <td class="px-6 py-4">
-                {{ post.user }}
+                {{ post.category }}
               </td>
+
+             
 
               <td class="px-6 py-4">
                 @for (item of post.tags; track $index) {
@@ -505,7 +507,7 @@
               <td class="px-6 py-4">
                 {{ event.tags_clubs }}
               </td> -->
-              <td>
+              <td class="">
                 <button
                 type="button"
                 (click)="delete(post.id)"

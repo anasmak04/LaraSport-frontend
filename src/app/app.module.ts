@@ -8,7 +8,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 import { LoginComponent } from "./_auth/login/login.component";
 import { MessagesModule } from "primeng/messages";
-import { PostDetailsComponent } from "./admin/post/post-details/post-details.component";
+import { PostDetailsComponent } from "./client/post-details/post-details.component";
 import { NotFoundComponent } from "./shared/components/not-found/not-found.component";
 import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { ClientModuleModule } from "./client/client-module.module";

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable, OnInit, inject } from "@angular/core";
 import { Observable } from "rxjs";
 import { CitySearchResponse } from "src/app/shared/model/city-search-response";
+import { City, CityResponsee } from "src/app/shared/model/city/city";
 import { CityResponse } from "src/app/shared/model/city/city-response";
 
 @Injectable({
@@ -16,6 +17,15 @@ export class CityServiceService   {
 
   constructor(private http: HttpClient) {}
 
+
+
+  findbyid(id : number) : Observable<CityResponsee>{
+    return this.http.get<CityResponsee>(this.ApiCity + '/' + id);
+  }
+
+  update(formdata: City, id : number): Observable<City>{
+    return this.http.put<City>(this.ApiCity + '/' + id, formdata);
+  }
 
   findAll(): Observable<CityResponse> {
     return this.http.get<CityResponse>(this.ApiCity);

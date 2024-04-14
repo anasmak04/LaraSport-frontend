@@ -3,7 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { RegisterComponent } from "./_auth/register/register.component";
 import { EditPostComponent } from "./admin/post/edit-post/edit-post.component";
 import { LoginComponent } from "./_auth/login/login.component";
-import { PostDetailsComponent } from "./admin/post/post-details/post-details.component";
+import { PostDetailsComponent } from "./client/post-details/post-details.component";
 import { NotFoundComponent } from "./shared/components/not-found/not-found.component";
 import { AccessDeniedComponent } from "./shared/components/permission/access-denied/access-denied.component";
 import { isBannedGuard } from "./shared/auth/is-banned.guard";

@@ -35,4 +35,9 @@ export class ClubTagsService {
       formData,
     );
   }
+
+
+  delete(id: number): Observable<Clubtag> {
+    return this.http.delete<Clubtag>(`http://127.0.0.1:8000/api/clubtags/${id}`);
+  }
 }

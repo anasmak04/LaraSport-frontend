@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
           } else if (response.roles.includes("Manager")) {
             this.router.navigate(["/manager/reservation"]);
           } else {
-            this.router.navigate(["/city"]);
+            this.router.navigate(["/"]);
           }
         },
         error: (error) => {

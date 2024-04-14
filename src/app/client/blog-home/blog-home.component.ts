@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { PostServiceService } from "src/app/services/post/post-service.service";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { EventServiceService } from "src/app/services/event/event-service.service";
+import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
   selector: "app-blog-home",
@@ -20,6 +21,8 @@ export class BlogHomeComponent implements OnInit {
   }
   posts: any = [];
   events: any = [];
+
+  loader = inject(LoaderServiceService);
 
   toblogs() {
     this.router.navigate(["/post"]);

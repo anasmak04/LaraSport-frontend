@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert/alert.service";
 import { CategoryServiceService } from "src/app/services/category/category-service.service";
 import { PostFacadeService } from "src/app/services/post/post-facade.service";
@@ -21,7 +22,8 @@ export class AddPostComponent implements OnInit {
   constructor(
     private FacadePost: PostFacadeService,
     private fb: FormBuilder,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private router : Router
   ) {
     this.PostForm = this.fb.group({
       title: ["", Validators.required],
@@ -63,6 +65,7 @@ export class AddPostComponent implements OnInit {
         next: () => {
           this.alertService.showSuccess("Post", "Post created successfully");
           this.PostForm.reset();
+        this.router.navigate(['/admin/post']);
         },
         error: (error) => {
           this.alertService.showError("Post", "Post not created");

@@ -53,6 +53,7 @@ export class TagsComponent implements OnInit {
         next: () => {
           this.sweet.showSuccess("tags added", "tags added successfully");
           this.TagsForm.reset();
+          this.findAll();
         },
 
         error: (err) => {
