@@ -3,6 +3,7 @@ import { Component, OnInit, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Header } from "primeng/api";
+import { AlertService } from "src/app/services/alert/alert.service";
 
 import { CityServiceService } from "src/app/services/city/city-service.service";
 import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
@@ -18,9 +19,20 @@ import { SportTypeService } from "src/app/services/sport-type/sport-type.service
 export class AdminEventComponent implements OnInit {
   events: any[] = [];
 
+  confirmDelete = false;
+
+  cancel() {
+    this.confirmDelete = false;
+  }
+
+  toggleconfirmDelete() {
+    this.confirmDelete = !this.confirmDelete;
+  }
+
   constructor(
     private eventservice: EventServiceService,
-    private router: Router
+    private router: Router,
+    private sweet: AlertService
   ) {}
 
   loader = inject(LoaderServiceService);
@@ -33,16 +45,36 @@ export class AdminEventComponent implements OnInit {
     this.router.navigate(["/admin/add/event"]);
   }
 
+
+
+  
+
+  delete(id: number) {
+    this.eventservice.delete(id).subscribe({
+      next: () => {
+        this.sweet.showSuccess("delete", "event deleted successfully");
+        this.findallEvents();
+      },
+
+      error: (err) => {
+        this.sweet.showError("delete", "event not deleted");
+      },
+    });
+  }
+
   findallEvents() {
     return this.eventservice.FindAllEvents().subscribe({
       next: (response) => {
         console.log(response);
         this.events = response.event;
       },
-
       error: (err) => {
         console.log(err);
       },
     });
   }
+
+
+
+
 }

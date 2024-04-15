@@ -19,6 +19,9 @@ import { BlogHomeComponent } from "./blog-home/blog-home.component";
 import { SportHomeComponent } from "./sport-home/sport-home.component";
 import { HomeComponent } from "./home/home.component";
 import { ClubResultComponent } from "./club-result/club-result.component";
+import { CalendarModule } from 'primeng/calendar';
+import { SportClubComponent } from "./sport-club/sport-club.component";
+
 @NgModule({
   declarations: [
     ClubComponent,
@@ -31,7 +34,8 @@ import { ClubResultComponent } from "./club-result/club-result.component";
     SportHomeComponent,
     BlogHomeComponent,
     HomeComponent,
-    ClubResultComponent
+    ClubResultComponent,
+    SportClubComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +45,7 @@ import { ClubResultComponent } from "./club-result/club-result.component";
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
+    CalendarModule
   ],
 
   exports: [
@@ -55,7 +60,9 @@ import { ClubResultComponent } from "./club-result/club-result.component";
     SportHomeComponent,
     BlogHomeComponent,
     HomeComponent,
-    ClubResultComponent
+    ClubResultComponent,
+    CalendarModule,
+    SportClubComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },

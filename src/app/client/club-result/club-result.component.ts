@@ -5,7 +5,7 @@ import { ClubServiceService } from 'src/app/services/club/club-service.service';
 @Component({
   selector: 'app-club-result',
   templateUrl: './club-result.component.html',
-  styleUrls: ['./club-result.component.css'] // Corrected the property name
+  styleUrls: ['./club-result.component.css'] 
 })
 export class ClubResultComponent implements OnInit {
   clubs: any = [];
@@ -27,7 +27,7 @@ export class ClubResultComponent implements OnInit {
     this.clubService.searchClubs(tagId, cityId).subscribe({
       next: (clubs) => {
         console.log('Clubs:', clubs);
-        this.clubs = clubs; // Assuming the response is the array of clubs directly
+        this.clubs = clubs; 
       },
       error: (error) => {
         console.error('Failed to fetch clubs:', error);

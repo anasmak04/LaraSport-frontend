@@ -16,6 +16,7 @@ export class AddClubComponent implements OnInit {
   cities: any = [];
   tags: any[] = [];
   managers: any[] = [];
+  
 
   FormClub: FormGroup;
   constructor(
@@ -78,8 +79,6 @@ export class AddClubComponent implements OnInit {
     });
   }
 
-  findAllTags() {}
-
   add() {
     if (this.FormClub.valid) {
       const formData = new FormData();
@@ -108,7 +107,6 @@ export class AddClubComponent implements OnInit {
           console.log("Upload successful", response);
           this.sweet.showSuccess("Club", "Club created successfully");
           this.findAllClubs();
-          
         },
         error: (err) => {
           this.sweet.showError("Club", "Club not created");
@@ -116,4 +114,6 @@ export class AddClubComponent implements OnInit {
       });
     }
   }
+
+
 }

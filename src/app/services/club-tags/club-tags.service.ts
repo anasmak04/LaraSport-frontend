@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { ClubResponse } from "src/app/shared/model/club/club-response";
 import { Clubtag } from "src/app/shared/model/clubtag/clubtag";
 import { ClubtagRESPONSE } from "src/app/shared/model/clubtag/clubtag-response";
 
@@ -9,14 +10,6 @@ import { ClubtagRESPONSE } from "src/app/shared/model/clubtag/clubtag-response";
 })
 export class ClubTagsService {
   constructor(private http: HttpClient) {}
-
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem("access_token");
-    console.log("token", token);
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
 
   getTags(): Observable<ClubtagRESPONSE> {
     return this.http.get<ClubtagRESPONSE>("http://127.0.0.1:8000/api/clubtags");
@@ -32,12 +25,18 @@ export class ClubTagsService {
   update(formData: FormData, id: number): Observable<Clubtag> {
     return this.http.put<Clubtag>(
       `http://127.0.0.1:8000/api/clubtags/${id}`,
-      formData,
+      formData
     );
   }
 
-
   delete(id: number): Observable<Clubtag> {
-    return this.http.delete<Clubtag>(`http://127.0.0.1:8000/api/clubtags/${id}`);
+    return this.http.delete<Clubtag>(
+      `http://127.0.0.1:8000/api/clubtags/${id}`
+    );
   }
+
+  FindClubByTag(sport: number): Observable<ClubResponse> {
+    return this.http.get<ClubResponse>(`http://127.0.0.1:8000/api/sport/club/${sport}`);
+  }
+  
 }

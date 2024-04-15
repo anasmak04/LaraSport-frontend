@@ -10,6 +10,7 @@ import { ClubDetailsComponent } from './club-details/club-details.component';
 import { HomeComponent } from './home/home.component';
 import { ClubResultComponent } from './club-result/club-result.component';
 import { SportHomeComponent } from './sport-home/sport-home.component';
+import { SportClubComponent } from './sport-club/sport-club.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent},
@@ -21,7 +22,9 @@ const routes: Routes = [
   { path: "tags", component: SportHomeComponent },
   { path: "event/:id", component: EventDetailsComponent },
   { path: "city/club/:id", component: ClubComponent },
+  { path: "sport/club/:id", component: SportClubComponent },
   { path: "club/:id", component: ClubDetailsComponent },
+
 ];
 
 @NgModule({

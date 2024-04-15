@@ -16,6 +16,9 @@ module.exports = {
         "btn-register-bg":
           "linear-gradient(45deg, #fab31e, #e62644 15%, #5d0072)",
       },
+
+     
+      
     },
   },
   plugins: [],

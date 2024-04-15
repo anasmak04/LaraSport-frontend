@@ -13,6 +13,15 @@ import { LoaderServiceService } from "src/app/services/loader/loader-service.ser
 export class CategoryComponent implements OnInit {
   categoryForm: FormGroup;
   message: string = "";
+  confirmDelete: boolean = false;
+
+  toggleconfirmDelete() {
+    this.confirmDelete = !this.confirmDelete;
+  }
+
+  cancel() {
+    this.confirmDelete = false;
+  }
 
   constructor(
     private categoryService: CategoryServiceService,
@@ -69,7 +78,7 @@ export class CategoryComponent implements OnInit {
 
   update() {
     const id = this.categoryForm.value.id;
-    console.log("Updating category with ID:", id); // Log the ID being used
+    console.log("Updating category with ID:", id);
     if (id && this.categoryForm.valid) {
       this.categoryService.update(id, this.categoryForm.value).subscribe({
         next: () => {
@@ -79,7 +88,7 @@ export class CategoryComponent implements OnInit {
           );
           this.categoryForm.reset();
           this.toggleModalUpdate();
-          this.findAll(); // Refresh the list
+          this.findAll();
         },
         error: (err) => {
           this.sweet.showError("Error", "Category not updated");
@@ -111,8 +120,8 @@ export class CategoryComponent implements OnInit {
             "Category added successfully"
           );
           this.categoryForm.reset();
-
           this.findAll();
+          this.showModal = true;
         },
         error: (err) => {
           this.sweet.showError("Error", "Category not added");
@@ -125,13 +134,14 @@ export class CategoryComponent implements OnInit {
   delete(id: number) {
     this.categoryService.delete(id).subscribe({
       next: () => {
-        this.sweet.showError(
-          "Category deleted",
-          "Category deleted successfully"
-        );
+        this.sweet.showSuccess("deleted", "Category deleted successfully");
+        this.findAll();
+        this.confirmDelete = true;
       },
-      error: (err) => console.log(err),
+      error: (err) => {
+        this.sweet.showError("Error", "Category not deleted");
+        console.log(err);
+      },
     });
   }
-
 }

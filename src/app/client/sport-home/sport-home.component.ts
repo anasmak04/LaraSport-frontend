@@ -11,18 +11,21 @@ export class SportHomeComponent implements OnInit {
   
 
   constructor(){}
+
   ngOnInit(): void {
     this.getAllTags();
+
   }
   
   
   Tags: any = [];
   loader = inject(LoaderServiceService);
   sport = inject(ClubTagsService);
-
+  Club :any = [];
 
 
   getAllTags() {
+    
     return this.sport.getTags().subscribe({
       next: (response) => {
         this.Tags = response.clubtag;
@@ -33,6 +36,19 @@ export class SportHomeComponent implements OnInit {
       },
     });
   }
+
+  FindClubBySport(sport : number){
+    return this.sport.FindClubByTag(sport).subscribe({
+      next : (response) => {
+        this.Club = response;
+      },
+
+      error : (err) => {
+        console.log(err);
+      }
+    });
+  }
+
 
   
 }

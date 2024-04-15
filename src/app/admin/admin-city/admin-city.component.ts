@@ -12,6 +12,16 @@ import { LoaderServiceService } from "src/app/services/loader/loader-service.ser
 export class AdminCityComponent implements OnInit {
   cityForm: FormGroup;
   cities: any = [];
+  confirmDelete = false;
+
+  toggleconfirmDelete() {
+    this.confirmDelete = !this.confirmDelete;
+  }
+
+
+  cancel(){
+    this.confirmDelete = false;
+  }
 
   constructor(
     private cityservice: CityServiceService,

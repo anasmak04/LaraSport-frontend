@@ -12,8 +12,10 @@ export class ReservationService {
   constructor(private http: HttpClient) {}
 
 
-  // Get all reservations
+
   getAllReservations(): Observable<ReservationResponse> {
     return this.http.get<ReservationResponse>(this.Apiurl);
   }
+
+
 }

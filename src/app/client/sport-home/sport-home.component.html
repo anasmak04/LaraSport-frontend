@@ -103,14 +103,17 @@
       *ngIf="!(loader.isLoading | async)"
       class="flex flex-wrap justify-center items-center gap-4"
     >
-    <div class="w-[300px] h-[200px] border relative" *ngFor="let tag of Tags">
+    <div  class="w-[300px] h-[200px] border relative" *ngFor="let tag of Tags">
       <img
         src="{{ tag.image }}"
         alt="{{ tag.name }}"
         class="w-full h-full object-cover"
         [style.objectFit]="'cover'"
-      />
+
+        />
       <div
+      [routerLink]="['/sport/club', tag.id]"
+
         class="absolute inset-0 flex flex-col justify-end p-4 text-xl font-bold bg-black bg-opacity-50"
       >
         <h2 class="font-bold text-white">{{ tag.name }}</h2>

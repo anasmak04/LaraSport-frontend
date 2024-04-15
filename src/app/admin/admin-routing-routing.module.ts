@@ -15,6 +15,7 @@ import { AddClubComponent } from "./club/add-club/add-club.component";
 import { ClubtagsComponent } from "./clubtags/clubtags.component";
 import { EditPostComponent } from "./post/edit-post/edit-post.component";
 import { EditClubComponent } from "./club/edit-club/edit-club.component";
+import { EditEventComponent } from "./event/edit-event/edit-event.component";
 
 const routes: Routes = [
   {
@@ -81,11 +82,16 @@ const routes: Routes = [
     component: AddClubComponent,
   },
 
-
   {
     path: "edit/post/:id",
     canActivate: [guardRoleGuard],
     component: EditPostComponent,
+  },
+
+  {
+    path: "edit/event/:id",
+    canActivate: [guardRoleGuard],
+    component: EditEventComponent,
   },
 
   {

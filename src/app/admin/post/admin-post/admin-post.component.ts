@@ -17,6 +17,19 @@ export class AdminPostComponent implements OnInit {
   posts: any[] = [];
   message: string | undefined;
 
+
+  confirmDelete = false;
+
+  cancel(){
+    this.confirmDelete = false;
+  }
+
+
+  toggleconfirmDelete() {
+    this.confirmDelete = !this.confirmDelete;
+  }
+
+
   constructor(
     private postservice: PostServiceService,
     private sweet: AlertService,

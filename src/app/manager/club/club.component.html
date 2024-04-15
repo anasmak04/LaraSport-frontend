@@ -32,7 +32,7 @@
               <tr class="border-b border-gray-200">
                 <td class="px-6 py-4">{{ club.id }}</td>
                 <td class="px-6 py-4">{{ club.name }}</td>
-                <td class="px-6 py-4">{{ club.description }}</td>
+                <td class="px-6 py-4">{{ club.description | truncate:30 }}</td>
                 <td class="px-6 py-4">{{ club.city }}</td>
                 <td class="px-6 py-4">{{ club.user }}</td>
                 <td class="px-6 py-4">

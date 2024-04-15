@@ -50,4 +50,8 @@ export class ClubServiceService {
 
     return this.http.get<ClubResponse>(`${this.ApiUrl}/search/clubs`);
   }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(this.ApiUrl + "/" + id);
+  }
 }

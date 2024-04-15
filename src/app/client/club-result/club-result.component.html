@@ -23,7 +23,7 @@
         <div class="p-4">
           <h3 class="text-lg font-semibold">{{ club.name }}</h3>
           <p class="text-sm my-2">{{ club.description }}</p>
-          <p class="text-sm"><strong>City:</strong> {{ club.city.name }}</p>
+          <p class="text-sm"><strong>City:</strong> {{ club.city }}</p>
           <div class="mt-2">
             <strong>Tags:</strong>
             <ul class="flex flex-wrap">
@@ -31,16 +31,18 @@
                 *ngFor="let tag of club.tags"
                 class="mr-2 text-xs font-medium text-gray-700 bg-gray-200 rounded-full px-2 py-1"
               >
-                {{ tag.name }}
+                {{ tag }}
               </li>
             </ul>
-
           </div>
-
         </div>
-        <button class="bg-black text-white px-6 py-3 m-4">details</button>
 
-
+        <button
+        [routerLink]="['/club', club.id]"
+          class="bg-black text-white px-6 py-3 m-4 hover:bg-transparent hover:text-black hover:border hover:border-black capitalize"
+        >
+          Details
+        </button>
       </div>
     </div>
   </div>

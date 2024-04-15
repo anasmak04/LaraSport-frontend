@@ -50,12 +50,7 @@
   </div>
 </div>
 
-
-
-
-<section
-  class="container mx-auto max-w-7xl mb-4 p-10"
->
+<section class="container mx-auto max-w-7xl mb-4 p-10">
   <h1 class="capitalize text-[#2e294d] mb-2 text-2xl font-bold">
     La liste des villes du Maroc
   </h1>
@@ -129,8 +124,10 @@
       </div>
     </div>
   </div>
-  <div   *ngIf="!(loader.isLoading | async)"
-  class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div
+    *ngIf="!(loader.isLoading | async)"
+    class="grid grid-cols-1 md:grid-cols-3 gap-4"
+  >
     @for (city of cities; track $index) {
     <div
       class="relative w-full h-[200px] overflow-hidden"
@@ -172,7 +169,6 @@
     salles de sport au Maroc.
   </p>
 
-  
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     <div
       role="status"
@@ -238,15 +234,12 @@
     </div>
   </div>
 
-  
-
-
-
   <div
-  *ngIf="!(loader.isLoading | async)"
-  class="flex flex-wrap justify-center items-center gap-4">
+    *ngIf="!(loader.isLoading | async)"
+    class="flex flex-wrap justify-center items-center gap-4"
+  >
     <div
-      class="w-full h-[200px] md:w-[300px] md:h-[200px] border relative"
+      class="w-full h-[200px] md:w-[350px] md:h-[200px] border relative"
       *ngFor="let tag of tags"
     >
       <img
@@ -268,12 +261,9 @@
   >
     Consultez plus de 44 club category
   </button>
-
 </section>
 
-<section
-  class="container mx-auto max-w-7xl mb-4 p-10"
->
+<section class="container mx-auto max-w-7xl mb-4 p-10">
   <h1 class="text-center font-bold text-xl mb-2">
     Découvrez plus de 100 disciplines sportives au Maroc
   </h1>
@@ -282,8 +272,6 @@
     salles de sport au Maroc.
   </p>
 
-
-        
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     <div
       role="status"
@@ -349,13 +337,12 @@
     </div>
   </div>
 
-  
   <div
-  *ngIf="!(loader.isLoading | async)"
-
-  class="flex flex-wrap justify-center items-center gap-4">
+    *ngIf="!(loader.isLoading | async)"
+    class="flex flex-wrap justify-center items-center gap-4"
+  >
     <div
-      class="w-full h-[200px] md:w-[400px] md:h-[200px] border"
+      class="w-full h-[200px] md:w-[350px] md:h-[200px] border"
       *ngFor="let event of events"
     >
       <img

@@ -23,9 +23,8 @@
 </div>
 
 <section class="bg-white py-8 lg:py-16 antialiased">
-
   <div class="credit-card m-auto block bg-gray-800 rounded-lg p-4 w-[500px]">
-    <div class="flex justify-between items-center ">
+    <div class="flex justify-between items-center">
       <img
         src="../../../assets/mastercard2.png"
         alt="Mastercard logo"
@@ -52,7 +51,10 @@
     </div>
   </div>
 
-  <div class="max-w-2xl mx-auto px-4">
+
+
+  
+  <div class="max-w-2xl mx-auto px-4 space-y-8">
     <label
       for="countries"
       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -63,7 +65,7 @@
       [(ngModel)]="selectedDuration"
       name="duration"
       id="duration"
-      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
     >
       <option selected>Choose a periode</option>
       <option value="day">day</option>
@@ -72,17 +74,15 @@
     </select>
 
     <div *ngIf="selectedDuration" class="mt-4">
-      <mat-form-field appearance="fill" class="w-full">
-        <mat-label>Choose a date</mat-label>
-        <input
-          matInput
-          [matDatepicker]="picker"
+      <span
+        class="p-float-label bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      >
+        <p-calendar
           [(ngModel)]="selectedDate"
-          class="w-full"
-        />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+          inputId="birth_date"
+        ></p-calendar>
+        <label for="birth_date">choose a date</label>
+      </span>
     </div>
 
     <div
@@ -142,7 +142,7 @@
               alt="Michael Gough"
             />Michael Gough
           </p>
-          <p class="text-sm text-gray-600 dark:text-gray-400">
+          <p class="text-sm text-gray-600">
             <time pubdate datetime="2022-02-08" title="February 8th, 2022"
               >Feb. 8, 2022</time
             >
@@ -151,7 +151,7 @@
         <button
           id="dropdownComment1Button"
           data-dropdown-toggle="dropdownComment1"
-          class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+          class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 focus:ring-gray-50"
           type="button"
         >
           <svg

@@ -12,6 +12,16 @@ import { LoaderServiceService } from "src/app/services/loader/loader-service.ser
 export class ClubtagsComponent implements OnInit {
   clubtags: any = [];
   TagsForm: FormGroup;
+  confirmDelete = false;
+
+  cancel(){
+    this.confirmDelete = false;
+  }
+
+
+  toggleconfirmDelete() {
+    this.confirmDelete = !this.confirmDelete;
+  }
 
   selectedTagId: number | null = null;
 

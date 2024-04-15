@@ -13,6 +13,19 @@ export class TagsComponent implements OnInit {
   TagsForm: FormGroup;
 
 
+  confirmDelete = false;
+
+  cancel(){
+    this.confirmDelete = false;
+  }
+
+
+  toggleconfirmDelete() {
+    this.confirmDelete = !this.confirmDelete;
+  }
+
+
+
   constructor(
     private tagservice: TagsServiceService,
     private fb: FormBuilder,
