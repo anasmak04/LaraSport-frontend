@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,47 +11,53 @@
   </head>
   <body>
     <div class="container mx-auto mt-10">
-      <form [formGroup]="EventForm" (ngSubmit)="updatePost()">
+      <form [formGroup]="ClubForm" (ngSubmit)="updatePost()">
         <div class="mb-4">
-          <label for="title" class="block text-gray-700 text-sm font-bold mb-2"
+          <label for="name" class="block text-gray-700 text-sm font-bold mb-2"
             >Title</label
           >
           <input
-            formControlName="title"
+            formControlName="name"
             type="text"
-            id="title"
-            placeholder="Enter post title"
+            id="name"
+            placeholder="Enter post name"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
         <div class="mb-4">
           <label
-            for="content"
+            for="description"
             class="block text-gray-700 text-sm font-bold mb-2"
             >Content</label
           >
           <textarea
-            formControlName="content"
-            id="content"
-            placeholder="Enter post content"
+            formControlName="description"
+            id="description"
+            placeholder="Enter post description"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           ></textarea>
         </div>
 
+
+
         <div class="mb-4">
           <label
-            for="event_date"
+            for="city_id"
             class="block text-gray-700 text-sm font-bold mb-2"
-            >Publish Date</label
+            >user</label
           >
-          <input
-            formControlName="event_date"
-            type="date"
-            id="event_date"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
+          <select
+            formControlName="user_id"
+            class="shadow border rounded w-full py-2 px-3"
+          >
+            <option value="" >Select a manager...</option>
+            <option *ngFor="let manager of managers" [value]="manager.id">
+              {{ manager.firstName }}
+            </option>
+          </select>
         </div>
+   
 
         <div class="mb-4">
           <label
@@ -71,11 +77,13 @@
         </div>
 
         <div class="mb-4">
-          <label for="clubTags" class="block text-gray-700 text-sm font-bold mb-2"
+          <label
+            for="tags"
+            class="block text-gray-700 text-sm font-bold mb-2"
             >Tags</label
           >
           <select
-            formControlName="clubTags"
+            formControlName="tags"
             multiple="multiple"
             class="select2-multi w-full"
           >
@@ -84,6 +92,22 @@
             </option>
           </select>
         </div>
+
+
+
+        <!-- <div class="mb-4">
+          <label
+            for="image"
+            class="block text-sm font-medium text-gray-700"
+            >Image</label
+          >
+          <input
+            type="file"
+            id="image"
+            formControlName="image"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+        </div> -->
 
         <button
           type="submit"
@@ -101,4 +125,4 @@
       });
     </script>
   </body>
-</html> -->
+</html>

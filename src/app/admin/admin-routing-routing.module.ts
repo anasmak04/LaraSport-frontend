@@ -16,6 +16,7 @@ import { ClubtagsComponent } from "./clubtags/clubtags.component";
 import { EditPostComponent } from "./post/edit-post/edit-post.component";
 // import { EditClubComponent } from "./club/edit-club/edit-club.component";
 import { EditEventComponent } from "./event/edit-event/edit-event.component";
+import { EditClubComponent } from "./club/edit-club/edit-club.component";
 
 const routes: Routes = [
   {
@@ -94,17 +95,11 @@ const routes: Routes = [
     component: EditEventComponent,
   },
 
-  // {
-  //   path: "edit/club/:id",
-  //   canActivate: [guardRoleGuard],
-  //   component: EditClubComponent,
-  // },
-
-  // {
-  //   path: "edit/:id",
-  //   canActivate: [guardRoleGuard],
-  //   component: EditClubComponent,
-  // },
+  {
+    path: "edit/club/:id",
+    canActivate: [guardRoleGuard],
+    component: EditClubComponent,
+  },
 ];
 
 @NgModule({

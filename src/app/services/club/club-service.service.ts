@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { Club } from "src/app/shared/model/club/club";
+import { Club, ClubResponsee } from "src/app/shared/model/club/club";
 import { ClubResponse } from "src/app/shared/model/club/club-response";
 import { tap } from "rxjs/operators";
 import { CommentServiceService } from "../comment/comment-service.service";
@@ -21,9 +21,16 @@ export class ClubServiceService {
     return this.http.get<ClubResponse>(`${this.ApiUrl}/city/${cityid}/clubs`);
   }
 
-  getClubById(id: number): Observable<ClubdetailsResponse> {
-    return this.http.get<ClubdetailsResponse>(`${this.ApiUrl}/clubs/${id}`);
+  getClubById(id: number): Observable<ClubResponsee> {
+    return this.http.get<ClubResponsee>(`${this.ApiUrl}/clubs/${id}`);
   }
+
+
+  
+  update(id: number, club: Club): Observable<Club> {
+    return this.http.put<Club>(`${this.ApiUrl}/clubs/${id}`, club);
+  }
+  
 
   FindAllClubs(): Observable<ClubResponse> {
     return this.http.get<ClubResponse>(`${this.ApiUrl}/clubs`);
