@@ -504,7 +504,10 @@
               </td>
 
               <td class="px-6 py-4">
-                {{ event.tags }}
+                @for (item of event.tags; track $index) {
+                  {{ item.name }}
+                }
+              
               </td>
 
               <td class="px-6 py-4 text-center">

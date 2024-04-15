@@ -47,7 +47,7 @@ export class EditPostComponent implements OnInit {
           content: response.post.content,
           publish_date: response.post.publish_date,
           category_id: response.post.category_id,
-          tags: response.post.tags.map((tag) => tag.id), // Assuming you need the tag IDs in your form
+          tags: response.post.tags.map((tag) => tag.id), 
         });
       },
       error: (err) => console.log(err),

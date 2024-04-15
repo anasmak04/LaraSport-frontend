@@ -22,9 +22,9 @@ import { AdminRoutingRoutingModule } from './admin-routing-routing.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ClubtagsComponent } from './clubtags/clubtags.component';
 import { EditClubComponent } from './club/edit-club/edit-club.component';
+import { EditEventComponent } from './event/edit-event/edit-event.component';
 
-
-@NgModule({
+@NgModule({  
   declarations: [
     AddClubComponent,
     CategoryComponent,
@@ -40,7 +40,8 @@ import { EditClubComponent } from './club/edit-club/edit-club.component';
     AddEventComponent,
     AddPostComponent,
     ClubtagsComponent,
-    EditClubComponent
+    EditClubComponent,
+    EditEventComponent
   ],
   imports: [
     SharedModule,
@@ -74,7 +75,8 @@ import { EditClubComponent } from './club/edit-club/edit-club.component';
     AdminRoutingRoutingModule,
     MatDialogModule,
     ClubtagsComponent,
-    EditClubComponent
+    EditClubComponent,
+    EditEventComponent
   ]
 })
 export class AdminmoduleModule { }
