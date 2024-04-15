@@ -7,7 +7,7 @@ export interface Event {
     event_date : Date
     sport_type_id : String,
     city_id : String,
-    clubTags : Clubtag[],
+    TagsClubs : Clubtag[],
 }
 
 

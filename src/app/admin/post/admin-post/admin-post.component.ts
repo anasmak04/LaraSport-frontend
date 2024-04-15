@@ -42,6 +42,9 @@ export class AdminPostComponent implements OnInit {
     this.router.navigate(["/admin/add/post"]);
   }
 
+
+
+
   ngOnInit(): void {
     this.findallposts();
   }

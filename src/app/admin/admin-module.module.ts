@@ -21,7 +21,7 @@ import { AddPostComponent } from './post/add-post/add-post.component';
 import { AdminRoutingRoutingModule } from './admin-routing-routing.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ClubtagsComponent } from './clubtags/clubtags.component';
-import { EditClubComponent } from './club/edit-club/edit-club.component';
+// import { EditClubComponent } from './club/edit-club/edit-club.component';
 import { EditEventComponent } from './event/edit-event/edit-event.component';
 
 @NgModule({  
@@ -40,7 +40,7 @@ import { EditEventComponent } from './event/edit-event/edit-event.component';
     AddEventComponent,
     AddPostComponent,
     ClubtagsComponent,
-    EditClubComponent,
+    // EditClubComponent,
     EditEventComponent
   ],
   imports: [
@@ -75,7 +75,7 @@ import { EditEventComponent } from './event/edit-event/edit-event.component';
     AdminRoutingRoutingModule,
     MatDialogModule,
     ClubtagsComponent,
-    EditClubComponent,
+    // EditClubComponent,
     EditEventComponent
   ]
 })

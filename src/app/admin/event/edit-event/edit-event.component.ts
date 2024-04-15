@@ -33,7 +33,7 @@ export class EditEventComponent implements OnInit{
       content: ["", Validators.required],
       event_date: ["", Validators.required],
       city_id: ["", Validators.required],
-      clubTags: [[], Validators.required]
+      TagsClubs: [[], Validators.required]
       });
   }
 
@@ -64,7 +64,7 @@ export class EditEventComponent implements OnInit{
           content: response.event.content,
           event_date: response.event.event_date,
           city_id: response.event.city_id,
-          clubTags: response.event.clubTags ? response.event.clubTags.map(tag => tag.id) : [], 
+          TagsClubs: response.event.TagsClubs ? response.event.TagsClubs.map(tag => tag.id) : [], 
         });
       },
       error: (err) => console.log(err),
