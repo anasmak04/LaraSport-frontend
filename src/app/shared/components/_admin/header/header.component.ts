@@ -10,15 +10,17 @@ import { AuthServiceService } from 'src/app/services/auth/auth-service.service';
 export class HeaderComponent implements OnInit {
   user: any;
 
+  isMenuOpen = false;
+
+
   constructor(private authservice: AuthServiceService, private router: Router) { }
- 
+
+  
   ngOnInit(): void {
     this.user = this.authservice.getUser();
   }
 
 
-
-  
   logout() {
     this.authservice.logout().subscribe({
       next: () => {
@@ -30,6 +32,9 @@ export class HeaderComponent implements OnInit {
         console.error('logout failed', error);
       }
     });
+
+
+    
   }
 
   

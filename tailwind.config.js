@@ -3,9 +3,8 @@ module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {
-
       fontFamily: {
-        'ubuntu': ['Ubuntu', 'sans-serif'] 
+        ubuntu: ["Ubuntu", "sans-serif"],
       },
       backgroundImage: {
         "custom-gradient":
@@ -17,8 +16,16 @@ module.exports = {
           "linear-gradient(45deg, #fab31e, #e62644 15%, #5d0072)",
       },
 
-     
-      
+      backdropFilter: {
+        none: "none",
+        blur: "blur(20px)",
+      },
+    },
+
+    variants: {
+      extend: {
+        backdropFilter: ["responsive"],
+      },
     },
   },
   plugins: [],
