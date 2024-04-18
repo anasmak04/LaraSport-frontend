@@ -30,35 +30,50 @@ export class ClubDetailsComponent implements OnInit {
     private apiService: ServiceapiService
   ) {}
 
+
+  
   async pay(clubId: number, duration: string) {
     this.apiService.startPayment(clubId, duration).subscribe(
-      async (response: PayementResponse) => {
-        const clientSecret = response.clientSecret;
-        if (!clientSecret) {
-          console.error("Failed to retrieve client secret");
-          return;
-        }
+        async (response: PayementResponse) => {
+            const clientSecret = response.clientSecret;
+            console.log('Client secret received:', clientSecret);
 
-        const paymentMethodId = await this.stripeservice.createPaymentMethod(
-          this.cardElement
-        );
-        if (!paymentMethodId) {
-          console.error("Failed to create payment method");
-          return;
-        }
+            const paymentMethodId = await this.stripeservice.createPaymentMethod(this.cardElement);
+            console.log('Payment method created with ID:', paymentMethodId);
 
-        const selectedDate = this.selectedDate || null;
-        await this.stripeservice.confirmPayment(
-          clientSecret,
-          this.cardElement,
-          selectedDate
-        );
-      },
-      (error) => {
-        console.error("Error starting payment:", error);
-      }
+            const selectedDate = this.selectedDate || null;
+            let price = 0;
+            switch (duration) {
+                case 'day':
+                    price = Number(this.club.price_day);
+                    break;
+                case 'month':
+                    price = Number(this.club.price_month);
+                    break;
+                case 'year':
+                    price = Number(this.club.price_year);
+                    break;
+                default:
+                    console.error('Invalid duration');
+                    return;
+            }
+
+            console.log('Price calculated:', price);
+            if (typeof price !== 'number' || isNaN(price)) {
+                console.error('Price is not a valid number:', price);
+                return;
+            }
+
+            await this.stripeservice.confirmPayment(clientSecret, this.cardElement, selectedDate, price);
+        },
+        (error) => {
+            console.error("Error starting payment:", error);
+        }
     );
-  }
+}
+
+
+
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -97,6 +112,7 @@ export class ClubDetailsComponent implements OnInit {
     this.clubService.getClubById(clubId).subscribe({
       next: (response) => {
         this.club = response.club;
+        console.log(this.club);
       },
       error: (err) => console.error(err),
     });

@@ -85,7 +85,6 @@ export class AdminCityComponent implements OnInit {
           this.finAllCities();
           this.sweet.showSuccess("City added", "City added successfully");
           this.cityForm.reset();
-          this.showModal = false;
         },
         error: () => this.sweet.showError("Error", "Error adding city"),
       });

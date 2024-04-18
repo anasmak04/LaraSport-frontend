@@ -56,7 +56,8 @@ export class StripeService {
   async confirmPayment(
     clientSecret: string,
     cardElement: StripeCardElement,
-    selectedDate: Date
+    selectedDate: Date,
+    price : number
   ): Promise<void> {
     const stripe = await this.stripePromise;
     if (!stripe) {
@@ -73,25 +74,22 @@ export class StripeService {
     if (error) {
       console.error(`Payment confirmation error: ${error.message}`);
     } else {
-      this.generatePDFTicket(paymentIntent, selectedDate);
+      this.generatePDFTicket(paymentIntent, selectedDate, price);
       console.log("Payment confirmed successfully");
     }
   }
 
+
   async generatePDFTicket(
     paymentIntent: any,
-    selectedDate: Date
+    selectedDate: Date,
+    price: number
   ): Promise<void> {
     const doc = new jsPDF();
     doc.text("Ticket Confirmation", 20, 20);
-    doc.text(`Payment ID: ${paymentIntent.id}`, 20, 30);
-    doc.text(
-      `Amount: ${(paymentIntent.amount / 100).toFixed(
-        2
-      )} ${paymentIntent.currency.toUpperCase()}`,
-      20,
-      40
-    );
+    doc.text(`Payment ID: ${paymentIntent.id}`, 20, 30);    
+    doc.text(`Price: $${price.toFixed(2)}`, 20, 40);
+  
     const formattedDate = selectedDate.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
@@ -99,16 +97,17 @@ export class StripeService {
     });
     doc.text(`Date: ${formattedDate}`, 20, 50);
 
-    const qrCodeData = `Payment ID: ${paymentIntent.id}, Amount: ${(
-      paymentIntent.amount / 100
-    ).toFixed(2)} ${paymentIntent.currency.toUpperCase()}`;
+    const qrCodeData = `Payment ID: ${paymentIntent.id}, Amount: $${price.toFixed(2)}`;
     try {
       const qrImage = await QRCode.toDataURL(qrCodeData);
       doc.addImage(qrImage, "JPEG", 20, 60, 50, 50);
     } catch (error) {
       console.error("Error generating QR code", error);
     }
-
+  
     doc.save("ticket.pdf");
   }
+  
+
+
 }

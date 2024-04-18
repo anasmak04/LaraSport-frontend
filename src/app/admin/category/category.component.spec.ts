@@ -16,7 +16,7 @@ describe("CategoryComponent", () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       declarations: [CategoryComponent],
-      providers: [CategoryServiceService], // Ensure the service is provided if not already
+      providers: [CategoryServiceService],
     });
 
     service = TestBed.inject(CategoryServiceService);
@@ -27,7 +27,6 @@ describe("CategoryComponent", () => {
   });
 
   afterEach(() => {
-    // Ensure that there are no outstanding requests after each test
     httpTestingController.verify();
   });
 
@@ -44,11 +43,10 @@ describe("CategoryComponent", () => {
       expect(response.categories).toBeTruthy();
       expect(response.categories.length).toBe(1);
       let category = response.categories.find((c) => c.id === 1);
-      expect(category?.name).toBe("sd");
+      expect(category?.name).toBe("Forrest");
     });
 
-    // Expect a request to the specific URL, and provide mock data as the response
-    const req = httpTestingController.expectOne(service.UrlApi); // Adjust `service.categoriesUrl` to match your service's URL
+    const req = httpTestingController.expectOne(service.UrlApi); 
     expect(req.request.method).toEqual('GET');
     req.flush(mockCategories);
   });

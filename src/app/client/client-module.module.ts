@@ -21,7 +21,7 @@ import { HomeComponent } from "./home/home.component";
 import { ClubResultComponent } from "./club-result/club-result.component";
 import { CalendarModule } from 'primeng/calendar';
 import { SportClubComponent } from "./sport-club/sport-club.component";
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     ClubComponent,
@@ -45,7 +45,8 @@ import { SportClubComponent } from "./sport-club/sport-club.component";
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    CalendarModule
+    CalendarModule,
+    NgxPaginationModule
   ],
 
   exports: [
@@ -62,7 +63,8 @@ import { SportClubComponent } from "./sport-club/sport-club.component";
     HomeComponent,
     ClubResultComponent,
     CalendarModule,
-    SportClubComponent
+    SportClubComponent,
+    NgxPaginationModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },

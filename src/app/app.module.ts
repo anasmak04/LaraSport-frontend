@@ -18,8 +18,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ManagerModule } from "./manager/manager.module";
 import { AuthInterceptor } from "./shared/interceptors/auth/auth.interceptor";
 import { StoreModule } from "@ngrx/store";
-import { counterReducer } from "./store/store";
-import { categoryReducer } from "./store/category.actions";
+// import { counterReducer } from "./store/store";
+// import { categoryReducer } from "./store/category.actions";
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { categoryReducer } from "./store/category.actions";
     ProgressSpinnerModule,
     ClientModuleModule,
     ManagerModule,
-    StoreModule.forRoot({ category: categoryReducer }),
+    // StoreModule.forRoot({ category: categoryReducer }),
   ],
 
   providers: [

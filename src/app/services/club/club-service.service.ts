@@ -25,12 +25,9 @@ export class ClubServiceService {
     return this.http.get<ClubResponsee>(`${this.ApiUrl}/clubs/${id}`);
   }
 
-
-  
   update(id: number, club: Club): Observable<Club> {
     return this.http.put<Club>(`${this.ApiUrl}/clubs/${id}`, club);
   }
-  
 
   FindAllClubs(): Observable<ClubResponse> {
     return this.http.get<ClubResponse>(`${this.ApiUrl}/clubs`);
@@ -61,7 +58,4 @@ export class ClubServiceService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(this.ApiUrl + "/" + id);
   }
-
-
-
 }
