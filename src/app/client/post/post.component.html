@@ -8,9 +8,7 @@
     </h1>
   </div>
 
- 
   <div class="container mx-auto max-w-7xl flex">
-  
     <div class="w-full md:w-2/3 xl:grid grid-cols-2 p-2">
       <div
         *ngIf="loader.isLoading | async"
@@ -481,8 +479,6 @@
   </div>
 
   <div class="container mx-auto max-w-7xl mt-4 px-4">
-   
-
     <div *ngIf="!(loader.isLoading | async)" class="flex flex-wrap -mx-4">
       <div class="px-4 w-full lg:w-3/4">
         <div class="flex flex-wrap -mx-2">
@@ -536,66 +532,28 @@
           <h1 class="text-gray-800 font-bold mb-4">
             Les articles les plus visités
           </h1>
-          <div class="relative card mb-4">
-            <img
-              src="../../assets/image3.jpeg"
-              alt=""
-              class="w-full h-40 object-cover"
-            />
-            <div
-              class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-end p-4 bg-black bg-opacity-50"
-            >
-              <h2 class="text-white text-lg font-bold">
-                6 SPORTS D'ÉTÉ À PRATIQUER DURANT LES VACANCES
-              </h2>
-              <p class="text-white mt-2">Publié il y a 4 ans</p>
-            </div>
+          <div
+          *ngFor="let post of posts"
+          class="relative card mb-4 cursor-pointer"
+          [routerLink]="['/post-details', post.id]"
+        >
+          <img
+            src="{{ post.image }}"
+            alt=""
+            class="w-full h-40 object-cover"
+          />
+          <div
+            class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-end p-4 bg-black bg-opacity-50"
+          >
+            <h2 class="text-white text-lg font-bold">
+              {{ post.title }}
+            </h2>
+            <p class="text-white mt-2">
+              Publié a {{ post.publish_date | date }}
+            </p>
           </div>
-          <div class="relative card mb-4">
-            <img
-              src="../../assets/image3.jpeg"
-              alt=""
-              class="w-full h-40 object-cover"
-            />
-            <div
-              class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-end p-4 bg-black bg-opacity-50"
-            >
-              <h2 class="text-white text-lg font-bold">
-                6 SPORTS D'ÉTÉ À PRATIQUER DURANT LES VACANCES
-              </h2>
-              <p class="text-white mt-2">Publié il y a 4 ans</p>
-            </div>
-          </div>
-          <div class="relative card mb-4">
-            <img
-              src="../../assets/image3.jpeg"
-              alt=""
-              class="w-full h-40 object-cover"
-            />
-            <div
-              class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-end p-4 bg-black bg-opacity-50"
-            >
-              <h2 class="text-white text-lg font-bold">
-                6 SPORTS D'ÉTÉ À PRATIQUER DURANT LES VACANCES
-              </h2>
-              <p class="text-white mt-2">Publié il y a 4 ans</p>
-            </div>
-          </div>
-          <div class="relative card mb-4">
-            <img
-              src="../../assets/image3.jpeg"
-              alt=""
-              class="w-full h-40 object-cover"
-            />
-            <div
-              class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-end p-4 bg-black bg-opacity-50"
-            >
-              <h2 class="text-white text-lg font-bold">
-                6 SPORTS D'ÉTÉ À PRATIQUER DURANT LES VACANCES
-              </h2>
-              <p class="text-white mt-2">Publié il y a 4 ans</p>
-            </div>
-          </div>
+        </div>
+        
         </div>
       </div>
     </div>

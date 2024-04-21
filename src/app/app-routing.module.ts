@@ -32,7 +32,6 @@ const routes: Routes = [
   },
   
 
-  { path: "post-details/:id", component: PostDetailsComponent },
   { path: "edit-post", component: EditPostComponent },
 
 

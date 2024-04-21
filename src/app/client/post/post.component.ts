@@ -57,5 +57,10 @@ export class PostComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
+ 
   
+
+
+
+
 }
