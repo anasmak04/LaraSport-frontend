@@ -26,6 +26,7 @@
     "@ngrx/router-store": "^17.1.1",
     "@ngrx/store": "^17.1.1",
     "@ngrx/store-devtools": "^17.1.1",
+    "@ngxs/store": "^3.8.2",
     "@stripe/stripe-js": "^3.1.0",
     "@tinymce/tinymce-angular": "^7.0.0",
     "chart.js": "^4.4.2",

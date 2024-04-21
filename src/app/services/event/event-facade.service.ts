@@ -45,4 +45,9 @@ findEventById(id: number){
   return this.eventservice.findById(id);
 }
 
+
+eventbycity(cityId: number){
+  return this.eventservice.getEventsByCity(cityId);
+}
+
 }

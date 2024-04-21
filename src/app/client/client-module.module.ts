@@ -22,6 +22,7 @@ import { ClubResultComponent } from "./club-result/club-result.component";
 import { CalendarModule } from 'primeng/calendar';
 import { SportClubComponent } from "./sport-club/sport-club.component";
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EventCityComponent } from "./event-city/event-city.component";
 @NgModule({
   declarations: [
     ClubComponent,
@@ -35,7 +36,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BlogHomeComponent,
     HomeComponent,
     ClubResultComponent,
-    SportClubComponent
+    SportClubComponent,
+    EventCityComponent
   ],
   imports: [
     CommonModule,
@@ -64,7 +66,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ClubResultComponent,
     CalendarModule,
     SportClubComponent,
-    NgxPaginationModule
+    NgxPaginationModule,
+    EventCityComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },

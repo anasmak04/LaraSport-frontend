@@ -9,8 +9,8 @@ import { CityResponse } from "src/app/shared/model/city/city-response";
   providedIn: "root",
 })
 export class CityServiceService {
+  
   private ApiCity = "http://127.0.0.1:8000/api/city";
-
   private ApiCitySearch = "http://127.0.0.1:8000/api/search/city";
 
   constructor(private http: HttpClient) {}
@@ -23,10 +23,12 @@ export class CityServiceService {
     return this.http.put<City>(this.ApiCity + "/" + id, formdata);
   }
 
+
   findAll(): Observable<CityResponse> {
     return this.http.get<CityResponse>(this.ApiCity);
   }
 
+  
   save(formdata: FormData): Observable<any> {
     return this.http.post(this.ApiCity, formdata);
   }
@@ -40,4 +42,6 @@ export class CityServiceService {
       this.ApiCitySearch + "/" + searchTerm
     );
   }
+
+
 }

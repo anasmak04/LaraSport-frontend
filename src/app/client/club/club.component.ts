@@ -10,13 +10,18 @@ import { LoaderServiceService } from "src/app/services/loader/loader-service.ser
   styleUrls: ["./club.component.css"],
 })
 export class ClubComponent implements OnInit {
+
+
   constructor(
     private clubservice: ClubServiceService,
     private route: ActivatedRoute
   ) {}
 
-  loader = inject(LoaderServiceService);
-  commentservice = inject(CommentServiceService);
+
+
+ 
+  public loader = inject(LoaderServiceService);
+  private commentservice = inject(CommentServiceService);
 
   clubs: any[] = [];
   comments: any[] = [];

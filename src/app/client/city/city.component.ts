@@ -19,6 +19,8 @@ export class CityComponent implements OnInit {
     this.findAllCities();
   }
 
+  
+
   findAllCities() {
     this.cityService.findAll().subscribe({
       next: (response) => {
@@ -28,6 +30,9 @@ export class CityComponent implements OnInit {
       error: (err) => console.error("Failed to load cities:", err),
     });
   }
+
+
+
 
   delete(id: number) {
     this.cityService.delete(id).subscribe({

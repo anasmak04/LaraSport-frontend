@@ -51,7 +51,7 @@ import { EditEventComponent } from './event/edit-event/edit-event.component';
     TagModule,
     MultiSelectModule,
     AdminRoutingRoutingModule,
-    MatDialogModule
+    MatDialogModule,
   ],
 
   exports : [
