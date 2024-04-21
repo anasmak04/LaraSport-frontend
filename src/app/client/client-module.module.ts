@@ -11,6 +11,7 @@ import { PostComponent } from "./post/post.component";
 import { SharedModule } from "../shared/shared.module";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { LoaderInterceptor } from "../shared/interceptors/loader/loader.interceptor";
+import { AuthCheck } from "../shared/interceptors/authcheck/authcheck.interceptor";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -19,9 +20,9 @@ import { BlogHomeComponent } from "./blog-home/blog-home.component";
 import { SportHomeComponent } from "./sport-home/sport-home.component";
 import { HomeComponent } from "./home/home.component";
 import { ClubResultComponent } from "./club-result/club-result.component";
-import { CalendarModule } from 'primeng/calendar';
+import { CalendarModule } from "primeng/calendar";
 import { SportClubComponent } from "./sport-club/sport-club.component";
-import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from "ngx-pagination";
 import { EventCityComponent } from "./event-city/event-city.component";
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { EventCityComponent } from "./event-city/event-city.component";
     HomeComponent,
     ClubResultComponent,
     SportClubComponent,
-    EventCityComponent
+    EventCityComponent,
   ],
   imports: [
     CommonModule,
@@ -48,7 +49,7 @@ import { EventCityComponent } from "./event-city/event-city.component";
     MatInputModule,
     MatNativeDateModule,
     CalendarModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
 
   exports: [
@@ -67,10 +68,11 @@ import { EventCityComponent } from "./event-city/event-city.component";
     CalendarModule,
     SportClubComponent,
     NgxPaginationModule,
-    EventCityComponent
+    EventCityComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthCheck, multi: true },
   ],
 })
 export class ClientModuleModule {}

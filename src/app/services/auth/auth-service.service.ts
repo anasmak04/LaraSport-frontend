@@ -74,6 +74,11 @@ export class AuthServiceService {
     });
   }
 
+
+  isNoLoggedIn(){
+    return this.getToken() == null;
+  }
+
   logout(): Observable<any> {
     const headers = this.getHeaders();
     return this.http

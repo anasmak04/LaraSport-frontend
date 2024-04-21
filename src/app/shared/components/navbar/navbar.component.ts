@@ -40,4 +40,16 @@ export class NavbarComponent implements OnInit {
   event(){
     this.router.navigate(["/event"]);
   }
+
+  post(){
+    this.router.navigate(["/post"]);
+  }
+
+  city(){
+    this.router.navigate(["/city"]);
+  }
+
+  home(){
+    this.router.navigate(["/"]);
+  }
 }
