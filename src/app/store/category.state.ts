@@ -2,7 +2,7 @@ import { State, Action, StateContext, Selector } from "@ngxs/store";
 import { Injectable } from "@angular/core";
 import { category } from "../shared/model/category/category";
 import { GetCAtegories } from "./category.actions";
-import { CategoryServiceService } from "../services/category/category-service.service";
+import { CategoryServiceService } from "../services/admin/category/category-service.service";
 import { CategoryResponse } from "../shared/model/category/category-response";
 import { tap } from "rxjs/operators";
 

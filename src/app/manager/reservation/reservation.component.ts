@@ -16,6 +16,20 @@ export class ReservationComponent {
     this.getAllReservations();
   }
 
+
+  calculateEndDate(startDate: Date, duration: string): Date {
+    let endDate = new Date(startDate); // Create a new Date instance
+
+    if (duration === 'day') {
+      endDate.setDate(endDate.getDate() + 1); // Adds one day to the start date
+    } else if (duration === 'month') {
+      endDate.setMonth(endDate.getMonth() + 1); // Adds one month to the start date
+      endDate.setDate(endDate.getDate() - 1); // Subtracts one day
+    }
+
+    return endDate;
+  }
+
   getPrice(duration: string): number {
     switch (duration) {
       case "day":

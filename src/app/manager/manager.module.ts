@@ -4,23 +4,30 @@ import { SharedModule } from '../shared/shared.module';
 import { ClubComponent } from './club/club.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ClientRoutingRoutingModule } from './manager-routing-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
     ClubComponent,
-    ReservationComponent
+    ReservationComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
-    ClientRoutingRoutingModule
+    ClientRoutingRoutingModule,
+    NgApexchartsModule
+    
   ],
 
   exports : [
+    NgApexchartsModule,
     SharedModule,
     ClubComponent,
     ClientRoutingRoutingModule,
-    ReservationComponent
+    ReservationComponent,
+    DashboardComponent,
   ]
 })
 export class ManagerModule { }

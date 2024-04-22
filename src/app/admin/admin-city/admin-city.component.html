@@ -50,9 +50,10 @@
                       required
                     />
 
-                    @if ( cityForm.controls['name'].invalid && cityForm.controls['name'].touched) {
-                      <span>name is required</span>
-                  } 
+                    @if ( cityForm.controls['name'].invalid &&
+                    cityForm.controls['name'].touched) {
+                    <span>name is required</span>
+                    }
 
                     <label
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -70,9 +71,10 @@
                       type="file"
                     />
 
-                    @if ( cityForm.controls['image'].invalid && cityForm.controls['image'].touched) {
-                      <span>image is required</span>
-                  } 
+                    @if ( cityForm.controls['image'].invalid &&
+                    cityForm.controls['image'].touched) {
+                    <span>image is required</span>
+                    }
                   </div>
                 </form>
                 <!-- Modal footer -->
@@ -265,8 +267,12 @@
                 </tr>
               </thead>
 
-              @for (city of cities; track $index) {
-              <tbody>
+              <tbody
+                *ngFor="
+                  let city of cities
+                    | paginate : { itemsPerPage: 5, currentPage: currentPage }
+                "
+              >
                 <tr class="bg-white border-b">
                   <th
                     scope="row"
@@ -304,9 +310,13 @@
                   </td>
                 </tr>
 
-
-                <div *ngIf="confirmDelete" class="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full overflow-auto font-[sans-serif]">
-                  <div class="w-full max-w-md bg-white shadow-lg rounded-md p-6 relative">
+                <div
+                  *ngIf="confirmDelete"
+                  class="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full overflow-auto font-[sans-serif]"
+                >
+                  <div
+                    class="w-full max-w-md bg-white shadow-lg rounded-md p-6 relative"
+                  >
                     <svg
                       (click)="cancel()"
                       xmlns="http://www.w3.org/2000/svg"
@@ -362,58 +372,55 @@
                     </div>
                   </div>
                 </div>
-
-
               </tbody>
-
-              
-
-              
-
-              }
             </table>
 
             <div
-            *ngIf="showModalUpdate"
-            class="fixed inset-0 bg-opacity-25 flex items-center justify-center"
-          >
-            <div class="modal-content bg-white p-6 rounded-lg shadow-lg">
-              <h3 class="text-xl font-semibold mb-4">Edit Category</h3>
-              <form [formGroup]="cityForm" class="space-y-4">
-                <div>
-                  <label
-                    for="name"
-                    class="block text-sm font-medium text-gray-700"
-                    >Name:</label
-                  >
-                  <input
-                    type="text"
-                    id="name"
-                    formControlName="name"
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                  />
-                </div>
-              
-                <div class="flex justify-end space-x-4">
-                  <button
-                    type="button"
-                    (click)="update()"
-                    class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
-                  >
-                    Update 
-                  </button>
-                  <button
-                    type="button"
-                    (click)="toggleModalUpdate()"
-                    class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
+              *ngIf="showModalUpdate"
+              class="fixed inset-0 bg-opacity-25 flex items-center justify-center"
+            >
+              <div class="modal-content bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold mb-4">Edit Category</h3>
+                <form [formGroup]="cityForm" class="space-y-4">
+                  <div>
+                    <label
+                      for="name"
+                      class="block text-sm font-medium text-gray-700"
+                      >Name:</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      formControlName="name"
+                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                  </div>
+
+                  <div class="flex justify-end space-x-4">
+                    <button
+                      type="button"
+                      (click)="update()"
+                      class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+                    >
+                      Update
+                    </button>
+                    <button
+                      type="button"
+                      (click)="toggleModalUpdate()"
+                      class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-          </div>
+
+          <pagination-controls
+            (pageChange)="currentPage = $event"
+          ></pagination-controls>
+          
         </div>
       </main>
     </div>

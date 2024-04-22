@@ -13,12 +13,14 @@ import { SportHomeComponent } from './sport-home/sport-home.component';
 import { SportClubComponent } from './sport-club/sport-club.component';
 import { EventCityComponent } from './event-city/event-city.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { ClubHomeComponent } from './club-home/club-home.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent},
   { path: "post", component: PostComponent },
   { path: "club-result", component: ClubResultComponent },
   { path: "city", component: CityComponent },
+  { path: "clubs", component: ClubHomeComponent },
   { path: "event", component: EventComponent },
   { path: "contact", component: ContactComponent },
   { path: "tags", component: SportHomeComponent },

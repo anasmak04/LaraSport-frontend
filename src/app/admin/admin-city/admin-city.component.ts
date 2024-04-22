@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AlertService } from "src/app/services/alert/alert.service";
-import { CityServiceService } from "src/app/services/city/city-service.service";
+import { CityServiceService } from "src/app/services/admin/city/city-service.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
@@ -28,10 +28,14 @@ export class AdminCityComponent implements OnInit {
 
   loader = inject(LoaderServiceService);
 
+
   ngOnInit(): void {
     this.finAllCities();
   }
 
+  currentPage = 1;
+
+  
   toggleconfirmDelete() {
     this.confirmDelete = !this.confirmDelete;
   }

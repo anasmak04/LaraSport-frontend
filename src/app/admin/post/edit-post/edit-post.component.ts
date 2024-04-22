@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
-import { CategoryServiceService } from "src/app/services/category/category-service.service";
-import { PostServiceService } from "src/app/services/post/post-service.service";
-import { TagsServiceService } from "src/app/services/tags/tags-service.service";
+import { CategoryServiceService } from "src/app/services/admin/category/category-service.service";
+import { PostServiceService } from "src/app/services/admin/post/post-service.service";
+import { TagsServiceService } from "src/app/services/admin/tags/tags-service.service";
 
 @Component({
   selector: "app-edit-post",

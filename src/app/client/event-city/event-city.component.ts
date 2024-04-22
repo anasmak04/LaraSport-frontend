@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { EventServiceService } from "src/app/services/event/event-service.service";
+import { EventServiceService } from "src/app/services/admin/event/event-service.service";
+import { EventclientService } from "src/app/services/client/event/eventclient.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
@@ -14,7 +15,7 @@ export class EventCityComponent implements OnInit {
   cities: any = [];
 
   constructor(
-    private eventservice: EventServiceService,
+    private eventservice: EventclientService,
     private route: ActivatedRoute,
     private router: Router
   ) {}

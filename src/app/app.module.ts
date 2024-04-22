@@ -18,8 +18,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ManagerModule } from "./manager/manager.module";
 import { AuthInterceptor } from "./shared/interceptors/auth/auth.interceptor";
 import { StoreModule } from "@ngrx/store";
-// import { counterReducer } from "./store/store";
-// import { categoryReducer } from "./store/category.actions";
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -38,10 +37,11 @@ import { StoreModule } from "@ngrx/store";
     ReactiveFormsModule,
     MessagesModule,
     RatingModule,
-    AdminmoduleModule,
     ProgressSpinnerModule,
     ClientModuleModule,
+    AdminmoduleModule,
     ManagerModule,
+    NgApexchartsModule
     // StoreModule.forRoot({ category: categoryReducer }),
   ],
 
@@ -51,6 +51,8 @@ import { StoreModule } from "@ngrx/store";
       useClass: AuthInterceptor,
       multi: true,
     },
+
+
   ],
 
   bootstrap: [AppComponent],

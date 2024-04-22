@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
-<div class="bg-custom-gradient bg-cover w-full h-52 flex justify-center items-center">
+<div
+  class="bg-custom-gradient bg-cover w-full h-52 flex justify-center items-center"
+>
   <h1 class="text-white text-3xl font-bold text-center shadow">
     LES CLUBS ET SALLES DE SPORT À
   </h1>
@@ -36,7 +38,10 @@
       <div class="mt-4">
         <h3 class="text-lg font-semibold mb-2">Tags:</h3>
         <div class="flex flex-wrap gap-2">
-          <span *ngFor="let tag of club.tags" class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-800">
+          <span
+            *ngFor="let tag of club.tags"
+            class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-800"
+          >
             {{ tag }}
           </span>
         </div>
@@ -45,13 +50,7 @@
   </div>
 </div>
 
-
-
-
-
 <section class="bg-white py-8 lg:py-16 antialiased">
-
-  
   <div class="max-w-2xl mx-auto px-4 space-y-8">
     <label
       for="countries"
@@ -138,12 +137,12 @@
               class="mr-2 w-6 h-6 rounded-full"
               src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
               alt="Michael Gough"
-            />Michael Gough
+            />{{ comment.user_id }}
           </p>
           <p class="text-sm text-gray-600">
-            <time pubdate datetime="2022-02-08" title="February 8th, 2022"
-              >Feb. 8, 2022</time
-            >
+            <time pubdate datetime="2022-02-08" title="February 8th, 2022">{{
+              comment.date | date
+            }}</time>
           </p>
         </div>
         <button

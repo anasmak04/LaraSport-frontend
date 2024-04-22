@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
-import { ClubServiceService } from "src/app/services/club/club-service.service";
-import { CommentServiceService } from "src/app/services/comment/comment-service.service";
+import { ClubTagsService } from "src/app/services/admin/club-tags/club-tags.service";
+import { ClubServiceService } from "src/app/services/admin/club/club-service.service";
+import { CommentServiceService } from "src/app/services/admin/comment/comment-service.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({

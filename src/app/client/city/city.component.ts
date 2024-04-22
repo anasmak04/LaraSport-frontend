@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from "@angular/core";
-import { CityServiceService } from "src/app/services/city/city-service.service";
+import { CityServiceService } from "src/app/services/admin/city/city-service.service";
+import { CityclientService } from "src/app/services/client/city/cityclient.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
@@ -12,7 +13,7 @@ export class CityComponent implements OnInit {
   cititessearch: any[] = [];
   searchTerm: String = "";
 
-  constructor(private cityService: CityServiceService) {}
+  constructor(private cityService: CityclientService) {}
   loader = inject(LoaderServiceService);
 
   ngOnInit(): void {

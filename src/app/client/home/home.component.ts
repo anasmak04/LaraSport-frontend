@@ -1,10 +1,13 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { Route, Router } from "@angular/router";
 import { map } from "rxjs";
-import { CityServiceService } from "src/app/services/city/city-service.service";
-import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
-import { ClubServiceService } from "src/app/services/club/club-service.service";
-import { EventServiceService } from "src/app/services/event/event-service.service";
+import { CityServiceService } from "src/app/services/admin/city/city-service.service";
+import { ClubTagsService } from "src/app/services/admin/club-tags/club-tags.service";
+import { ClubServiceService } from "src/app/services/admin/club/club-service.service";
+import { EventServiceService } from "src/app/services/admin/event/event-service.service";
+import { CityclientService } from "src/app/services/client/city/cityclient.service";
+import { EventclientService } from "src/app/services/client/event/eventclient.service";
+import { SportclientService } from "src/app/services/client/sport/sportclient.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 
@@ -20,10 +23,10 @@ export class HomeComponent implements OnInit {
   selectedTag: string = "";
   selectedCity: string = "";
   constructor(
-    private cityservice: CityServiceService,
-    private tagsservice: ClubTagsService,
+    private cityservice: CityclientService,
+    private tagsservice: SportclientService,
     private clubservice: ClubServiceService,
-    private eventservice: EventServiceService,
+    private eventservice: EventclientService,
     private router: Router
   ) {}
 

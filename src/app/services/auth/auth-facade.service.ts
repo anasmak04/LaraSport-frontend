@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AuthServiceService } from "./auth-service.service";
-import { CityServiceService } from "../city/city-service.service";
+import { CityServiceService } from "../admin/city/city-service.service";
 
 @Injectable({
   providedIn: "root",

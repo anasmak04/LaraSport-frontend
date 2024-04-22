@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from "@angular/core";
-import { TagsServiceService } from "../../services/tags/tags-service.service";
+import { TagsServiceService } from "../../services/admin/tags/tags-service.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AlertService } from "src/app/services/alert/alert.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";

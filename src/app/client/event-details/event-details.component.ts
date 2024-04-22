@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { EventServiceService } from "src/app/services/event/event-service.service";
+import { EventServiceService } from "src/app/services/admin/event/event-service.service";
+import { EventclientService } from "src/app/services/client/event/eventclient.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
@@ -12,10 +13,9 @@ export class EventDetailsComponent implements OnInit {
   cities: any = [];
   constructor(
     private route: ActivatedRoute,
-    private eventservice: EventServiceService,
+    private eventservice: EventclientService,
     private router: Router
   ) {}
-
 
   loader = inject(LoaderServiceService);
   event: any = {};
@@ -28,15 +28,12 @@ export class EventDetailsComponent implements OnInit {
       }
 
       this.getallcities();
-    
     });
   }
 
-
   navigateToEvents(cityId: number) {
-    this.router.navigate(['/events/', cityId]);
+    this.router.navigate(["/events/", cityId]);
   }
-
 
   getallcities() {
     this.eventservice.getcitiesByEvents().subscribe({

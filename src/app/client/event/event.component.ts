@@ -1,7 +1,8 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { Router } from "@angular/router";
-import { CityServiceService } from "src/app/services/city/city-service.service";
-import { EventServiceService } from "src/app/services/event/event-service.service";
+import { CityServiceService } from "src/app/services/admin/city/city-service.service";
+import { EventServiceService } from "src/app/services/admin/event/event-service.service";
+import { EventclientService } from "src/app/services/client/event/eventclient.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
@@ -12,7 +13,7 @@ import { LoaderServiceService } from "src/app/services/loader/loader-service.ser
 export class EventComponent implements OnInit {
   events: any[] = [];
   cities: any[] = [];
-  constructor(private eventservice: EventServiceService,
+  constructor(private eventservice: EventclientService,
     private router : Router,
   ) {}
 

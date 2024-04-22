@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert/alert.service";
-import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
-import { ClubFacadeService } from "src/app/services/club/club-facade.service";
+import { ClubTagsService } from "src/app/services/admin/club-tags/club-tags.service";
+import { ClubFacadeService } from "src/app/services/admin/club/club-facade.service";
 
 @Component({
   selector: "app-edit-club",

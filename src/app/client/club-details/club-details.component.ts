@@ -4,10 +4,10 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { StripeCardElement } from "@stripe/stripe-js";
 import { AlertService } from "src/app/services/alert/alert.service";
 import { AuthServiceService } from "src/app/services/auth/auth-service.service";
-import { ClubServiceService } from "src/app/services/club/club-service.service";
-import { CommentServiceService } from "src/app/services/comment/comment-service.service";
-import { ServiceapiService } from "src/app/services/stripe/serviceapi.service";
-import { StripeService } from "src/app/services/stripe/stripe.service";
+import { ClubServiceService } from "src/app/services/admin/club/club-service.service";
+import { CommentServiceService } from "src/app/services/admin/comment/comment-service.service";
+import { ServiceapiService } from "src/app/services/admin/stripe/serviceapi.service";
+import { StripeService } from "src/app/services/admin/stripe/stripe.service";
 import { PayementResponse } from "src/app/shared/model/paymeent/payement-response";
 
 @Component({
@@ -39,12 +39,13 @@ export class ClubDetailsComponent implements OnInit {
   
   async pay(clubId: number, duration: string) {
 
-    if (!this.authservice.isNoLoggedIn()) {
+    if (!this.authservice.isLoggedIn()) {
       this.sweet.showError("You need to login first", "Error: You are not logged in");
       this.router.navigate(['/login']);
       return;
-  }
+    }
 
+    
     this.apiService.startPayment(clubId, duration).subscribe(
         async (response: PayementResponse) => {
             const clientSecret = response.clientSecret;
@@ -114,6 +115,7 @@ export class ClubDetailsComponent implements OnInit {
     this.commentService.FindAll().subscribe({
       next: (response) => {
         this.comments = response.comments;
+        console.log(this.comments);
       },
 
       error: (err) => console.log(err),

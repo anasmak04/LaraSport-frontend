@@ -1,7 +1,9 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { ClubServiceService } from "src/app/services/club/club-service.service";
-import { CommentServiceService } from "src/app/services/comment/comment-service.service";
+import { CityServiceService } from "src/app/services/admin/city/city-service.service";
+import { ClubServiceService } from "src/app/services/admin/club/club-service.service";
+import { CommentServiceService } from "src/app/services/admin/comment/comment-service.service";
+import { ClubclientService } from "src/app/services/client/club/clubclient.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
@@ -10,22 +12,19 @@ import { LoaderServiceService } from "src/app/services/loader/loader-service.ser
   styleUrls: ["./club.component.css"],
 })
 export class ClubComponent implements OnInit {
-
-
   constructor(
-    private clubservice: ClubServiceService,
+    private clubservice: ClubclientService,
     private route: ActivatedRoute
   ) {}
 
-
-
- 
   public loader = inject(LoaderServiceService);
   private commentservice = inject(CommentServiceService);
+  private cityservice = inject(CityServiceService);
 
   clubs: any[] = [];
   comments: any[] = [];
   clubssearch: any[] = [];
+  mostreserved: any[] = [];
   searchTerm: String = "";
 
   value = 5;
@@ -36,6 +35,17 @@ export class ClubComponent implements OnInit {
         this.FindCityByClub(cityid);
         this.FindAllComments();
       }
+      this.MostReserved();
+    });
+  }
+
+  MostReserved() {
+    this.clubservice.TheMostClubReserved().subscribe({
+      next: (response) => {
+        this.mostreserved = response.clubs;
+        console.log(this.mostreserved);
+      },
+      error: (err) => console.log(err),
     });
   }
 

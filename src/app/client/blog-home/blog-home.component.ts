@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from "@angular/core";
-import { PostServiceService } from "src/app/services/post/post-service.service";
+import { PostServiceService } from "src/app/services/admin/post/post-service.service";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
-import { EventServiceService } from "src/app/services/event/event-service.service";
+import { EventServiceService } from "src/app/services/admin/event/event-service.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({

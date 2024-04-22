@@ -52,4 +52,8 @@ export class NavbarComponent implements OnInit {
   home(){
     this.router.navigate(["/"]);
   }
+
+  contact(){
+    this.router.navigate(["/contact"]);
+  }
 }

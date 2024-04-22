@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ClubServiceService } from 'src/app/services/club/club-service.service';
+import { ClubServiceService } from 'src/app/services/admin/club/club-service.service';
 
 @Component({
   selector: 'app-club-result',

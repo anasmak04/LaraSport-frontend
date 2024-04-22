@@ -5,11 +5,11 @@ import { Router } from "@angular/router";
 import { Header } from "primeng/api";
 import { AlertService } from "src/app/services/alert/alert.service";
 
-import { CityServiceService } from "src/app/services/city/city-service.service";
-import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
-import { EventServiceService } from "src/app/services/event/event-service.service";
+import { CityServiceService } from "src/app/services/admin/city/city-service.service";
+import { ClubTagsService } from "src/app/services/admin/club-tags/club-tags.service";
+import { EventServiceService } from "src/app/services/admin/event/event-service.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
-import { SportTypeService } from "src/app/services/sport-type/sport-type.service";
+import { SportTypeService } from "src/app/services/admin/sport-type/sport-type.service";
 
 @Component({
   selector: "app-admin-event",

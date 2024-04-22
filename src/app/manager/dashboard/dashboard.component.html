@@ -1,0 +1,135 @@
+<div>
+  <app-header></app-header>
+  <div class="flex overflow-hidden bg-white pt-16 h-screen">
+    <app-sidebar-manager></app-sidebar-manager>
+    <div
+      class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
+      id="sidebarBackdrop"
+    ></div>
+    <div
+      id="main-content"
+      class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
+    >
+      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Customer Widget -->
+          <div
+            class="p-4 rounded-lg shadow-lg bg-white border-l-8 border-blue-500"
+          >
+            <div class="flex items-center">
+              <div
+                class="icon w-12 h-12 bg-blue-500 text-white rounded-full mr-4 flex items-center justify-center"
+              >
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                  />
+                </svg>
+              </div>
+              <div class="flex flex-col justify-center">
+                <div class="text-lg font-semibold">3456</div>
+                <div class="text-sm text-gray-500">Customers</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products Widget -->
+          <div
+            class="p-4 rounded-lg shadow-lg bg-white border-l-8 border-yellow-500"
+          >
+            <div class="flex items-center">
+              <div
+                class="icon w-12 h-12 bg-yellow-500 text-white rounded-full mr-4 flex items-center justify-center"
+              >
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+                  />
+                </svg>
+              </div>
+              <div class="flex flex-col justify-center">
+                <div class="text-lg font-semibold">3456</div>
+                <div class="text-sm text-gray-500">Products</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Orders Widget -->
+          <div
+            class="p-4 rounded-lg shadow-lg bg-white border-l-8 border-red-500"
+          >
+            <div class="flex items-center">
+              <div
+                class="icon w-12 h-12 bg-red-500 text-white rounded-full mr-4 flex items-center justify-center"
+              >
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              </div>
+              <div class="flex flex-col justify-center">
+                <div class="text-lg font-semibold">12658</div>
+                <div class="text-sm text-gray-500">Orders</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Revenue Widget -->
+          <div
+            class="p-4 rounded-lg shadow-lg bg-white border-l-8 border-green-500"
+          >
+            <div class="flex items-center">
+              <div
+                class="icon w-12 h-12 bg-green-500 text-white rounded-full mr-4 flex items-center justify-center"
+              >
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div class="flex flex-col justify-center">
+                <div class="text-lg font-semibold">$1.2M</div>
+                <div class="text-sm text-gray-500">Revenue</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <canvas #priceChart></canvas>
+      </div>
+    </div>
+  </div>
+</div>

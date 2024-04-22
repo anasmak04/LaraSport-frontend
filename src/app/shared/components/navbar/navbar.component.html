@@ -2,9 +2,10 @@
   <nav class="container mx-auto px-6 md:px-12 py-4">
     <div class="flex justify-between items-center">
       <div class="logo">
-        <a 
+        <a
           (click)="home()"
-        class="text-[15px] cursor-pointer font-bold flex items-center lg:ml-2.5">
+          class="text-[15px] cursor-pointer font-bold flex items-center lg:ml-2.5"
+        >
           <img
             src="https://demo.themesberg.com/windster/images/logo.svg"
             class="h-6 mr-2"
@@ -29,31 +30,27 @@
       </div>
 
       <ul class="hidden md:flex space-x-6">
-        <li 
-        class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer">
+        <li class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer">
           <a (click)="city()" class="font-bold text-[13px]">Clubs de Sport</a>
         </li>
 
-   
-
         <li class="text-gray-600 hover:text-gray-900 cursor-pointer">
-          <a href="" class="font-bold text-[13px]"> ACTIVITÉS SPORTIVES</a>
+          <a class="font-bold text-[13px]"> ACTIVITÉS SPORTIVES</a>
         </li>
 
         <li class="text-gray-600 hover:text-gray-900 cursor-pointer">
           <a (click)="event()" class="font-bold text-[13px]"> ÉVÉNEMENTs </a>
         </li>
         <li
-        (click)="post()"
+          (click)="post()"
           class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer"
         >
-          <a class="font-bold text-[13px]" href="post">blog</a>
+          <a class="font-bold text-[13px]">blog</a>
         </li>
         <li
-          routerLink="contact"
           class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer"
         >
-          <a class="font-bold text-[13px]" href="contact">Contact</a>
+          <a (click)="contact()" class="font-bold text-[13px]">Contact</a>
         </li>
       </ul>
 
@@ -84,51 +81,50 @@
 
     <!-- Mobile Menu -->
     <ul *ngIf="isMenuOpen" class="mt-4 space-y-2 md:hidden">
-      <li 
-        class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer">
-          <a (click)="city()" class="font-bold text-[13px]">Clubs de Sport</a>
-        </li>
-        <li class="text-gray-600 hover:text-gray-900 cursor-pointer">
-          <a href="" class="font-bold text-[13px]"> ACTIVITÉS SPORTIVES</a>
-        </li>
+      <li class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer">
+        <a (click)="city()" class="font-bold text-[13px]">Clubs de Sport</a>
+      </li>
+      <li class="text-gray-600 hover:text-gray-900 cursor-pointer">
+        <a  class="font-bold text-[13px]"> ACTIVITÉS SPORTIVES</a>
+      </li>
 
-        <li class="text-gray-600 hover:text-gray-900 cursor-pointer">
-          <a (click)="event()" class="font-bold text-[13px]"> ÉVÉNEMENTs </a>
-        </li>
-        <li
+      <li class="text-gray-600 hover:text-gray-900 cursor-pointer">
+        <a (click)="event()" class="font-bold text-[13px]"> ÉVÉNEMENTs </a>
+      </li>
+      <li
         (click)="post()"
-          class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer"
-        >
-          <a class="font-bold text-[13px]" href="post">blog</a>
-        </li>
-        <li
-          routerLink="contact"
-          class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer"
-        >
-          <a class="font-bold text-[13px]" href="contact">Contact</a>
-        </li>
+        class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer"
+      >
+        <a class="font-bold text-[13px]">blog</a>
+      </li>
+      <li
+        routerLink="contact"
+        class="text-gray-600 uppercase hover:text-gray-900 cursor-pointer"
+      >
+        <a class="font-bold text-[13px]">Contact</a>
+      </li>
       <li class="block">
         @if (!auth.getToken()) {
-          <button
-            (click)="register()"
-            class="px-4 py-2 bg-[#fab31e] text-black font-bold rounded"
-          >
-            S'inscrire
-          </button>
-          <button
-            (click)="login()"
-            class="ml-4 px-4 py-2 bg-black border text-white rounded"
-          >
-            Se Connecter
-          </button>
-          } @if (auth.getToken()) {
-          <button
-            (click)="logout()"
-            class="ml-4 px-10 py-2 font-bold text-[13px] capitalize rounded-xl bg-red-500 border text-white"
-          >
-            logout
-          </button>
-          }
+        <button
+          (click)="register()"
+          class="px-4 py-2 bg-[#fab31e] text-black font-bold rounded"
+        >
+          S'inscrire
+        </button>
+        <button
+          (click)="login()"
+          class="ml-4 px-4 py-2 bg-black border text-white rounded"
+        >
+          Se Connecter
+        </button>
+        } @if (auth.getToken()) {
+        <button
+          (click)="logout()"
+          class="ml-4 px-10 py-2 font-bold text-[13px] capitalize rounded-xl bg-red-500 border text-white"
+        >
+          logout
+        </button>
+        }
       </li>
     </ul>
   </nav>

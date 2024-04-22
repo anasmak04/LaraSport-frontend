@@ -11,7 +11,7 @@ import { PostComponent } from "./post/post.component";
 import { SharedModule } from "../shared/shared.module";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { LoaderInterceptor } from "../shared/interceptors/loader/loader.interceptor";
-import { AuthCheck } from "../shared/interceptors/authcheck/authcheck.interceptor";
+// import { AuthCheck } from "../shared/interceptors/authcheck/authcheck.interceptor";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -24,6 +24,7 @@ import { CalendarModule } from "primeng/calendar";
 import { SportClubComponent } from "./sport-club/sport-club.component";
 import { NgxPaginationModule } from "ngx-pagination";
 import { EventCityComponent } from "./event-city/event-city.component";
+import { ClubHomeComponent } from "./club-home/club-home.component";
 @NgModule({
   declarations: [
     ClubComponent,
@@ -39,6 +40,7 @@ import { EventCityComponent } from "./event-city/event-city.component";
     ClubResultComponent,
     SportClubComponent,
     EventCityComponent,
+    ClubHomeComponent
   ],
   imports: [
     CommonModule,
@@ -69,10 +71,11 @@ import { EventCityComponent } from "./event-city/event-city.component";
     SportClubComponent,
     NgxPaginationModule,
     EventCityComponent,
+    ClubHomeComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthCheck, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthCheck, multi: true },
   ],
 })
 export class ClientModuleModule {}

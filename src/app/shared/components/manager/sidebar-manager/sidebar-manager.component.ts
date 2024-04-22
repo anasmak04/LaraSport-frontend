@@ -17,4 +17,8 @@ export class SidebarManagerComponent {
   club() {
     this.router.navigate(["manager/club"]);
   }
+
+  dashboard(){
+    this.router.navigate(["manager/dashboard"]);
+  }
 }

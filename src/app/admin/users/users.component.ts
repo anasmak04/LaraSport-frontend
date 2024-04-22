@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
-import { UsersService } from "src/app/services/users/users.service";
+import { UsersService } from "src/app/services/admin/users/users.service";
 
 @Component({
   selector: "app-users",

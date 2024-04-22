@@ -75,8 +75,8 @@ export class AuthServiceService {
   }
 
 
-  isNoLoggedIn(){
-    return this.getToken() == null;
+  isLoggedIn() {
+    return this.getToken() !== null;
   }
 
   logout(): Observable<any> {

@@ -4,7 +4,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from "@angular/common/http/testing";
-import { CategoryServiceService } from "src/app/services/category/category-service.service";
+import { CategoryServiceService } from "src/app/services/admin/category/category-service.service";
 
 describe("CategoryComponent", () => {
   let component: CategoryComponent;

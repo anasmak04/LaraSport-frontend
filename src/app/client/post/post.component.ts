@@ -1,8 +1,9 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { PostServiceService } from "../../services/post/post-service.service";
+import { PostServiceService } from "../../services/admin/post/post-service.service";
 import { Router } from "@angular/router";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
+import { PostclientService } from "src/app/services/client/post/postclient.service";
 
 @Component({
   selector: "app-post",
@@ -12,7 +13,7 @@ import { LoaderServiceService } from "src/app/services/loader/loader-service.ser
 export class PostComponent implements OnInit {
   
   constructor(
-    private postservice: PostServiceService,
+    private postservice: PostclientService,
     private router: Router
   ) {}
 
@@ -40,22 +41,9 @@ export class PostComponent implements OnInit {
     });
   }
 
-  addPost() {
-    this.router.navigate(["add-post"]);
-  }
 
-  edit() {
-    this.router.navigate(["edit-post"]);
-  }
 
-  delete(id: number) {
-    this.postservice.delete(id).subscribe({
-      next: () => {
-        console.log("post successfullt deleted ");
-        this.findAll();
-      },
-      error: (err) => console.log(err),
-    });
+
   }
  
   
@@ -63,4 +51,4 @@ export class PostComponent implements OnInit {
 
 
 
-}
+

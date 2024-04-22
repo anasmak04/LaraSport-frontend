@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { CategoryServiceService } from "../../services/category/category-service.service";
+import { CategoryServiceService } from "../../services/admin/category/category-service.service";
 import Swal from "sweetalert2";
 import { AlertService } from "src/app/services/alert/alert.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
@@ -108,6 +108,8 @@ export class CategoryComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
+
+  currentPage = 1;
 
   add() {
     if (this.categoryForm.valid) {

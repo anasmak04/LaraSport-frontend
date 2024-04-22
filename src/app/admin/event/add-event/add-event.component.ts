@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert/alert.service";
-import { EventFacadeService } from "src/app/services/event/event-facade.service";
+import { EventFacadeService } from "src/app/services/admin/event/event-facade.service";
 
 @Component({
   selector: "app-add-event",

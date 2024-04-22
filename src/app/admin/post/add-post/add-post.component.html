@@ -32,10 +32,10 @@
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
 
-              
-              @if ( PostForm.controls['title'].invalid && PostForm.controls['title'].touched) {
-                <span>title is required</span>
-            } 
+              @if ( PostForm.controls['title'].invalid &&
+              PostForm.controls['title'].touched) {
+              <span>title is required</span>
+              }
             </div>
 
             <div class="mb-4">
@@ -63,7 +63,6 @@
                 }"
               >
               </editor> -->
-
               <textarea
                 formControlName="content"
                 placeholder="content"
@@ -71,9 +70,10 @@
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               ></textarea>
 
-              @if ( PostForm.controls['content'].invalid && PostForm.controls['content'].touched) {
-                <span>content is required</span>
-            } 
+              @if ( PostForm.controls['content'].invalid &&
+              PostForm.controls['content'].touched) {
+              <span>content is required</span>
+              }
             </div>
 
             <div class="mb-4">
@@ -95,9 +95,10 @@
                 </option>
               </select>
 
-              @if ( PostForm.controls['category_id'].invalid && PostForm.controls['category_id'].touched) {
-                <span>content is required</span>
-            } 
+              @if ( PostForm.controls['category_id'].invalid &&
+              PostForm.controls['category_id'].touched) {
+              <span>content is required</span>
+              }
             </div>
 
             <div class="mb-4">
@@ -115,11 +116,11 @@
                 styleClass="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               ></p-multiSelect>
 
-              @if ( PostForm.controls['tags'].invalid && PostForm.controls['tags'].touched) {
-                <span>content is required</span>
-            } 
+              @if ( PostForm.controls['tags'].invalid &&
+              PostForm.controls['tags'].touched) {
+              <span>content is required</span>
+              }
             </div>
-
 
             <div class="mb-4">
               <label
@@ -137,10 +138,10 @@
                 class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
 
-
-              @if ( PostForm.controls['image'].invalid && PostForm.controls['image'].touched) {
-                <span>content is required</span>
-            } 
+              @if ( PostForm.controls['image'].invalid &&
+              PostForm.controls['image'].touched) {
+              <span>content is required</span>
+              }
             </div>
 
             <button

@@ -42,7 +42,7 @@
                           {{ post.title }}
                         </h1>
                         <p class="flex-grow leading-loose text-gray-600 text-sm">
-                          {{ post.content }}
+                          {{ post.content}}
                         </p>
                         <p class="text-gray-500 text-xs mt-2">
                           Published:
@@ -73,75 +73,37 @@
             </div>
           </div>
 
+         
           <div class="px-4 w-full lg:w-1/4">
             <div class="mb-4">
               <h1 class="text-gray-800 font-bold mb-4">
                 Les articles les plus visités
               </h1>
-              <!-- Example card -->
-              <div class="relative card mb-4">
-                <img
-                  src="../../assets/image3.jpeg"
-                  alt=""
-                  class="w-full h-40 object-cover"
-                />
-                <div
-                  class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-end p-4 bg-black bg-opacity-50"
-                >
-                  <h2 class="text-white text-lg font-bold">
-                    6 SPORTS D'ÉTÉ À PRATIQUER DURANT LES VACANCES
-                  </h2>
-                  <p class="text-white mt-2">Publié il y a 4 ans</p>
-                </div>
+              <div
+              *ngFor="let post of posts"
+              class="relative card mb-4 cursor-pointer"
+              [routerLink]="['/post-details', post.id]"
+            >
+              <img
+                src="{{ post.image }}"
+                alt=""
+                class="w-full h-40 object-cover"
+              />
+              <div
+                class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-end p-4 bg-black bg-opacity-50"
+              >
+                <h2 class="text-white text-lg font-bold">
+                  {{ post.title }}
+                </h2>
+                <p class="text-white mt-2">
+                  Publié a {{ post.publish_date | date }}
+                </p>
               </div>
-              <div class="relative card mb-4">
-                <img
-                  src="../../assets/image3.jpeg"
-                  alt=""
-                  class="w-full h-40 object-cover"
-                />
-                <div
-                  class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-end p-4 bg-black bg-opacity-50"
-                >
-                  <h2 class="text-white text-lg font-bold">
-                    6 SPORTS D'ÉTÉ À PRATIQUER DURANT LES VACANCES
-                  </h2>
-                  <p class="text-white mt-2">Publié il y a 4 ans</p>
-                </div>
-              </div>
-              <div class="relative card mb-4">
-                <img
-                  src="../../assets/image3.jpeg"
-                  alt=""
-                  class="w-full h-40 object-cover"
-                />
-                <div
-                  class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-end p-4 bg-black bg-opacity-50"
-                >
-                  <h2 class="text-white text-lg font-bold">
-                    6 SPORTS D'ÉTÉ À PRATIQUER DURANT LES VACANCES
-                  </h2>
-                  <p class="text-white mt-2">Publié il y a 4 ans</p>
-                </div>
-              </div>
-              <div class="relative card mb-4">
-                <img
-                  src="../../assets/image3.jpeg"
-                  alt=""
-                  class="w-full h-40 object-cover"
-                />
-                <div
-                  class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-end p-4 bg-black bg-opacity-50"
-                >
-                  <h2 class="text-white text-lg font-bold">
-                    6 SPORTS D'ÉTÉ À PRATIQUER DURANT LES VACANCES
-                  </h2>
-                  <p class="text-white mt-2">Publié il y a 4 ans</p>
-                </div>
-              </div>
-              <!-- Repeat for other sidebar content as necessary -->
+            </div>
+            
             </div>
           </div>
+          
         </div>
       </div>
     </section>

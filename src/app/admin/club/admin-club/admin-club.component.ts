@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert/alert.service";
-import { ClubServiceService } from "src/app/services/club/club-service.service";
+import { ClubServiceService } from "src/app/services/admin/club/club-service.service";
 import { LoaderServiceService } from "src/app/services/loader/loader-service.service";
 
 @Component({
@@ -24,6 +24,8 @@ export class AdminClubComponent implements OnInit {
   ngOnInit(): void {
     this.FindAllClubs();
   }
+
+  currentPage =1;
 
   addroute() {
     this.route.navigate(["admin/add/club"]);

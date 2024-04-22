@@ -2,10 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert/alert.service";
-import { CategoryServiceService } from "src/app/services/category/category-service.service";
-import { PostFacadeService } from "src/app/services/post/post-facade.service";
-import { PostServiceService } from "src/app/services/post/post-service.service";
-import { TagsServiceService } from "src/app/services/tags/tags-service.service";
+import { CategoryServiceService } from "src/app/services/admin/category/category-service.service";
+import { PostFacadeService } from "src/app/services/admin/post/post-facade.service";
+import { PostServiceService } from "src/app/services/admin/post/post-service.service";
+import { TagsServiceService } from "src/app/services/admin/tags/tags-service.service";
 import Swal from "sweetalert2";
 
 @Component({

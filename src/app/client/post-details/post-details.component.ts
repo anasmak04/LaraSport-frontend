@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PostServiceService } from 'src/app/services/post/post-service.service';
+import { PostServiceService } from 'src/app/services/admin/post/post-service.service';
 
 @Component({
   selector: 'app-post-details',
@@ -20,7 +20,23 @@ export class PostDetailsComponent implements OnInit {
       const postId = params['id']; 
       this.fetchPostDetails(postId);
     });
+
+    this.findAll();
   }
+
+  posts: any[] = [];
+
+  findAll() {
+    this.postService.findAll().subscribe({
+      next: (response) => {
+        this.posts = response.post;
+        console.log(this.posts);
+      },
+
+      error: (err) => console.log(err),
+    });
+  }
+
 
   fetchPostDetails(postId: number) {
     this.postService.findById(postId).subscribe(response => {

@@ -2,10 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert/alert.service";
-import { CityServiceService } from "src/app/services/city/city-service.service";
-import { ClubTagsService } from "src/app/services/club-tags/club-tags.service";
-import { EventFacadeService } from "src/app/services/event/event-facade.service";
-import { EventServiceService } from "src/app/services/event/event-service.service";
+import { CityServiceService } from "src/app/services/admin/city/city-service.service";
+import { ClubTagsService } from "src/app/services/admin/club-tags/club-tags.service";
+import { EventFacadeService } from "src/app/services/admin/event/event-facade.service";
+import { EventServiceService } from "src/app/services/admin/event/event-service.service";
 
 @Component({
   selector: "app-edit-event",
