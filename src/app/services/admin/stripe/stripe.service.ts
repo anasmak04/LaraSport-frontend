@@ -57,7 +57,8 @@ export class StripeService {
     clientSecret: string,
     cardElement: StripeCardElement,
     selectedDate: Date,
-    price: number
+    price: number,
+    nameclub: string
   ): Promise<void> {
     const stripe = await this.stripePromise;
     if (!stripe) {
@@ -74,7 +75,7 @@ export class StripeService {
     if (error) {
       console.error(`Payment confirmation error: ${error.message}`);
     } else {
-      this.generatePDFTicket(paymentIntent, selectedDate, price);
+      this.generatePDFTicket(paymentIntent, selectedDate, price, nameclub);
       console.log("Payment confirmed successfully");
     }
   }
@@ -82,44 +83,59 @@ export class StripeService {
   async generatePDFTicket(
     paymentIntent: any,
     selectedDate: Date,
-    price: number
+    price: number,
+    nameClub: string // It's good practice to use camelCase for variable names
   ): Promise<void> {
     const doc = new jsPDF();
-
-    // Title
+  
+    
+    const baseColor = "#4A4A4A"; 
+    const highlightColor = "#007BFF"; 
+    doc.setFillColor(232, 240, 254); 
+    doc.rect(0, 0, doc.internal.pageSize.width, 30, "F");
     doc.setFont("helvetica", "bold");
     doc.setFontSize(18);
-    doc.text("Ticket Confirmation", 20, 20);
-
-    // Payment ID
+    doc.setTextColor(highlightColor);
+    doc.text("Ticket Confirmation", 20, 20);  
+    doc.setFontSize(16);
+    doc.setTextColor(baseColor);
+    doc.text(`Welcome to: ${nameClub}`, 20, 40); 
+  
+    
     doc.setFont("helvetica", "normal");
     doc.setFontSize(14);
-    doc.setTextColor(33, 37, 41);
-    doc.text(`Payment ID: ${paymentIntent.id}`, 20, 40);
-
-    // Price
+    doc.text(`Payment ID: ${paymentIntent.id}`, 20, 60);
+  
+    
     doc.setFontSize(12);
-    doc.text(`Price: $${price.toFixed(2)}`, 20, 50);
-
-    // Date
+    doc.text(`Price: $${price.toFixed(2)}`, 20, 70);
+  
+    
+    doc.setFontSize(12);
     const formattedDate = selectedDate.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
     });
-    doc.text(`Date: ${formattedDate}`, 20, 60);
-
-    // QR Code
+    doc.text(`Date: ${formattedDate}`, 20, 80);
+  
+    
     try {
       const qrImage = await QRCode.toDataURL(
-        `Payment ID: ${paymentIntent.id}, Amount: $${price.toFixed(2)}`
+        `Payment ID: ${paymentIntent.id}, Amount: $${price.toFixed(2)}`,
+        { margin: 1 }
       );
-      doc.addImage(qrImage, "JPEG", 20, 70, 50, 50);
+      doc.addImage(qrImage, "JPEG", 150, 60, 40, 40);
     } catch (error) {
       console.error("Error generating QR code", error);
     }
-
-    // Save the PDF
+  
+    
+    doc.setTextColor(100);
+    doc.setFontSize(10);
+    doc.text("Thank you for your purchase!", 20, 140);
+  
+    
     doc.save("ticket.pdf");
   }
 }

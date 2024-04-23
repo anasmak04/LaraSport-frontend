@@ -41,6 +41,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(["/event"]);
   }
 
+
+  club(){
+    this.router.navigate(["/clubs"]);
+  }
   post(){
     this.router.navigate(["/post"]);
   }

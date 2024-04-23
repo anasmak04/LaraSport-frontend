@@ -25,68 +25,73 @@ export class ClubDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router : Router,
+    private router: Router,
     private clubService: ClubServiceService,
     private commentService: CommentServiceService,
     private stripeservice: StripeService,
     private http: HttpClient,
     private apiService: ServiceapiService,
-    private authservice : AuthServiceService,
-    private sweet : AlertService
+    private authservice: AuthServiceService,
+    private sweet: AlertService
   ) {}
 
-
-  
   async pay(clubId: number, duration: string) {
-
     if (!this.authservice.isLoggedIn()) {
-      this.sweet.showError("You need to login first", "Error: You are not logged in");
-      this.router.navigate(['/login']);
+      this.sweet.showError(
+        "You need to login first",
+        "Error: You are not logged in"
+      );
+      this.router.navigate(["/login"]);
       return;
     }
 
-    
     this.apiService.startPayment(clubId, duration).subscribe(
-        async (response: PayementResponse) => {
-            const clientSecret = response.clientSecret;
-            console.log('Client secret received:', clientSecret);
+      async (response: PayementResponse) => {
+        const clientSecret = response.clientSecret;
+        console.log("Client secret received:", clientSecret);
 
-            const paymentMethodId = await this.stripeservice.createPaymentMethod(this.cardElement);
-            console.log('Payment method created with ID:', paymentMethodId);
+        const paymentMethodId = await this.stripeservice.createPaymentMethod(
+          this.cardElement
+        );
+        console.log("Payment method created with ID:", paymentMethodId);
 
-            const selectedDate = this.selectedDate || null;
-            let price = 0;
-            switch (duration) {
-                case 'day':
-                    price = Number(this.club.price_day);
-                    break;
-                case 'month':
-                    price = Number(this.club.price_month);
-                    break;
-                case 'year':
-                    price = Number(this.club.price_year);
-                    break;
-                default:
-                    console.error('Invalid duration');
-                    return;
-            }
-
-            console.log('Price calculated:', price);
-            if (typeof price !== 'number' || isNaN(price)) {
-                console.error('Price is not a valid number:', price);
-                return;
-            }
-
-            await this.stripeservice.confirmPayment(clientSecret, this.cardElement, selectedDate, price);
-        },
-        (error) => {
-            console.error("Error starting payment:", error);
+        const selectedDate = this.selectedDate || null;
+        let nameclub = this.club.name;
+        let price = 0;
+        switch (duration) {
+          case "day":
+            price = Number(this.club.price_day);
+            break;
+          case "month":
+            price = Number(this.club.price_month);
+            break;
+          case "year":
+            price = Number(this.club.price_year);
+            break;
+          default:
+            console.error("Invalid duration");
+            return;
         }
+
+        console.log("Price calculated:", price);
+        if (typeof price !== "number" || isNaN(price)) {
+          console.error("Price is not a valid number:", price);
+          return;
+        }
+
+        await this.stripeservice.confirmPayment(
+          clientSecret,
+          this.cardElement,
+          selectedDate,
+          price,
+          nameclub
+        );
+      },
+      (error) => {
+        console.error("Error starting payment:", error);
+      }
     );
-}
-
-
-
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
