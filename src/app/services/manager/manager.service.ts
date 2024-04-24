@@ -7,7 +7,7 @@ import { ManagerResponse } from "src/app/shared/model/manager/manager-response";
   providedIn: "root",
 })
 export class ManagerService {
-  private API = "http://127.0.0.1:8000/api/managers";
+  private API = "http://127.0.0.1:8000/api/manager/managers";
 
 
 

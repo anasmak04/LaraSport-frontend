@@ -32,6 +32,9 @@ export class AdminEventComponent implements OnInit {
     this.findallEvents();
   }
 
+  currentPage = 1;
+
+
 
   cancel() {
     this.confirmDelete = false;

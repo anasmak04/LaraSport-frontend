@@ -1,4 +1,4 @@
-export interface category {
+export interface Category {
     id : number;
     name: string;
     description: string; 
@@ -7,5 +7,5 @@ export interface category {
 
 export interface CategoryResponsee {
     message: string;
-    category: category; 
+    category: Category; 
 }

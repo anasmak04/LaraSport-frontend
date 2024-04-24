@@ -12,19 +12,15 @@ import { LoaderServiceService } from "src/app/services/loader/loader-service.ser
 export class TagsComponent implements OnInit {
   TagsForm: FormGroup;
 
-
   confirmDelete = false;
 
-  cancel(){
+  cancel() {
     this.confirmDelete = false;
   }
-
 
   toggleconfirmDelete() {
     this.confirmDelete = !this.confirmDelete;
   }
-
-
 
   constructor(
     private tagservice: TagsServiceService,
@@ -32,19 +28,17 @@ export class TagsComponent implements OnInit {
     private sweet: AlertService
   ) {
     this.TagsForm = this.fb.group({
-      id : [],
+      id: [],
       name: ["", Validators.required],
     });
   }
 
   loader = inject(LoaderServiceService);
 
-
   tags: any[] = [];
 
   showModal: boolean = false;
   showModalUpdate: boolean = false;
-
 
   toggleModal() {
     this.showModal = !this.showModal;
@@ -53,8 +47,6 @@ export class TagsComponent implements OnInit {
   toggleModalUpdate() {
     this.showModalUpdate = !this.showModalUpdate;
   }
-
-  
 
   ngOnInit(): void {
     this.findAll();
@@ -106,24 +98,20 @@ export class TagsComponent implements OnInit {
           );
           this.TagsForm.reset();
           this.toggleModalUpdate();
-          this.findAll(); 
+          this.findAll();
         },
         error: (err) => {
           this.sweet.showError("Error", "Category not updated");
           console.error(err);
         },
       });
-    } 
+    }
   }
 
-
-
-  
   findbyid(id: number) {
     this.tagservice.findById(id).subscribe({
       next: (response) => {
         console.log("Fetched tag:", response);
-        // Correct the key to match your API response
         if (response && response.tag) {
           this.TagsForm.patchValue({
             id: response.tag.id,
@@ -132,20 +120,20 @@ export class TagsComponent implements OnInit {
           this.showModalUpdate = true;
           console.log("Form Values after patch:", this.TagsForm.value);
         } else {
-          console.error("Tag data is missing in the response. Received:", response);
-          // Optionally, handle the user interface here to notify the user of missing data.
-          this.sweet.showError("Error", "No tag data found for the provided ID.");
+          console.error(
+            "Tag data is missing in the response. Received:",
+            response
+          );
+          this.sweet.showError(
+            "Error",
+            "No tag data found for the provided ID."
+          );
         }
       },
       error: (err) => {
         console.error("Error fetching tag by ID:", err);
-        // Show error notification to the user
         this.sweet.showError("Error", "Error fetching tag data.");
       },
     });
   }
-  
-
-
-
 }

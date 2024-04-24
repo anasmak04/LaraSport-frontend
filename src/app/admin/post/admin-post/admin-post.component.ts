@@ -29,6 +29,7 @@ export class AdminPostComponent implements OnInit {
   ) {}
 
   loader = inject(LoaderServiceService);
+  currentPage = 1;
 
   cancel() {
     this.confirmDelete = false;

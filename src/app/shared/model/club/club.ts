@@ -3,8 +3,11 @@ import { Clubtag } from "../clubtag/clubtag";
 export interface Club {
     name: string;
     description: string;
-    city: string;
-    user: string;
+    price_day: number;
+    price_month: number;
+    price_year: number;
+    city_id: number;
+    user_id: number;
     image: string;
     tags: Clubtag[];
 }

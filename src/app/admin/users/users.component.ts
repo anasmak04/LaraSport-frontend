@@ -22,12 +22,16 @@ export class UsersComponent implements OnInit {
     this.findAll();
   }
 
+
+  currentPage = 1;
+
+
   banUser(userId: number): void {
     this.userservice.banUser(userId).subscribe({
       next: (response) => {
         console.log("User Banned", response);
         this.updateUserStatus(userId, true);
-        // Update user's status in the local array
+        
       },
       error: (err) => {
         console.error("Error banning user", err);
@@ -39,7 +43,7 @@ export class UsersComponent implements OnInit {
     this.userservice.unbanUser(userId).subscribe({
       next: (response) => {
         console.log("User Unbanned", response);
-        this.updateUserStatus(userId, false); // Update user's status in the local array
+        this.updateUserStatus(userId, false);
       },
       error: (err) => {
         console.error("Error unbanning user", err);

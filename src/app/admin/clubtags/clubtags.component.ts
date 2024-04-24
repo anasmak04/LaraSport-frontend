@@ -88,6 +88,8 @@ export class ClubtagsComponent implements OnInit {
     }
   }
 
+  currentPage = 1;
+
   delete(id: number) {
     this.clubtagsservice.delete(id).subscribe({
       next: () => {
@@ -112,4 +114,6 @@ export class ClubtagsComponent implements OnInit {
       },
     });
   }
+
+  
 }

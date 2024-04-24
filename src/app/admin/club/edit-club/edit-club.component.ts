@@ -28,6 +28,9 @@ export class EditClubComponent implements OnInit {
     this.ClubForm = this.fb.group({
       name: ["", Validators.required],
       description: ["", Validators.required],
+      price_day: ["", Validators.required],
+      price_month: ["", Validators.required],
+      price_year: ["", Validators.required],
       // image: ["", Validators.required],
       city_id: ["", Validators.required],
       user_id: ["", Validators.required],
@@ -58,9 +61,12 @@ export class EditClubComponent implements OnInit {
         this.ClubForm.setValue({
           name: response.club.name,
           description: response.club.description,
+          price_day : response.club.price_day,
+          price_month : response.club.price_month,
+          price_year : response.club.price_year,
           // image: response.club.image,
-          city_id: response.club.city,
-          user_id: response.club.user,
+          city_id: response.club.city_id,
+          user_id: response.club.user_id,
           tags: response.club.tags
             ? response.club.tags.map((tag) => tag.id)
             : [],

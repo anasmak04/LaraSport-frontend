@@ -65,6 +65,8 @@ export class EditEventComponent implements OnInit {
             ? response.event.TagsClubs.map((tag) => tag.id)
             : [],
         });
+
+        console.log(response);
       },
       error: (err) => console.log(err),
     });

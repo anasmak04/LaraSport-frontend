@@ -28,6 +28,7 @@ export class AdminCityComponent implements OnInit {
 
   loader = inject(LoaderServiceService);
 
+  
 
   ngOnInit(): void {
     this.finAllCities();

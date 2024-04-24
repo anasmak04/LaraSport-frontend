@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { CategoryServiceService } from "src/app/services/admin/category/category-service.service";
 import { PostServiceService } from "src/app/services/admin/post/post-service.service";
 import { TagsServiceService } from "src/app/services/admin/tags/tags-service.service";
+import { AlertService } from "src/app/services/alert/alert.service";
 
 @Component({
   selector: "app-edit-post",
@@ -21,7 +22,8 @@ export class EditPostComponent implements OnInit {
     private tagsService: TagsServiceService,
     private postService: PostServiceService,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router :Router
   ) {
     this.PostForm = this.fb.group({
       title: ["", Validators.required],
@@ -79,6 +81,7 @@ export class EditPostComponent implements OnInit {
     if (this.PostForm.valid) {
       this.postService.update(this.postId, this.PostForm.value).subscribe({
         next: (post) => {
+          this.router.navigate(["/admin/post"]);
           console.log("Post updated successfully:", post);
         },
         error: (err) => console.log("Error updating post:", err),

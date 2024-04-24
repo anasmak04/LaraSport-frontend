@@ -84,7 +84,7 @@ export class StripeService {
     paymentIntent: any,
     selectedDate: Date,
     price: number,
-    nameClub: string // It's good practice to use camelCase for variable names
+    nameClub: string
   ): Promise<void> {
     const doc = new jsPDF();
   

@@ -234,7 +234,7 @@
                 </tr>
               </thead>
 
-              <tbody *ngFor="let tag of clubtags">
+              <tbody *ngFor="let tag of clubtags | paginate : { itemsPerPage: 5, currentPage: currentPage }">
                 <tr class="bg-white border-b">
                   <th
                     scope="row"
@@ -281,6 +281,7 @@
                     class="bg-white p-5 rounded-lg shadow-lg max-w-sm w-full">
                     
                     <h2 class="text-lg font-semibold mb-4">Edit Tag</h2>
+                    <form [formGroup]="TagsForm" class="space-y-4">
 
                     <div class="mb-4">
                       <label
@@ -327,6 +328,8 @@
                         Save
                       </button>
                     </div>
+
+                    </form>
                   </div>
                 </div>
 
@@ -400,6 +403,12 @@
               </tbody>
             </table>
           </div>
+
+          <pagination-controls
+          (pageChange)="currentPage = $event"
+        ></pagination-controls>
+
+        
         </div>
       </main>
     </div>

@@ -1,5 +1,5 @@
 import { Tag } from "primeng/tag";
-import { category } from "../category/category";
+import { Category } from "../category/category";
 import { User } from "../user/user";
 import { Tags } from "../tags/Tags";
 

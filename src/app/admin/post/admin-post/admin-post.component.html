@@ -430,13 +430,14 @@
           <caption
             class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white"
           >
-            Post Management
+            Gestion des Publications
             <p
               class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"
             >
-              Browse, add, or modify posts within the system. This table
-              provides an overview of all cities currently managed, including
-              options to edit or delete each entry as needed.
+              ajoutez ou modifiez les publications au sein du système. Ce
+              tableau offre un aperçu de toutes les villes actuellement gérées,
+              incluant des options pour éditer ou supprimer chaque entrée selon
+              le besoin.
             </p>
           </caption>
 
@@ -456,8 +457,12 @@
             </tr>
           </thead>
 
-          @for (post of posts; track $index) {
-          <tbody>
+          <tbody
+            *ngFor="
+              let post of posts
+                | paginate : { itemsPerPage: 2, currentPage: currentPage }
+            "
+          >
             <tr class="bg-white border-b">
               <th
                 scope="row"
@@ -467,11 +472,11 @@
               </th>
 
               <td class="px-6 py-4">
-                {{ post.title }}
+                {{ post.title | truncate : 10 }}
               </td>
 
               <td class="px-6 py-4">
-                {{ post.content | truncate : 50 }}
+                {{ post.content | truncate : 20 }}
               </td>
 
               <td class="px-6 py-4">
@@ -590,9 +595,11 @@
               </div>
             </tr>
           </tbody>
-
-          }
         </table>
+
+        <pagination-controls
+          (pageChange)="currentPage = $event"
+        ></pagination-controls>
       </div>
     </div>
   </div>
